@@ -1334,11 +1334,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void gravity_toggle_Interact_m8962980C63179BC
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9;
 		L_9 = Rigidbody_get_linearVelocity_m367F5415641E5FB968440A91BAE2FCB8CAEA2C8C(L_8, NULL);
 		float L_10 = L_9.___z;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_11;
-		memset((&L_11), 0, sizeof(L_11));
-		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_11), ((float)il2cpp_codegen_add(L_5, L_6)), L_7, L_10, NULL);
+		float L_11 = __this->___sidewaysSpeed;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12;
+		memset((&L_12), 0, sizeof(L_12));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_12), ((float)il2cpp_codegen_add(L_5, L_6)), L_7, ((float)il2cpp_codegen_add(L_10, L_11)), NULL);
 		NullCheck(L_2);
-		Rigidbody_set_linearVelocity_m29AE03D5FC079EAD4202FCF72E2AEBDC19363985(L_2, L_11, NULL);
+		Rigidbody_set_linearVelocity_m29AE03D5FC079EAD4202FCF72E2AEBDC19363985(L_2, L_12, NULL);
 		//<source_info:C:/Users/nikke/GitHub/vr-sys-humans-course/Assets/CardboardInteract/gravity_toggle.cs:16>
 		return;
 	}
@@ -1350,7 +1351,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void gravity_toggle__ctor_m1DF9C05C8599B9665D
 		//<source_info:C:/Users/nikke/GitHub/vr-sys-humans-course/Assets/CardboardInteract/gravity_toggle.cs:5>
 		__this->___launchSpeed = (40.0f);
 		//<source_info:C:/Users/nikke/GitHub/vr-sys-humans-course/Assets/CardboardInteract/gravity_toggle.cs:6>
-		__this->___sidewaysSpeed = (4.0f);
+		__this->___sidewaysSpeed = (2.0f);
 		Interactive__ctor_m9472BC9251A8B48C45C1CCF1C1ECBA21ACAA31F3(__this, NULL);
 		return;
 	}
