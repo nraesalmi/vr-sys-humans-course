@@ -1640,7 +1640,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectInt_t1744D10E1063135DA9D574F95205B98DAC60
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool RectInt_Contains_mCBF3E53C9D20BB9268453754AA93BCA581461493_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A ___0_position, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 Widget_get_GearButtonRect_mA17BB60F3BCD3D84382AED3F12E0BB0C077440D0 (const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B (const RuntimeMethod* method) ;
-IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR double Api_get_MinTriggerHeldPressedTime_m3D490337AA692D8628C5BEA15F57461FF9D80D98_inline (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR double Api_get_MinTriggerHeldPressedTime_m3D490337AA692D8628C5BEA15F57461FF9D80D98 (const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2 (RuntimeObject* ___0_message, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRLoader_get__isInitialized_m5929315F8CA1EB92D53B07389D9D68041D00620C_inline (const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_CardboardQrCode_getSavedDeviceParams_m2310B2346175B0E1365E8E5A0E7E0BB0F107943D (intptr_t* ___0_encodedDeviceParams, int32_t* ___1_size, const RuntimeMethod* method) ;
@@ -1846,7 +1846,7 @@ IL2CPP_EXTERN_C void DEFAULT_CALL CardboardUnity_initializeAndroid(intptr_t);
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 36598
+// Method Definition Index: 47865
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_Start_m16AED3FCB9CDCBA0672E0CBD126D86446394BA4D (CardboardReticlePointer_t9A831A87CC4F4E8308410F73B91A763941ED0A3F* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1879,7 +1879,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_Start_m16AED3FCB
 		return;
 	}
 }
-// Method Definition Index: 36599
+// Method Definition Index: 47866
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_Update_mDA81EA31248FBC24583F8E10E277647019954CFB (CardboardReticlePointer_t9A831A87CC4F4E8308410F73B91A763941ED0A3F* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1895,12 +1895,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_Update_mDA81EA31
 	}
 	RaycastHit_t6F30BD0B38B56401CA833A1B87BD74F2ACD2F2B5 V_0;
 	memset((&V_0), 0, sizeof(V_0));
+	bool V_1 = false;
+	bool V_2 = false;
+	bool V_3 = false;
+	bool V_4 = false;
+	bool V_5 = false;
+	bool V_6 = false;
+	bool V_7 = false;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B5_0 = NULL;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B4_0 = NULL;
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B12_0 = NULL;
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B11_0 = NULL;
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B18_0 = NULL;
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B17_0 = NULL;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B14_0 = NULL;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B13_0 = NULL;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B21_0 = NULL;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B20_0 = NULL;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:150>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0;
@@ -1916,129 +1923,151 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_Update_mDA81EA31
 		il2cpp_codegen_runtime_class_init_inline(Physics_t1244C2983AEAFA149425AFFC3DF53BC91C18ED56_il2cpp_TypeInfo_var);
 		bool L_4;
 		L_4 = Physics_Raycast_m011EA7022C33B2C499EF744E5AF3E01EEB8FBD33(L_1, L_3, (&V_0), (20.0f), NULL);
-		if (!L_4)
+		V_1 = L_4;
+		bool L_5 = V_1;
+		if (!L_5)
 		{
-			goto IL_00af;
+			goto IL_00c5;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:153>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = __this->____gazedAtObject;
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_6;
-		L_6 = RaycastHit_get_transform_m89DB7FCFC50E0213A37CBE089400064B8FA19155((&V_0), NULL);
-		NullCheck(L_6);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7;
-		L_7 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(L_6, NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = __this->____gazedAtObject;
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7;
+		L_7 = RaycastHit_get_transform_m89DB7FCFC50E0213A37CBE089400064B8FA19155((&V_0), NULL);
+		NullCheck(L_7);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_8;
+		L_8 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(L_7, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		bool L_8;
-		L_8 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_5, L_7, NULL);
-		if (!L_8)
+		bool L_9;
+		L_9 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_6, L_8, NULL);
+		V_2 = L_9;
+		bool L_10 = V_2;
+		if (!L_10)
 		{
-			goto IL_0094;
+			goto IL_00a8;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:156>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = __this->____gazedAtObject;
-		bool L_10;
-		L_10 = CardboardReticlePointer_IsInteractive_m67CD7CE89D31D3A8864D6DDCBC18A6D5AE7063E4(__this, L_9, NULL);
-		if (!L_10)
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_11 = __this->____gazedAtObject;
+		bool L_12;
+		L_12 = CardboardReticlePointer_IsInteractive_m67CD7CE89D31D3A8864D6DDCBC18A6D5AE7063E4(__this, L_11, NULL);
+		V_3 = L_12;
+		bool L_13 = V_3;
+		if (!L_13)
 		{
-			goto IL_0064;
+			goto IL_0070;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:158>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_11 = __this->____gazedAtObject;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_12 = L_11;
-		if (L_12)
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_14 = __this->____gazedAtObject;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_15 = L_14;
+		if (L_15)
 		{
-			G_B5_0 = L_12;
-			goto IL_005a;
+			G_B5_0 = L_15;
+			goto IL_0064;
 		}
-		G_B4_0 = L_12;
+		G_B4_0 = L_15;
 	}
 	{
-		goto IL_0064;
+		goto IL_006f;
 	}
 
-IL_005a:
+IL_0064:
 	{
 		NullCheck(G_B5_0);
 		GameObject_SendMessage_m65848D6A8F999FACBC1C21B7303660B7AFF6674E(G_B5_0, _stringLiteralB81A1EDFC9FCE7D754F9199BAED4FF1E125B0C7E, NULL);
 	}
 
-IL_0064:
+IL_006f:
+	{
+	}
+
+IL_0070:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:161>
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13;
-		L_13 = RaycastHit_get_transform_m89DB7FCFC50E0213A37CBE089400064B8FA19155((&V_0), NULL);
-		NullCheck(L_13);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_14;
-		L_14 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(L_13, NULL);
-		__this->____gazedAtObject = L_14;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->____gazedAtObject), (void*)L_14);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_16;
+		L_16 = RaycastHit_get_transform_m89DB7FCFC50E0213A37CBE089400064B8FA19155((&V_0), NULL);
+		NullCheck(L_16);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_17;
+		L_17 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(L_16, NULL);
+		__this->____gazedAtObject = L_17;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->____gazedAtObject), (void*)L_17);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:163>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_15 = __this->____gazedAtObject;
-		bool L_16;
-		L_16 = CardboardReticlePointer_IsInteractive_m67CD7CE89D31D3A8864D6DDCBC18A6D5AE7063E4(__this, L_15, NULL);
-		if (!L_16)
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_18 = __this->____gazedAtObject;
+		bool L_19;
+		L_19 = CardboardReticlePointer_IsInteractive_m67CD7CE89D31D3A8864D6DDCBC18A6D5AE7063E4(__this, L_18, NULL);
+		V_4 = L_19;
+		bool L_20 = V_4;
+		if (!L_20)
 		{
-			goto IL_0094;
+			goto IL_00a7;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:165>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_17 = __this->____gazedAtObject;
-		NullCheck(L_17);
-		GameObject_SendMessage_m65848D6A8F999FACBC1C21B7303660B7AFF6674E(L_17, _stringLiteral7892A84274C1DC4A2351A49903EB298DEA99C240, NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_21 = __this->____gazedAtObject;
+		NullCheck(L_21);
+		GameObject_SendMessage_m65848D6A8F999FACBC1C21B7303660B7AFF6674E(L_21, _stringLiteral7892A84274C1DC4A2351A49903EB298DEA99C240, NULL);
 	}
 
-IL_0094:
+IL_00a7:
+	{
+	}
+
+IL_00a8:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:169>
-		float L_18;
-		L_18 = RaycastHit_get_distance_m035194B0E9BB6229259CFC43B095A9C8E5011C78((&V_0), NULL);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_19 = __this->____gazedAtObject;
-		bool L_20;
-		L_20 = CardboardReticlePointer_IsInteractive_m67CD7CE89D31D3A8864D6DDCBC18A6D5AE7063E4(__this, L_19, NULL);
-		CardboardReticlePointer_SetParams_m0A0EA80939328F34E54DA53C75C9FBB0E85EE572(__this, L_18, L_20, NULL);
-		goto IL_00e0;
+		float L_22;
+		L_22 = RaycastHit_get_distance_m035194B0E9BB6229259CFC43B095A9C8E5011C78((&V_0), NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_23 = __this->____gazedAtObject;
+		bool L_24;
+		L_24 = CardboardReticlePointer_IsInteractive_m67CD7CE89D31D3A8864D6DDCBC18A6D5AE7063E4(__this, L_23, NULL);
+		CardboardReticlePointer_SetParams_m0A0EA80939328F34E54DA53C75C9FBB0E85EE572(__this, L_22, L_24, NULL);
+		goto IL_0100;
 	}
 
-IL_00af:
+IL_00c5:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:174>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_21 = __this->____gazedAtObject;
-		bool L_22;
-		L_22 = CardboardReticlePointer_IsInteractive_m67CD7CE89D31D3A8864D6DDCBC18A6D5AE7063E4(__this, L_21, NULL);
-		if (!L_22)
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_25 = __this->____gazedAtObject;
+		bool L_26;
+		L_26 = CardboardReticlePointer_IsInteractive_m67CD7CE89D31D3A8864D6DDCBC18A6D5AE7063E4(__this, L_25, NULL);
+		V_5 = L_26;
+		bool L_27 = V_5;
+		if (!L_27)
 		{
-			goto IL_00d3;
+			goto IL_00f1;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:176>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_23 = __this->____gazedAtObject;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_24 = L_23;
-		if (L_24)
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_28 = __this->____gazedAtObject;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_29 = L_28;
+		if (L_29)
 		{
-			G_B12_0 = L_24;
-			goto IL_00c9;
+			G_B14_0 = L_29;
+			goto IL_00e5;
 		}
-		G_B11_0 = L_24;
+		G_B13_0 = L_29;
 	}
 	{
-		goto IL_00d3;
+		goto IL_00f0;
 	}
 
-IL_00c9:
+IL_00e5:
 	{
-		NullCheck(G_B12_0);
-		GameObject_SendMessage_m65848D6A8F999FACBC1C21B7303660B7AFF6674E(G_B12_0, _stringLiteralB81A1EDFC9FCE7D754F9199BAED4FF1E125B0C7E, NULL);
+		NullCheck(G_B14_0);
+		GameObject_SendMessage_m65848D6A8F999FACBC1C21B7303660B7AFF6674E(G_B14_0, _stringLiteralB81A1EDFC9FCE7D754F9199BAED4FF1E125B0C7E, NULL);
 	}
 
-IL_00d3:
+IL_00f0:
+	{
+	}
+
+IL_00f1:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:179>
 		__this->____gazedAtObject = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)NULL;
@@ -2047,49 +2076,61 @@ IL_00d3:
 		CardboardReticlePointer_ResetParams_mFB0D6C3A87A724DFBC8A3E39FCE34BBD091DAA4F(__this, NULL);
 	}
 
-IL_00e0:
+IL_0100:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:184>
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		bool L_25;
-		L_25 = Api_get_IsTriggerPressed_mE2356D33F433C078FB257D788BD9B3B219FA920E(NULL);
-		if (!L_25)
+		bool L_30;
+		L_30 = Api_get_IsTriggerPressed_mE2356D33F433C078FB257D788BD9B3B219FA920E(NULL);
+		V_6 = L_30;
+		bool L_31 = V_6;
+		if (!L_31)
 		{
-			goto IL_010b;
+			goto IL_0138;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:186>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_26 = __this->____gazedAtObject;
-		bool L_27;
-		L_27 = CardboardReticlePointer_IsInteractive_m67CD7CE89D31D3A8864D6DDCBC18A6D5AE7063E4(__this, L_26, NULL);
-		if (!L_27)
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_32 = __this->____gazedAtObject;
+		bool L_33;
+		L_33 = CardboardReticlePointer_IsInteractive_m67CD7CE89D31D3A8864D6DDCBC18A6D5AE7063E4(__this, L_32, NULL);
+		V_7 = L_33;
+		bool L_34 = V_7;
+		if (!L_34)
 		{
-			goto IL_010b;
+			goto IL_0137;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:188>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_28 = __this->____gazedAtObject;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_29 = L_28;
-		if (L_29)
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_35 = __this->____gazedAtObject;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_36 = L_35;
+		if (L_36)
 		{
-			G_B18_0 = L_29;
-			goto IL_0101;
+			G_B21_0 = L_36;
+			goto IL_012b;
 		}
-		G_B17_0 = L_29;
+		G_B20_0 = L_36;
 	}
 	{
-		goto IL_010b;
+		goto IL_0136;
 	}
 
-IL_0101:
+IL_012b:
 	{
-		NullCheck(G_B18_0);
-		GameObject_SendMessage_m65848D6A8F999FACBC1C21B7303660B7AFF6674E(G_B18_0, _stringLiteralE4D1D91E707649742B086EDB3E0F4EFA9754545A, NULL);
+		NullCheck(G_B21_0);
+		GameObject_SendMessage_m65848D6A8F999FACBC1C21B7303660B7AFF6674E(G_B21_0, _stringLiteralE4D1D91E707649742B086EDB3E0F4EFA9754545A, NULL);
 	}
 
-IL_010b:
+IL_0136:
+	{
+	}
+
+IL_0137:
+	{
+	}
+
+IL_0138:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:192>
 		CardboardReticlePointer_UpdateDiameters_mC0F33DEAC1A47CDD75423242BEF5E7A4266F32C2(__this, NULL);
@@ -2097,7 +2138,7 @@ IL_010b:
 		return;
 	}
 }
-// Method Definition Index: 36600
+// Method Definition Index: 47867
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_UpdateDiameters_mC0F33DEAC1A47CDD75423242BEF5E7A4266F32C2 (CardboardReticlePointer_t9A831A87CC4F4E8308410F73B91A763941ED0A3F* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2112,6 +2153,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_UpdateDiameters_
 	float V_1 = 0.0f;
 	float V_2 = 0.0f;
 	float V_3 = 0.0f;
+	bool V_4 = false;
+	bool V_5 = false;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:200>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:201>
@@ -2121,9 +2164,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_UpdateDiameters_
 		__this->____reticleDistanceInMeters = L_1;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:203>
 		float L_2 = __this->____reticleInnerAngle;
-		if ((!(((float)L_2) < ((float)(0.0f)))))
+		V_4 = (bool)((((float)L_2) < ((float)(0.0f)))? 1 : 0);
+		bool L_3 = V_4;
+		if (!L_3)
 		{
-			goto IL_0033;
+			goto IL_003c;
 		}
 	}
 	{
@@ -2131,13 +2176,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_UpdateDiameters_
 		__this->____reticleInnerAngle = (0.0f);
 	}
 
-IL_0033:
+IL_003c:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:208>
-		float L_3 = __this->____reticleOuterAngle;
-		if ((!(((float)L_3) < ((float)(0.5f)))))
+		float L_4 = __this->____reticleOuterAngle;
+		V_5 = (bool)((((float)L_4) < ((float)(0.5f)))? 1 : 0);
+		bool L_5 = V_5;
+		if (!L_5)
 		{
-			goto IL_004b;
+			goto IL_005c;
 		}
 	}
 	{
@@ -2145,68 +2192,69 @@ IL_0033:
 		__this->____reticleOuterAngle = (0.5f);
 	}
 
-IL_004b:
+IL_005c:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:213>
-		float L_4 = __this->____reticleInnerAngle;
-		V_0 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply((0.0174532924f), L_4)), (0.5f)));
+		float L_6 = __this->____reticleInnerAngle;
+		V_0 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply((0.0174532924f), L_6)), (0.5f)));
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:214>
-		float L_5 = __this->____reticleOuterAngle;
-		V_1 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply((0.0174532924f), L_5)), (0.5f)));
+		float L_7 = __this->____reticleOuterAngle;
+		V_1 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply((0.0174532924f), L_7)), (0.5f)));
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:216>
-		float L_6 = V_0;
-		float L_7;
-		L_7 = tanf(L_6);
-		V_2 = ((float)il2cpp_codegen_multiply((2.0f), L_7));
-		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:217>
-		float L_8 = V_1;
+		float L_8 = V_0;
 		float L_9;
 		L_9 = tanf(L_8);
-		V_3 = ((float)il2cpp_codegen_multiply((2.0f), L_9));
+		V_2 = ((float)il2cpp_codegen_multiply((2.0f), L_9));
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:217>
+		float L_10 = V_1;
+		float L_11;
+		L_11 = tanf(L_10);
+		V_3 = ((float)il2cpp_codegen_multiply((2.0f), L_11));
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:219>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:220>
-		float L_10 = __this->____reticleInnerDiameter;
-		float L_11 = V_2;
-		float L_12;
-		L_12 = Time_get_unscaledDeltaTime_mF057EECA857E5C0F90A3F910D26D3EE59F27C4B5(NULL);
-		float L_13;
-		L_13 = Mathf_Lerp_m47EF2FFB7647BD0A1FDC26DC03E28B19812139B5_inline(L_10, L_11, ((float)il2cpp_codegen_multiply(L_12, (8.0f))), NULL);
-		__this->____reticleInnerDiameter = L_13;
+		float L_12 = __this->____reticleInnerDiameter;
+		float L_13 = V_2;
+		float L_14;
+		L_14 = Time_get_unscaledDeltaTime_mF057EECA857E5C0F90A3F910D26D3EE59F27C4B5(NULL);
+		float L_15;
+		L_15 = Mathf_Lerp_m47EF2FFB7647BD0A1FDC26DC03E28B19812139B5_inline(L_12, L_13, ((float)il2cpp_codegen_multiply(L_14, (8.0f))), NULL);
+		__this->____reticleInnerDiameter = L_15;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:221>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:222>
-		float L_14 = __this->____reticleOuterDiameter;
-		float L_15 = V_3;
-		float L_16;
-		L_16 = Time_get_unscaledDeltaTime_mF057EECA857E5C0F90A3F910D26D3EE59F27C4B5(NULL);
-		float L_17;
-		L_17 = Mathf_Lerp_m47EF2FFB7647BD0A1FDC26DC03E28B19812139B5_inline(L_14, L_15, ((float)il2cpp_codegen_multiply(L_16, (8.0f))), NULL);
-		__this->____reticleOuterDiameter = L_17;
+		float L_16 = __this->____reticleOuterDiameter;
+		float L_17 = V_3;
+		float L_18;
+		L_18 = Time_get_unscaledDeltaTime_mF057EECA857E5C0F90A3F910D26D3EE59F27C4B5(NULL);
+		float L_19;
+		L_19 = Mathf_Lerp_m47EF2FFB7647BD0A1FDC26DC03E28B19812139B5_inline(L_16, L_17, ((float)il2cpp_codegen_multiply(L_18, (8.0f))), NULL);
+		__this->____reticleOuterDiameter = L_19;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:224>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:225>
-		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_18 = __this->____reticleMaterial;
-		float L_19 = __this->____reticleInnerDiameter;
-		float L_20 = __this->____reticleDistanceInMeters;
-		NullCheck(L_18);
-		Material_SetFloat_m879CF81D740BAE6F23C9822400679F4D16365836(L_18, _stringLiteralFCFBD3FF06BE4F4F1A7BCC160D9739B08935F34A, ((float)il2cpp_codegen_multiply(L_19, L_20)), NULL);
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_20 = __this->____reticleMaterial;
+		float L_21 = __this->____reticleInnerDiameter;
+		float L_22 = __this->____reticleDistanceInMeters;
+		NullCheck(L_20);
+		Material_SetFloat_m879CF81D740BAE6F23C9822400679F4D16365836(L_20, _stringLiteralFCFBD3FF06BE4F4F1A7BCC160D9739B08935F34A, ((float)il2cpp_codegen_multiply(L_21, L_22)), NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:226>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:227>
-		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_21 = __this->____reticleMaterial;
-		float L_22 = __this->____reticleOuterDiameter;
-		float L_23 = __this->____reticleDistanceInMeters;
-		NullCheck(L_21);
-		Material_SetFloat_m879CF81D740BAE6F23C9822400679F4D16365836(L_21, _stringLiteral648064382B131EE3D12FD289ECF8CE013184124C, ((float)il2cpp_codegen_multiply(L_22, L_23)), NULL);
-		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:228>
-		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_24 = __this->____reticleMaterial;
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_23 = __this->____reticleMaterial;
+		float L_24 = __this->____reticleOuterDiameter;
 		float L_25 = __this->____reticleDistanceInMeters;
-		NullCheck(L_24);
-		Material_SetFloat_m879CF81D740BAE6F23C9822400679F4D16365836(L_24, _stringLiteral3D93608C7636930F81DC177E8A4317349B290C8C, L_25, NULL);
+		NullCheck(L_23);
+		Material_SetFloat_m879CF81D740BAE6F23C9822400679F4D16365836(L_23, _stringLiteral648064382B131EE3D12FD289ECF8CE013184124C, ((float)il2cpp_codegen_multiply(L_24, L_25)), NULL);
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:228>
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_26 = __this->____reticleMaterial;
+		float L_27 = __this->____reticleDistanceInMeters;
+		NullCheck(L_26);
+		Material_SetFloat_m879CF81D740BAE6F23C9822400679F4D16365836(L_26, _stringLiteral3D93608C7636930F81DC177E8A4317349B290C8C, L_27, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:229>
 		return;
 	}
 }
-// Method Definition Index: 36601
+// Method Definition Index: 47868
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_SetParams_m0A0EA80939328F34E54DA53C75C9FBB0E85EE572 (CardboardReticlePointer_t9A831A87CC4F4E8308410F73B91A763941ED0A3F* __this, float ___0_distance, bool ___1_interactive, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:238>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:239>
@@ -2217,9 +2265,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_SetParams_m0A0EA
 		__this->____reticleDistanceInMeters = L_1;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:241>
 		bool L_2 = ___1_interactive;
-		if (!L_2)
+		V_0 = L_2;
+		bool L_3 = V_0;
+		if (!L_3)
 		{
-			goto IL_0030;
+			goto IL_0036;
 		}
 	}
 	{
@@ -2227,20 +2277,24 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_SetParams_m0A0EA
 		__this->____reticleInnerAngle = (1.5f);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:244>
 		__this->____reticleOuterAngle = (2.0f);
-		return;
+		goto IL_004e;
 	}
 
-IL_0030:
+IL_0036:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:248>
 		__this->____reticleInnerAngle = (0.0f);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:249>
 		__this->____reticleOuterAngle = (0.5f);
+	}
+
+IL_004e:
+	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:251>
 		return;
 	}
 }
-// Method Definition Index: 36602
+// Method Definition Index: 47869
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_ResetParams_mFB0D6C3A87A724DFBC8A3E39FCE34BBD091DAA4F (CardboardReticlePointer_t9A831A87CC4F4E8308410F73B91A763941ED0A3F* __this, const RuntimeMethod* method) 
 {
 	{
@@ -2254,7 +2308,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_ResetParams_mFB0
 		return;
 	}
 }
-// Method Definition Index: 36603
+// Method Definition Index: 47870
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_CreateMesh_mBF2DBAEEF9056F52632BC1921DE9526A53386359 (CardboardReticlePointer_t9A831A87CC4F4E8308410F73B91A763941ED0A3F* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2269,15 +2323,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_CreateMesh_mBF2D
 	}
 	Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* V_0 = NULL;
 	int32_t V_1 = 0;
-	Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* V_2 = NULL;
-	int32_t V_3 = 0;
-	Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* V_4 = NULL;
+	int32_t V_2 = 0;
+	Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* V_3 = NULL;
+	int32_t V_4 = 0;
 	int32_t V_5 = 0;
-	int32_t V_6 = 0;
+	Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* V_6 = NULL;
 	int32_t V_7 = 0;
-	float V_8 = 0.0f;
-	float V_9 = 0.0f;
-	int32_t V_10 = 0;
+	int32_t V_8 = 0;
+	int32_t V_9 = 0;
+	float V_10 = 0.0f;
+	float V_11 = 0.0f;
+	float V_12 = 0.0f;
+	bool V_13 = false;
+	int32_t V_14 = 0;
+	bool V_15 = false;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:268>
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_0 = (Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4*)il2cpp_codegen_object_new(Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4_il2cpp_TypeInfo_var);
@@ -2299,172 +2358,182 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer_CreateMesh_mBF2D
 		V_1 = ((int32_t)20);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:273>
 		int32_t L_5 = V_1;
+		V_2 = ((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_add(L_5, 1)), 2));
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:276>
-		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_6 = (Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C*)(Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C*)SZArrayNew(Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C_il2cpp_TypeInfo_var, (uint32_t)((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_add(L_5, 1)), 2)));
-		V_2 = L_6;
+		int32_t L_6 = V_2;
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_7 = (Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C*)(Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C*)SZArrayNew(Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C_il2cpp_TypeInfo_var, (uint32_t)L_6);
+		V_3 = L_7;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:279>
-		V_3 = 0;
+		V_4 = 0;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:280>
-		V_7 = 0;
-		goto IL_0086;
+		V_9 = 0;
+		goto IL_0096;
 	}
 
-IL_0033:
+IL_0038:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:284>
-		int32_t L_7 = V_7;
-		int32_t L_8 = V_1;
+		int32_t L_8 = V_9;
+		int32_t L_9 = V_1;
+		V_10 = ((float)il2cpp_codegen_multiply(((float)(((float)L_8)/((float)L_9))), (6.28318548f)));
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:286>
-		float L_9 = ((float)il2cpp_codegen_multiply(((float)(((float)L_7)/((float)L_8))), (6.28318548f)));
-		float L_10;
-		L_10 = sinf(L_9);
-		V_8 = L_10;
-		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:287>
+		float L_10 = V_10;
 		float L_11;
-		L_11 = cosf(L_9);
-		V_9 = L_11;
+		L_11 = sinf(L_10);
+		V_11 = L_11;
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:287>
+		float L_12 = V_10;
+		float L_13;
+		L_13 = cosf(L_12);
+		V_12 = L_13;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:289>
-		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_12 = V_2;
-		int32_t L_13 = V_3;
-		int32_t L_14 = L_13;
-		V_3 = ((int32_t)il2cpp_codegen_add(L_14, 1));
-		float L_15 = V_8;
-		float L_16 = V_9;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_17;
-		memset((&L_17), 0, sizeof(L_17));
-		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_17), L_15, L_16, (0.0f), NULL);
-		NullCheck(L_12);
-		(L_12)->SetAt(static_cast<il2cpp_array_size_t>(L_14), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_17);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_14 = V_3;
+		int32_t L_15 = V_4;
+		int32_t L_16 = L_15;
+		V_4 = ((int32_t)il2cpp_codegen_add(L_16, 1));
+		float L_17 = V_11;
+		float L_18 = V_12;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_19;
+		memset((&L_19), 0, sizeof(L_19));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_19), L_17, L_18, (0.0f), NULL);
+		NullCheck(L_14);
+		(L_14)->SetAt(static_cast<il2cpp_array_size_t>(L_16), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_19);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:290>
-		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_18 = V_2;
-		int32_t L_19 = V_3;
-		int32_t L_20 = L_19;
-		V_3 = ((int32_t)il2cpp_codegen_add(L_20, 1));
-		float L_21 = V_8;
-		float L_22 = V_9;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_23;
-		memset((&L_23), 0, sizeof(L_23));
-		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_23), L_21, L_22, (1.0f), NULL);
-		NullCheck(L_18);
-		(L_18)->SetAt(static_cast<il2cpp_array_size_t>(L_20), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_23);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_20 = V_3;
+		int32_t L_21 = V_4;
+		int32_t L_22 = L_21;
+		V_4 = ((int32_t)il2cpp_codegen_add(L_22, 1));
+		float L_23 = V_11;
+		float L_24 = V_12;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_25;
+		memset((&L_25), 0, sizeof(L_25));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_25), L_23, L_24, (1.0f), NULL);
+		NullCheck(L_20);
+		(L_20)->SetAt(static_cast<il2cpp_array_size_t>(L_22), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_25);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:280>
-		int32_t L_24 = V_7;
-		V_7 = ((int32_t)il2cpp_codegen_add(L_24, 1));
+		int32_t L_26 = V_9;
+		V_9 = ((int32_t)il2cpp_codegen_add(L_26, 1));
 	}
 
-IL_0086:
+IL_0096:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:280>
-		int32_t L_25 = V_7;
-		int32_t L_26 = V_1;
-		if ((((int32_t)L_25) <= ((int32_t)L_26)))
+		int32_t L_27 = V_9;
+		int32_t L_28 = V_1;
+		V_13 = (bool)((((int32_t)((((int32_t)L_27) > ((int32_t)L_28))? 1 : 0)) == ((int32_t)0))? 1 : 0);
+		bool L_29 = V_13;
+		if (L_29)
 		{
-			goto IL_0033;
+			goto IL_0038;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:294>
-		int32_t L_27 = V_1;
+		int32_t L_30 = V_1;
+		V_5 = ((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_add(L_30, 1)), 3)), 2));
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:295>
-		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_28 = (Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C*)(Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C*)SZArrayNew(Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C_il2cpp_TypeInfo_var, (uint32_t)((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_add(L_27, 1)), 3)), 2)));
-		V_4 = L_28;
+		int32_t L_31 = V_5;
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_32 = (Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C*)(Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C*)SZArrayNew(Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C_il2cpp_TypeInfo_var, (uint32_t)L_31);
+		V_6 = L_32;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:297>
-		V_5 = 0;
+		V_7 = 0;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:298>
-		V_6 = 0;
+		V_8 = 0;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:299>
-		V_10 = 0;
-		goto IL_0102;
+		V_14 = 0;
+		goto IL_0121;
 	}
 
-IL_00a4:
+IL_00c1:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:301>
-		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_29 = V_4;
-		int32_t L_30 = V_6;
-		int32_t L_31 = L_30;
-		V_6 = ((int32_t)il2cpp_codegen_add(L_31, 1));
-		int32_t L_32 = V_5;
-		NullCheck(L_29);
-		(L_29)->SetAt(static_cast<il2cpp_array_size_t>(L_31), (int32_t)((int32_t)il2cpp_codegen_add(L_32, 1)));
-		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:302>
-		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_33 = V_4;
-		int32_t L_34 = V_6;
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_33 = V_6;
+		int32_t L_34 = V_8;
 		int32_t L_35 = L_34;
-		V_6 = ((int32_t)il2cpp_codegen_add(L_35, 1));
-		int32_t L_36 = V_5;
+		V_8 = ((int32_t)il2cpp_codegen_add(L_35, 1));
+		int32_t L_36 = V_7;
 		NullCheck(L_33);
-		(L_33)->SetAt(static_cast<il2cpp_array_size_t>(L_35), (int32_t)L_36);
-		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:303>
-		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_37 = V_4;
-		int32_t L_38 = V_6;
+		(L_33)->SetAt(static_cast<il2cpp_array_size_t>(L_35), (int32_t)((int32_t)il2cpp_codegen_add(L_36, 1)));
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:302>
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_37 = V_6;
+		int32_t L_38 = V_8;
 		int32_t L_39 = L_38;
-		V_6 = ((int32_t)il2cpp_codegen_add(L_39, 1));
-		int32_t L_40 = V_5;
+		V_8 = ((int32_t)il2cpp_codegen_add(L_39, 1));
+		int32_t L_40 = V_7;
 		NullCheck(L_37);
-		(L_37)->SetAt(static_cast<il2cpp_array_size_t>(L_39), (int32_t)((int32_t)il2cpp_codegen_add(L_40, 2)));
-		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:305>
-		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_41 = V_4;
-		int32_t L_42 = V_6;
+		(L_37)->SetAt(static_cast<il2cpp_array_size_t>(L_39), (int32_t)L_40);
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:303>
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_41 = V_6;
+		int32_t L_42 = V_8;
 		int32_t L_43 = L_42;
-		V_6 = ((int32_t)il2cpp_codegen_add(L_43, 1));
-		int32_t L_44 = V_5;
+		V_8 = ((int32_t)il2cpp_codegen_add(L_43, 1));
+		int32_t L_44 = V_7;
 		NullCheck(L_41);
-		(L_41)->SetAt(static_cast<il2cpp_array_size_t>(L_43), (int32_t)((int32_t)il2cpp_codegen_add(L_44, 1)));
-		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:306>
-		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_45 = V_4;
-		int32_t L_46 = V_6;
+		(L_41)->SetAt(static_cast<il2cpp_array_size_t>(L_43), (int32_t)((int32_t)il2cpp_codegen_add(L_44, 2)));
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:305>
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_45 = V_6;
+		int32_t L_46 = V_8;
 		int32_t L_47 = L_46;
-		V_6 = ((int32_t)il2cpp_codegen_add(L_47, 1));
-		int32_t L_48 = V_5;
+		V_8 = ((int32_t)il2cpp_codegen_add(L_47, 1));
+		int32_t L_48 = V_7;
 		NullCheck(L_45);
-		(L_45)->SetAt(static_cast<il2cpp_array_size_t>(L_47), (int32_t)((int32_t)il2cpp_codegen_add(L_48, 2)));
-		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:307>
-		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_49 = V_4;
-		int32_t L_50 = V_6;
+		(L_45)->SetAt(static_cast<il2cpp_array_size_t>(L_47), (int32_t)((int32_t)il2cpp_codegen_add(L_48, 1)));
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:306>
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_49 = V_6;
+		int32_t L_50 = V_8;
 		int32_t L_51 = L_50;
-		V_6 = ((int32_t)il2cpp_codegen_add(L_51, 1));
-		int32_t L_52 = V_5;
+		V_8 = ((int32_t)il2cpp_codegen_add(L_51, 1));
+		int32_t L_52 = V_7;
 		NullCheck(L_49);
-		(L_49)->SetAt(static_cast<il2cpp_array_size_t>(L_51), (int32_t)((int32_t)il2cpp_codegen_add(L_52, 3)));
+		(L_49)->SetAt(static_cast<il2cpp_array_size_t>(L_51), (int32_t)((int32_t)il2cpp_codegen_add(L_52, 2)));
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:307>
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_53 = V_6;
+		int32_t L_54 = V_8;
+		int32_t L_55 = L_54;
+		V_8 = ((int32_t)il2cpp_codegen_add(L_55, 1));
+		int32_t L_56 = V_7;
+		NullCheck(L_53);
+		(L_53)->SetAt(static_cast<il2cpp_array_size_t>(L_55), (int32_t)((int32_t)il2cpp_codegen_add(L_56, 3)));
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:309>
-		int32_t L_53 = V_5;
-		V_5 = ((int32_t)il2cpp_codegen_add(L_53, 2));
+		int32_t L_57 = V_7;
+		V_7 = ((int32_t)il2cpp_codegen_add(L_57, 2));
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:299>
-		int32_t L_54 = V_10;
-		V_10 = ((int32_t)il2cpp_codegen_add(L_54, 1));
+		int32_t L_58 = V_14;
+		V_14 = ((int32_t)il2cpp_codegen_add(L_58, 1));
 	}
 
-IL_0102:
+IL_0121:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:299>
-		int32_t L_55 = V_10;
-		int32_t L_56 = V_1;
-		if ((((int32_t)L_55) < ((int32_t)L_56)))
+		int32_t L_59 = V_14;
+		int32_t L_60 = V_1;
+		V_15 = (bool)((((int32_t)L_59) < ((int32_t)L_60))? 1 : 0);
+		bool L_61 = V_15;
+		if (L_61)
 		{
-			goto IL_00a4;
+			goto IL_00c1;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:312>
-		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_57 = V_0;
-		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_58 = V_2;
-		NullCheck(L_57);
-		Mesh_set_vertices_m5BB814D89E9ACA00DBF19F7D8E22CB73AC73FE5C(L_57, L_58, NULL);
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_62 = V_0;
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_63 = V_3;
+		NullCheck(L_62);
+		Mesh_set_vertices_m5BB814D89E9ACA00DBF19F7D8E22CB73AC73FE5C(L_62, L_63, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:313>
-		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_59 = V_0;
-		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_60 = V_4;
-		NullCheck(L_59);
-		Mesh_set_triangles_m124405320579A8D92711BB5A124644963A26F60B(L_59, L_60, NULL);
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_64 = V_0;
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_65 = V_6;
+		NullCheck(L_64);
+		Mesh_set_triangles_m124405320579A8D92711BB5A124644963A26F60B(L_64, L_65, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:314>
-		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_61 = V_0;
-		NullCheck(L_61);
-		Mesh_RecalculateBounds_mA9B293F57C6CD298AE2D2DB19061FC23B05AB90B(L_61, NULL);
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_66 = V_0;
+		NullCheck(L_66);
+		Mesh_RecalculateBounds_mA9B293F57C6CD298AE2D2DB19061FC23B05AB90B(L_66, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:315>
 		return;
 	}
 }
-// Method Definition Index: 36604
+// Method Definition Index: 47871
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool CardboardReticlePointer_IsInteractive_m67CD7CE89D31D3A8864D6DDCBC18A6D5AE7063E4 (CardboardReticlePointer_t9A831A87CC4F4E8308410F73B91A763941ED0A3F* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_gameObject, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2485,6 +2554,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool CardboardReticlePointer_IsInteractive_m6
 	memset((&V_4), 0, sizeof(V_4));
 	Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28 V_5;
 	memset((&V_5), 0, sizeof(V_5));
+	bool V_6 = false;
 	Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28 G_B3_0;
 	memset((&G_B3_0), 0, sizeof(G_B3_0));
 	Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28 G_B6_0;
@@ -2496,17 +2566,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool CardboardReticlePointer_IsInteractive_m6
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = ___0_gameObject;
 		if (L_0)
 		{
-			goto IL_000f;
+			goto IL_0010;
 		}
 	}
 	{
 		il2cpp_codegen_initobj((&V_5), sizeof(Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28));
 		Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28 L_1 = V_5;
 		G_B3_0 = L_1;
-		goto IL_001a;
+		goto IL_001b;
 	}
 
-IL_000f:
+IL_0010:
 	{
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = ___0_gameObject;
 		NullCheck(L_2);
@@ -2518,24 +2588,24 @@ IL_000f:
 		G_B3_0 = L_4;
 	}
 
-IL_001a:
+IL_001b:
 	{
 		V_4 = G_B3_0;
 		bool L_5;
 		L_5 = Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_inline((&V_4), Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_RuntimeMethod_var);
 		if (L_5)
 		{
-			goto IL_0031;
+			goto IL_0032;
 		}
 	}
 	{
 		il2cpp_codegen_initobj((&V_5), sizeof(Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28));
 		Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28 L_6 = V_5;
 		G_B6_0 = L_6;
-		goto IL_0042;
+		goto IL_0043;
 	}
 
-IL_0031:
+IL_0032:
 	{
 		int32_t L_7;
 		L_7 = Nullable_1_GetValueOrDefault_m8D130DB7F2A1E694736B449176F9C26DB456597B_inline((&V_4), Nullable_1_GetValueOrDefault_m8D130DB7F2A1E694736B449176F9C26DB456597B_RuntimeMethod_var);
@@ -2545,7 +2615,7 @@ IL_0031:
 		G_B6_0 = L_8;
 	}
 
-IL_0042:
+IL_0043:
 	{
 		V_2 = G_B6_0;
 		LayerMask_t97CB6BDADEDC3D6423C7BCFEA7F86DA2EC6241DB L_9 = __this->___ReticleInteractionLayerMask;
@@ -2556,17 +2626,17 @@ IL_0042:
 		L_11 = Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_inline((&V_2), Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_RuntimeMethod_var);
 		if (L_11)
 		{
-			goto IL_0064;
+			goto IL_0065;
 		}
 	}
 	{
 		il2cpp_codegen_initobj((&V_4), sizeof(Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28));
 		Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28 L_12 = V_4;
 		G_B9_0 = L_12;
-		goto IL_0072;
+		goto IL_0073;
 	}
 
-IL_0064:
+IL_0065:
 	{
 		int32_t L_13;
 		L_13 = Nullable_1_GetValueOrDefault_m8D130DB7F2A1E694736B449176F9C26DB456597B_inline((&V_2), Nullable_1_GetValueOrDefault_m8D130DB7F2A1E694736B449176F9C26DB456597B_RuntimeMethod_var);
@@ -2577,7 +2647,7 @@ IL_0064:
 		G_B9_0 = L_15;
 	}
 
-IL_0072:
+IL_0073:
 	{
 		V_0 = G_B9_0;
 		V_1 = 0;
@@ -2586,10 +2656,18 @@ IL_0072:
 		int32_t L_17 = V_1;
 		bool L_18;
 		L_18 = Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_inline((&V_0), Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_RuntimeMethod_var);
-		return (bool)((((int32_t)((int32_t)(((((int32_t)L_16) == ((int32_t)L_17))? 1 : 0)&(int32_t)L_18))) == ((int32_t)0))? 1 : 0);
+		V_6 = (bool)((((int32_t)((int32_t)(((((int32_t)L_16) == ((int32_t)L_17))? 1 : 0)&(int32_t)L_18))) == ((int32_t)0))? 1 : 0);
+		goto IL_008f;
+	}
+
+IL_008f:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:327>
+		bool L_19 = V_6;
+		return L_19;
 	}
 }
-// Method Definition Index: 36605
+// Method Definition Index: 47872
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer__ctor_m53112C2D6764832F7015E33CC7F056E532A8D21B (CardboardReticlePointer_t9A831A87CC4F4E8308410F73B91A763941ED0A3F* __this, const RuntimeMethod* method) 
 {
 	{
@@ -2599,6 +2677,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer__ctor_m53112C2D6
 		LayerMask_t97CB6BDADEDC3D6423C7BCFEA7F86DA2EC6241DB L_0;
 		L_0 = LayerMask_op_Implicit_m01C8996A2CB2085328B9C33539C43139660D8222(((int32_t)256), NULL);
 		__this->___ReticleInteractionLayerMask = L_0;
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/CardboardReticlePointer.cs:97>
+		__this->____gazedAtObject = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)NULL;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->____gazedAtObject), (void*)(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)NULL);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
 	}
@@ -2611,7 +2692,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CardboardReticlePointer__ctor_m53112C2D6
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 36606
+// Method Definition Index: 47873
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_t76383A14B23AEC4B460D09A2C4B589F4FCE23AF1 UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_m215C79830D7964585CC6954BBFA2E601F4EFE708 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2624,6 +2705,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_t76383A14B23AEC4B460D09A2C4B58
 	}
 	MonoScriptData_t76383A14B23AEC4B460D09A2C4B589F4FCE23AF1 V_0;
 	memset((&V_0), 0, sizeof(V_0));
+	MonoScriptData_t76383A14B23AEC4B460D09A2C4B589F4FCE23AF1 V_1;
+	memset((&V_1), 0, sizeof(V_1));
 	{
 		il2cpp_codegen_initobj((&V_0), sizeof(MonoScriptData_t76383A14B23AEC4B460D09A2C4B589F4FCE23AF1));
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_0 = (ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)(ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)SZArrayNew(ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031_il2cpp_TypeInfo_var, (uint32_t)((int32_t)530));
@@ -2642,10 +2725,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_t76383A14B23AEC4B460D09A2C4B58
 		(&V_0)->___TotalTypes = 6;
 		(&V_0)->___IsEditorOnly = (bool)0;
 		MonoScriptData_t76383A14B23AEC4B460D09A2C4B589F4FCE23AF1 L_6 = V_0;
-		return L_6;
+		V_1 = L_6;
+		goto IL_005d;
+	}
+
+IL_005d:
+	{
+		MonoScriptData_t76383A14B23AEC4B460D09A2C4B589F4FCE23AF1 L_7 = V_1;
+		return L_7;
 	}
 }
-// Method Definition Index: 36607
+// Method Definition Index: 47874
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mCA949C1B7EEC203DA44C5E6598093864D613F50C (UnitySourceGeneratedAssemblyMonoScriptTypes_v1_tDCF6F9281F5DCFC400136D9C31785AD4D7619E24* __this, const RuntimeMethod* method) 
 {
 	{
@@ -2731,7 +2821,7 @@ IL2CPP_EXTERN_C void MonoScriptData_t76383A14B23AEC4B460D09A2C4B589F4FCE23AF1_ma
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 36608
+// Method Definition Index: 47875
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Api_get_IsCloseButtonPressed_m4B0EDA79280273FDD21B841B7E4765D90F978F43 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2746,85 +2836,109 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Api_get_IsCloseButtonPressed_m4B0EDA7928
 	TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* V_0 = NULL;
 	Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A V_1;
 	memset((&V_1), 0, sizeof(V_1));
-	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_2;
-	memset((&V_2), 0, sizeof(V_2));
+	bool V_2 = false;
+	bool V_3 = false;
+	bool V_4 = false;
+	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_5;
+	memset((&V_5), 0, sizeof(V_5));
+	int32_t G_B7_0 = 0;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:61>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		bool L_0;
 		L_0 = XRLoader_get__isStarted_m1BC9BAA5F9408ED509CA303E3FBC4F2DF398EDFA_inline(NULL);
-		if (L_0)
+		V_2 = (bool)((((int32_t)L_0) == ((int32_t)0))? 1 : 0);
+		bool L_1 = V_2;
+		if (!L_1)
 		{
-			goto IL_0009;
+			goto IL_0012;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:63>
-		return (bool)0;
+		V_3 = (bool)0;
+		goto IL_005b;
 	}
 
-IL_0009:
+IL_0012:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:66>
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_1;
-		L_1 = Api_GetFirstTouchIfExists_m539D70B561966EE2B1C4D8A4015ECA8A1558C47C(NULL);
-		V_0 = L_1;
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_2;
+		L_2 = Api_GetFirstTouchIfExists_m539D70B561966EE2B1C4D8A4015ECA8A1558C47C(NULL);
+		V_0 = L_2;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:67>
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_2 = V_0;
-		if (L_2)
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_3 = V_0;
+		V_4 = (bool)((((RuntimeObject*)(TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079*)L_3) == ((RuntimeObject*)(RuntimeObject*)NULL))? 1 : 0);
+		bool L_4 = V_4;
+		if (!L_4)
 		{
-			goto IL_0014;
+			goto IL_0027;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:69>
-		return (bool)0;
+		V_3 = (bool)0;
+		goto IL_005b;
 	}
 
-IL_0014:
+IL_0027:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:72>
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_3 = V_0;
-		NullCheck(L_3);
-		Vector2Control_t8D1B4021A1D82671AF916D3C0A476AA94E46A432* L_4;
-		L_4 = TouchControl_get_position_m362565B94CA1CF45F79F7EAB5FE75B9BCB1ACAAF_inline(L_3, NULL);
-		NullCheck(L_4);
-		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_5;
-		L_5 = InputControl_1_ReadValue_m362E05F00FE8CF8FC52F0D673291907EC7FA6541(L_4, InputControl_1_ReadValue_m362E05F00FE8CF8FC52F0D673291907EC7FA6541_RuntimeMethod_var);
-		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_6;
-		L_6 = Vector2Int_RoundToInt_m3105CCF1283211D549DEB4C84AEEB1D8034E7A4E_inline(L_5, NULL);
-		V_1 = L_6;
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_5 = V_0;
+		NullCheck(L_5);
+		Vector2Control_t8D1B4021A1D82671AF916D3C0A476AA94E46A432* L_6;
+		L_6 = TouchControl_get_position_m362565B94CA1CF45F79F7EAB5FE75B9BCB1ACAAF_inline(L_5, NULL);
+		NullCheck(L_6);
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_7;
+		L_7 = InputControl_1_ReadValue_m362E05F00FE8CF8FC52F0D673291907EC7FA6541(L_6, InputControl_1_ReadValue_m362E05F00FE8CF8FC52F0D673291907EC7FA6541_RuntimeMethod_var);
+		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_8;
+		L_8 = Vector2Int_RoundToInt_m3105CCF1283211D549DEB4C84AEEB1D8034E7A4E_inline(L_7, NULL);
+		V_1 = L_8;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:73>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:74>
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_7 = V_0;
-		NullCheck(L_7);
-		TouchPhaseControl_t4652C6E0EBFAFA85A31607769876B02C1C9FCAEC* L_8;
-		L_8 = TouchControl_get_phase_mB82674B59168CD8074E9C371A51B088F76D4AC55_inline(L_7, NULL);
-		NullCheck(L_8);
-		int32_t L_9;
-		L_9 = InputControl_1_ReadValue_m098F74445FF1AFEC68A0C5DB2EDC32AF3F56E281(L_8, InputControl_1_ReadValue_m098F74445FF1AFEC68A0C5DB2EDC32AF3F56E281_RuntimeMethod_var);
-		if ((!(((uint32_t)L_9) == ((uint32_t)1))))
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_9 = V_0;
+		NullCheck(L_9);
+		TouchPhaseControl_t4652C6E0EBFAFA85A31607769876B02C1C9FCAEC* L_10;
+		L_10 = TouchControl_get_phase_mB82674B59168CD8074E9C371A51B088F76D4AC55_inline(L_9, NULL);
+		NullCheck(L_10);
+		int32_t L_11;
+		L_11 = InputControl_1_ReadValue_m098F74445FF1AFEC68A0C5DB2EDC32AF3F56E281(L_10, InputControl_1_ReadValue_m098F74445FF1AFEC68A0C5DB2EDC32AF3F56E281_RuntimeMethod_var);
+		if ((!(((uint32_t)L_11) == ((uint32_t)1))))
 		{
-			goto IL_0042;
+			goto IL_0057;
 		}
 	}
 	{
-		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_10;
-		L_10 = Widget_get_CloseButtonRect_mA6D29E2FF35B9D6C85EA22F321C44B22D32E5879(NULL);
-		V_2 = L_10;
-		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_11 = V_1;
-		bool L_12;
-		L_12 = RectInt_Contains_mCBF3E53C9D20BB9268453754AA93BCA581461493_inline((&V_2), L_11, NULL);
-		return L_12;
+		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_12;
+		L_12 = Widget_get_CloseButtonRect_mA6D29E2FF35B9D6C85EA22F321C44B22D32E5879(NULL);
+		V_5 = L_12;
+		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_13 = V_1;
+		bool L_14;
+		L_14 = RectInt_Contains_mCBF3E53C9D20BB9268453754AA93BCA581461493_inline((&V_5), L_13, NULL);
+		G_B7_0 = ((int32_t)(L_14));
+		goto IL_0058;
 	}
 
-IL_0042:
+IL_0057:
 	{
-		return (bool)0;
+		G_B7_0 = 0;
+	}
+
+IL_0058:
+	{
+		V_3 = (bool)G_B7_0;
+		goto IL_005b;
+	}
+
+IL_005b:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:75>
+		bool L_15 = V_3;
+		return L_15;
 	}
 }
-// Method Definition Index: 36609
+// Method Definition Index: 47876
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Api_get_IsGearButtonPressed_m922BF1A99A8B035D565441F96824AE9F0925156A (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2839,85 +2953,109 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Api_get_IsGearButtonPressed_m922BF1A99A8
 	TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* V_0 = NULL;
 	Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A V_1;
 	memset((&V_1), 0, sizeof(V_1));
-	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_2;
-	memset((&V_2), 0, sizeof(V_2));
+	bool V_2 = false;
+	bool V_3 = false;
+	bool V_4 = false;
+	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_5;
+	memset((&V_5), 0, sizeof(V_5));
+	int32_t G_B7_0 = 0;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:85>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		bool L_0;
 		L_0 = XRLoader_get__isStarted_m1BC9BAA5F9408ED509CA303E3FBC4F2DF398EDFA_inline(NULL);
-		if (L_0)
+		V_2 = (bool)((((int32_t)L_0) == ((int32_t)0))? 1 : 0);
+		bool L_1 = V_2;
+		if (!L_1)
 		{
-			goto IL_0009;
+			goto IL_0012;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:87>
-		return (bool)0;
+		V_3 = (bool)0;
+		goto IL_005b;
 	}
 
-IL_0009:
+IL_0012:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:90>
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_1;
-		L_1 = Api_GetFirstTouchIfExists_m539D70B561966EE2B1C4D8A4015ECA8A1558C47C(NULL);
-		V_0 = L_1;
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_2;
+		L_2 = Api_GetFirstTouchIfExists_m539D70B561966EE2B1C4D8A4015ECA8A1558C47C(NULL);
+		V_0 = L_2;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:91>
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_2 = V_0;
-		if (L_2)
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_3 = V_0;
+		V_4 = (bool)((((RuntimeObject*)(TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079*)L_3) == ((RuntimeObject*)(RuntimeObject*)NULL))? 1 : 0);
+		bool L_4 = V_4;
+		if (!L_4)
 		{
-			goto IL_0014;
+			goto IL_0027;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:93>
-		return (bool)0;
+		V_3 = (bool)0;
+		goto IL_005b;
 	}
 
-IL_0014:
+IL_0027:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:96>
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_3 = V_0;
-		NullCheck(L_3);
-		Vector2Control_t8D1B4021A1D82671AF916D3C0A476AA94E46A432* L_4;
-		L_4 = TouchControl_get_position_m362565B94CA1CF45F79F7EAB5FE75B9BCB1ACAAF_inline(L_3, NULL);
-		NullCheck(L_4);
-		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_5;
-		L_5 = InputControl_1_ReadValue_m362E05F00FE8CF8FC52F0D673291907EC7FA6541(L_4, InputControl_1_ReadValue_m362E05F00FE8CF8FC52F0D673291907EC7FA6541_RuntimeMethod_var);
-		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_6;
-		L_6 = Vector2Int_RoundToInt_m3105CCF1283211D549DEB4C84AEEB1D8034E7A4E_inline(L_5, NULL);
-		V_1 = L_6;
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_5 = V_0;
+		NullCheck(L_5);
+		Vector2Control_t8D1B4021A1D82671AF916D3C0A476AA94E46A432* L_6;
+		L_6 = TouchControl_get_position_m362565B94CA1CF45F79F7EAB5FE75B9BCB1ACAAF_inline(L_5, NULL);
+		NullCheck(L_6);
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_7;
+		L_7 = InputControl_1_ReadValue_m362E05F00FE8CF8FC52F0D673291907EC7FA6541(L_6, InputControl_1_ReadValue_m362E05F00FE8CF8FC52F0D673291907EC7FA6541_RuntimeMethod_var);
+		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_8;
+		L_8 = Vector2Int_RoundToInt_m3105CCF1283211D549DEB4C84AEEB1D8034E7A4E_inline(L_7, NULL);
+		V_1 = L_8;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:97>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:98>
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_7 = V_0;
-		NullCheck(L_7);
-		TouchPhaseControl_t4652C6E0EBFAFA85A31607769876B02C1C9FCAEC* L_8;
-		L_8 = TouchControl_get_phase_mB82674B59168CD8074E9C371A51B088F76D4AC55_inline(L_7, NULL);
-		NullCheck(L_8);
-		int32_t L_9;
-		L_9 = InputControl_1_ReadValue_m098F74445FF1AFEC68A0C5DB2EDC32AF3F56E281(L_8, InputControl_1_ReadValue_m098F74445FF1AFEC68A0C5DB2EDC32AF3F56E281_RuntimeMethod_var);
-		if ((!(((uint32_t)L_9) == ((uint32_t)1))))
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_9 = V_0;
+		NullCheck(L_9);
+		TouchPhaseControl_t4652C6E0EBFAFA85A31607769876B02C1C9FCAEC* L_10;
+		L_10 = TouchControl_get_phase_mB82674B59168CD8074E9C371A51B088F76D4AC55_inline(L_9, NULL);
+		NullCheck(L_10);
+		int32_t L_11;
+		L_11 = InputControl_1_ReadValue_m098F74445FF1AFEC68A0C5DB2EDC32AF3F56E281(L_10, InputControl_1_ReadValue_m098F74445FF1AFEC68A0C5DB2EDC32AF3F56E281_RuntimeMethod_var);
+		if ((!(((uint32_t)L_11) == ((uint32_t)1))))
 		{
-			goto IL_0042;
+			goto IL_0057;
 		}
 	}
 	{
-		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_10;
-		L_10 = Widget_get_GearButtonRect_mA17BB60F3BCD3D84382AED3F12E0BB0C077440D0(NULL);
-		V_2 = L_10;
-		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_11 = V_1;
-		bool L_12;
-		L_12 = RectInt_Contains_mCBF3E53C9D20BB9268453754AA93BCA581461493_inline((&V_2), L_11, NULL);
-		return L_12;
+		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_12;
+		L_12 = Widget_get_GearButtonRect_mA17BB60F3BCD3D84382AED3F12E0BB0C077440D0(NULL);
+		V_5 = L_12;
+		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_13 = V_1;
+		bool L_14;
+		L_14 = RectInt_Contains_mCBF3E53C9D20BB9268453754AA93BCA581461493_inline((&V_5), L_13, NULL);
+		G_B7_0 = ((int32_t)(L_14));
+		goto IL_0058;
 	}
 
-IL_0042:
+IL_0057:
 	{
-		return (bool)0;
+		G_B7_0 = 0;
+	}
+
+IL_0058:
+	{
+		V_3 = (bool)G_B7_0;
+		goto IL_005b;
+	}
+
+IL_005b:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:99>
+		bool L_15 = V_3;
+		return L_15;
 	}
 }
-// Method Definition Index: 36610
+// Method Definition Index: 47877
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Api_get_IsTriggerPressed_mE2356D33F433C078FB257D788BD9B3B219FA920E (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2932,98 +3070,122 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Api_get_IsTriggerPressed_mE2356D33F433C0
 	TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* V_0 = NULL;
 	Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A V_1;
 	memset((&V_1), 0, sizeof(V_1));
-	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_2;
-	memset((&V_2), 0, sizeof(V_2));
+	bool V_2 = false;
+	bool V_3 = false;
+	bool V_4 = false;
+	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_5;
+	memset((&V_5), 0, sizeof(V_5));
+	int32_t G_B8_0 = 0;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:109>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		bool L_0;
 		L_0 = XRLoader_get__isStarted_m1BC9BAA5F9408ED509CA303E3FBC4F2DF398EDFA_inline(NULL);
-		if (L_0)
+		V_2 = (bool)((((int32_t)L_0) == ((int32_t)0))? 1 : 0);
+		bool L_1 = V_2;
+		if (!L_1)
 		{
-			goto IL_0009;
+			goto IL_0012;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:111>
-		return (bool)0;
+		V_3 = (bool)0;
+		goto IL_006f;
 	}
 
-IL_0009:
+IL_0012:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:114>
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_1;
-		L_1 = Api_GetFirstTouchIfExists_m539D70B561966EE2B1C4D8A4015ECA8A1558C47C(NULL);
-		V_0 = L_1;
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_2;
+		L_2 = Api_GetFirstTouchIfExists_m539D70B561966EE2B1C4D8A4015ECA8A1558C47C(NULL);
+		V_0 = L_2;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:115>
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_2 = V_0;
-		if (L_2)
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_3 = V_0;
+		V_4 = (bool)((((RuntimeObject*)(TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079*)L_3) == ((RuntimeObject*)(RuntimeObject*)NULL))? 1 : 0);
+		bool L_4 = V_4;
+		if (!L_4)
 		{
-			goto IL_0014;
+			goto IL_0027;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:117>
-		return (bool)0;
+		V_3 = (bool)0;
+		goto IL_006f;
 	}
 
-IL_0014:
+IL_0027:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:120>
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_3 = V_0;
-		NullCheck(L_3);
-		Vector2Control_t8D1B4021A1D82671AF916D3C0A476AA94E46A432* L_4;
-		L_4 = TouchControl_get_position_m362565B94CA1CF45F79F7EAB5FE75B9BCB1ACAAF_inline(L_3, NULL);
-		NullCheck(L_4);
-		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_5;
-		L_5 = InputControl_1_ReadValue_m362E05F00FE8CF8FC52F0D673291907EC7FA6541(L_4, InputControl_1_ReadValue_m362E05F00FE8CF8FC52F0D673291907EC7FA6541_RuntimeMethod_var);
-		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_6;
-		L_6 = Vector2Int_RoundToInt_m3105CCF1283211D549DEB4C84AEEB1D8034E7A4E_inline(L_5, NULL);
-		V_1 = L_6;
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_5 = V_0;
+		NullCheck(L_5);
+		Vector2Control_t8D1B4021A1D82671AF916D3C0A476AA94E46A432* L_6;
+		L_6 = TouchControl_get_position_m362565B94CA1CF45F79F7EAB5FE75B9BCB1ACAAF_inline(L_5, NULL);
+		NullCheck(L_6);
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_7;
+		L_7 = InputControl_1_ReadValue_m362E05F00FE8CF8FC52F0D673291907EC7FA6541(L_6, InputControl_1_ReadValue_m362E05F00FE8CF8FC52F0D673291907EC7FA6541_RuntimeMethod_var);
+		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_8;
+		L_8 = Vector2Int_RoundToInt_m3105CCF1283211D549DEB4C84AEEB1D8034E7A4E_inline(L_7, NULL);
+		V_1 = L_8;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:121>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:122>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:123>
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_7 = V_0;
-		NullCheck(L_7);
-		TouchPhaseControl_t4652C6E0EBFAFA85A31607769876B02C1C9FCAEC* L_8;
-		L_8 = TouchControl_get_phase_mB82674B59168CD8074E9C371A51B088F76D4AC55_inline(L_7, NULL);
-		NullCheck(L_8);
-		int32_t L_9;
-		L_9 = InputControl_1_ReadValue_m098F74445FF1AFEC68A0C5DB2EDC32AF3F56E281(L_8, InputControl_1_ReadValue_m098F74445FF1AFEC68A0C5DB2EDC32AF3F56E281_RuntimeMethod_var);
-		if ((!(((uint32_t)L_9) == ((uint32_t)1))))
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_9 = V_0;
+		NullCheck(L_9);
+		TouchPhaseControl_t4652C6E0EBFAFA85A31607769876B02C1C9FCAEC* L_10;
+		L_10 = TouchControl_get_phase_mB82674B59168CD8074E9C371A51B088F76D4AC55_inline(L_9, NULL);
+		NullCheck(L_10);
+		int32_t L_11;
+		L_11 = InputControl_1_ReadValue_m098F74445FF1AFEC68A0C5DB2EDC32AF3F56E281(L_10, InputControl_1_ReadValue_m098F74445FF1AFEC68A0C5DB2EDC32AF3F56E281_RuntimeMethod_var);
+		if ((!(((uint32_t)L_11) == ((uint32_t)1))))
 		{
-			goto IL_0055;
+			goto IL_006b;
 		}
 	}
 	{
-		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_10;
-		L_10 = Widget_get_CloseButtonRect_mA6D29E2FF35B9D6C85EA22F321C44B22D32E5879(NULL);
-		V_2 = L_10;
-		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_11 = V_1;
-		bool L_12;
-		L_12 = RectInt_Contains_mCBF3E53C9D20BB9268453754AA93BCA581461493_inline((&V_2), L_11, NULL);
-		if (L_12)
+		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_12;
+		L_12 = Widget_get_CloseButtonRect_mA6D29E2FF35B9D6C85EA22F321C44B22D32E5879(NULL);
+		V_5 = L_12;
+		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_13 = V_1;
+		bool L_14;
+		L_14 = RectInt_Contains_mCBF3E53C9D20BB9268453754AA93BCA581461493_inline((&V_5), L_13, NULL);
+		if (L_14)
 		{
-			goto IL_0055;
+			goto IL_006b;
 		}
 	}
 	{
-		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_13;
-		L_13 = Widget_get_GearButtonRect_mA17BB60F3BCD3D84382AED3F12E0BB0C077440D0(NULL);
-		V_2 = L_13;
-		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_14 = V_1;
-		bool L_15;
-		L_15 = RectInt_Contains_mCBF3E53C9D20BB9268453754AA93BCA581461493_inline((&V_2), L_14, NULL);
-		return (bool)((((int32_t)L_15) == ((int32_t)0))? 1 : 0);
+		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_15;
+		L_15 = Widget_get_GearButtonRect_mA17BB60F3BCD3D84382AED3F12E0BB0C077440D0(NULL);
+		V_5 = L_15;
+		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_16 = V_1;
+		bool L_17;
+		L_17 = RectInt_Contains_mCBF3E53C9D20BB9268453754AA93BCA581461493_inline((&V_5), L_16, NULL);
+		G_B8_0 = ((((int32_t)L_17) == ((int32_t)0))? 1 : 0);
+		goto IL_006c;
 	}
 
-IL_0055:
+IL_006b:
 	{
-		return (bool)0;
+		G_B8_0 = 0;
+	}
+
+IL_006c:
+	{
+		V_3 = (bool)G_B8_0;
+		goto IL_006f;
+	}
+
+IL_006f:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:124>
+		bool L_18 = V_3;
+		return L_18;
 	}
 }
-// Method Definition Index: 36611
+// Method Definition Index: 47878
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Api_get_IsTriggerHeldPressed_m24BDCFD056C57E371E827EB59F09C9DD7F42191F (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3040,138 +3202,181 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Api_get_IsTriggerHeldPressed_m24BDCFD056
 	memset((&V_1), 0, sizeof(V_1));
 	bool V_2 = false;
 	int32_t V_3 = 0;
-	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_4;
-	memset((&V_4), 0, sizeof(V_4));
+	bool V_4 = false;
+	bool V_5 = false;
+	bool V_6 = false;
+	bool V_7 = false;
+	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_8;
+	memset((&V_8), 0, sizeof(V_8));
+	bool V_9 = false;
+	bool V_10 = false;
+	bool V_11 = false;
+	int32_t G_B8_0 = 0;
+	int32_t G_B13_0 = 0;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:134>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		bool L_0;
 		L_0 = XRLoader_get__isStarted_m1BC9BAA5F9408ED509CA303E3FBC4F2DF398EDFA_inline(NULL);
-		if (L_0)
+		V_4 = (bool)((((int32_t)L_0) == ((int32_t)0))? 1 : 0);
+		bool L_1 = V_4;
+		if (!L_1)
 		{
-			goto IL_0009;
+			goto IL_0018;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:136>
-		return (bool)0;
+		V_5 = (bool)0;
+		goto IL_00e5;
 	}
 
-IL_0009:
+IL_0018:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:139>
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_1;
-		L_1 = Api_GetFirstTouchIfExists_m539D70B561966EE2B1C4D8A4015ECA8A1558C47C(NULL);
-		V_0 = L_1;
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_2;
+		L_2 = Api_GetFirstTouchIfExists_m539D70B561966EE2B1C4D8A4015ECA8A1558C47C(NULL);
+		V_0 = L_2;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:140>
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_2 = V_0;
-		if (L_2)
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_3 = V_0;
+		V_6 = (bool)((((RuntimeObject*)(TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079*)L_3) == ((RuntimeObject*)(RuntimeObject*)NULL))? 1 : 0);
+		bool L_4 = V_6;
+		if (!L_4)
 		{
-			goto IL_0014;
+			goto IL_0031;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:142>
-		return (bool)0;
+		V_5 = (bool)0;
+		goto IL_00e5;
 	}
 
-IL_0014:
+IL_0031:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:145>
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_3 = V_0;
-		NullCheck(L_3);
-		Vector2Control_t8D1B4021A1D82671AF916D3C0A476AA94E46A432* L_4;
-		L_4 = TouchControl_get_position_m362565B94CA1CF45F79F7EAB5FE75B9BCB1ACAAF_inline(L_3, NULL);
-		NullCheck(L_4);
-		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_5;
-		L_5 = InputControl_1_ReadValue_m362E05F00FE8CF8FC52F0D673291907EC7FA6541(L_4, InputControl_1_ReadValue_m362E05F00FE8CF8FC52F0D673291907EC7FA6541_RuntimeMethod_var);
-		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_6;
-		L_6 = Vector2Int_RoundToInt_m3105CCF1283211D549DEB4C84AEEB1D8034E7A4E_inline(L_5, NULL);
-		V_1 = L_6;
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_5 = V_0;
+		NullCheck(L_5);
+		Vector2Control_t8D1B4021A1D82671AF916D3C0A476AA94E46A432* L_6;
+		L_6 = TouchControl_get_position_m362565B94CA1CF45F79F7EAB5FE75B9BCB1ACAAF_inline(L_5, NULL);
+		NullCheck(L_6);
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_7;
+		L_7 = InputControl_1_ReadValue_m362E05F00FE8CF8FC52F0D673291907EC7FA6541(L_6, InputControl_1_ReadValue_m362E05F00FE8CF8FC52F0D673291907EC7FA6541_RuntimeMethod_var);
+		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_8;
+		L_8 = Vector2Int_RoundToInt_m3105CCF1283211D549DEB4C84AEEB1D8034E7A4E_inline(L_7, NULL);
+		V_1 = L_8;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:146>
 		V_2 = (bool)0;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:148>
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_7 = V_0;
-		NullCheck(L_7);
-		TouchPhaseControl_t4652C6E0EBFAFA85A31607769876B02C1C9FCAEC* L_8;
-		L_8 = TouchControl_get_phase_mB82674B59168CD8074E9C371A51B088F76D4AC55_inline(L_7, NULL);
-		NullCheck(L_8);
-		int32_t L_9;
-		L_9 = InputControl_1_ReadValue_m098F74445FF1AFEC68A0C5DB2EDC32AF3F56E281(L_8, InputControl_1_ReadValue_m098F74445FF1AFEC68A0C5DB2EDC32AF3F56E281_RuntimeMethod_var);
-		V_3 = L_9;
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_9 = V_0;
+		NullCheck(L_9);
+		TouchPhaseControl_t4652C6E0EBFAFA85A31607769876B02C1C9FCAEC* L_10;
+		L_10 = TouchControl_get_phase_mB82674B59168CD8074E9C371A51B088F76D4AC55_inline(L_9, NULL);
+		NullCheck(L_10);
+		int32_t L_11;
+		L_11 = InputControl_1_ReadValue_m098F74445FF1AFEC68A0C5DB2EDC32AF3F56E281(L_10, InputControl_1_ReadValue_m098F74445FF1AFEC68A0C5DB2EDC32AF3F56E281_RuntimeMethod_var);
+		V_3 = L_11;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:149>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:150>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:151>
-		int32_t L_10 = V_3;
-		if ((!(((uint32_t)L_10) == ((uint32_t)1))))
+		int32_t L_12 = V_3;
+		if ((!(((uint32_t)L_12) == ((uint32_t)1))))
 		{
-			goto IL_006c;
+			goto IL_0079;
 		}
 	}
 	{
-		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_11;
-		L_11 = Widget_get_CloseButtonRect_mA6D29E2FF35B9D6C85EA22F321C44B22D32E5879(NULL);
-		V_4 = L_11;
-		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_12 = V_1;
-		bool L_13;
-		L_13 = RectInt_Contains_mCBF3E53C9D20BB9268453754AA93BCA581461493_inline((&V_4), L_12, NULL);
-		if (L_13)
+		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_13;
+		L_13 = Widget_get_CloseButtonRect_mA6D29E2FF35B9D6C85EA22F321C44B22D32E5879(NULL);
+		V_8 = L_13;
+		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_14 = V_1;
+		bool L_15;
+		L_15 = RectInt_Contains_mCBF3E53C9D20BB9268453754AA93BCA581461493_inline((&V_8), L_14, NULL);
+		if (L_15)
 		{
-			goto IL_006c;
+			goto IL_0079;
 		}
 	}
 	{
-		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_14;
-		L_14 = Widget_get_GearButtonRect_mA17BB60F3BCD3D84382AED3F12E0BB0C077440D0(NULL);
-		V_4 = L_14;
-		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_15 = V_1;
-		bool L_16;
-		L_16 = RectInt_Contains_mCBF3E53C9D20BB9268453754AA93BCA581461493_inline((&V_4), L_15, NULL);
-		if (L_16)
+		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_16;
+		L_16 = Widget_get_GearButtonRect_mA17BB60F3BCD3D84382AED3F12E0BB0C077440D0(NULL);
+		V_8 = L_16;
+		Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_17 = V_1;
+		bool L_18;
+		L_18 = RectInt_Contains_mCBF3E53C9D20BB9268453754AA93BCA581461493_inline((&V_8), L_17, NULL);
+		G_B8_0 = ((((int32_t)L_18) == ((int32_t)0))? 1 : 0);
+		goto IL_007a;
+	}
+
+IL_0079:
+	{
+		G_B8_0 = 0;
+	}
+
+IL_007a:
+	{
+		V_7 = (bool)G_B8_0;
+		bool L_19 = V_7;
+		if (!L_19)
 		{
-			goto IL_006c;
+			goto IL_0095;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:153>
-		float L_17;
-		L_17 = Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B(NULL);
+		float L_20;
+		L_20 = Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B(NULL);
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____startTouchStamp = ((double)L_17);
+		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____startTouchStamp = ((double)L_20);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:154>
 		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____touchStarted = (bool)1;
-		goto IL_009e;
+		goto IL_00e0;
 	}
 
-IL_006c:
+IL_0095:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:156>
-		int32_t L_18 = V_3;
-		if ((!(((uint32_t)L_18) == ((uint32_t)3))))
+		int32_t L_21 = V_3;
+		if ((!(((uint32_t)L_21) == ((uint32_t)3))))
 		{
-			goto IL_0094;
+			goto IL_00a0;
 		}
 	}
 	{
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		bool L_19 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____touchStarted;
-		if (!L_19)
+		bool L_22 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____touchStarted;
+		G_B13_0 = ((int32_t)(L_22));
+		goto IL_00a1;
+	}
+
+IL_00a0:
+	{
+		G_B13_0 = 0;
+	}
+
+IL_00a1:
+	{
+		V_9 = (bool)G_B13_0;
+		bool L_23 = V_9;
+		if (!L_23)
 		{
-			goto IL_0094;
+			goto IL_00ce;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:158>
-		float L_20;
-		L_20 = Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B(NULL);
+		float L_24;
+		L_24 = Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B(NULL);
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		double L_21 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____startTouchStamp;
-		double L_22;
-		L_22 = Api_get_MinTriggerHeldPressedTime_m3D490337AA692D8628C5BEA15F57461FF9D80D98_inline(NULL);
-		if ((!(((double)((double)il2cpp_codegen_subtract(((double)L_20), L_21))) > ((double)L_22))))
+		double L_25 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____startTouchStamp;
+		double L_26;
+		L_26 = Api_get_MinTriggerHeldPressedTime_m3D490337AA692D8628C5BEA15F57461FF9D80D98(NULL);
+		V_10 = (bool)((((double)((double)il2cpp_codegen_subtract(((double)L_24), L_25))) > ((double)L_26))? 1 : 0);
+		bool L_27 = V_10;
+		if (!L_27)
 		{
-			goto IL_008c;
+			goto IL_00c5;
 		}
 	}
 	{
@@ -3179,21 +3384,23 @@ IL_006c:
 		V_2 = (bool)1;
 	}
 
-IL_008c:
+IL_00c5:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:163>
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
 		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____touchStarted = (bool)0;
-		goto IL_009e;
+		goto IL_00e0;
 	}
 
-IL_0094:
+IL_00ce:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:165>
-		int32_t L_23 = V_3;
-		if ((!(((uint32_t)L_23) == ((uint32_t)4))))
+		int32_t L_28 = V_3;
+		V_11 = (bool)((((int32_t)L_28) == ((int32_t)4))? 1 : 0);
+		bool L_29 = V_11;
+		if (!L_29)
 		{
-			goto IL_009e;
+			goto IL_00e0;
 		}
 	}
 	{
@@ -3202,14 +3409,22 @@ IL_0094:
 		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____touchStarted = (bool)0;
 	}
 
-IL_009e:
+IL_00e0:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:175>
-		bool L_24 = V_2;
-		return L_24;
+		bool L_30 = V_2;
+		V_5 = L_30;
+		goto IL_00e5;
+	}
+
+IL_00e5:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:176>
+		bool L_31 = V_5;
+		return L_31;
 	}
 }
-// Method Definition Index: 36612
+// Method Definition Index: 47879
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR double Api_get_MinTriggerHeldPressedTime_m3D490337AA692D8628C5BEA15F57461FF9D80D98 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3218,14 +3433,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR double Api_get_MinTriggerHeldPressedTime_m3D4
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
 		s_Il2CppMethodInitialized = true;
 	}
+	double V_0 = 0.0;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:186>
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
 		double L_0 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____minTriggerHeldPressedTime;
-		return L_0;
+		V_0 = L_0;
+		goto IL_0009;
+	}
+
+IL_0009:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:187>
+		double L_1 = V_0;
+		return L_1;
 	}
 }
-// Method Definition Index: 36613
+// Method Definition Index: 47880
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_set_MinTriggerHeldPressedTime_m59FE93319C0A2344C585E2EFC56FDB038AF65DFC (double ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3236,12 +3460,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_set_MinTriggerHeldPressedTime_m59FE9
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral79A624C95C08B55A8ED6447A3F256F20DCC5D71D);
 		s_Il2CppMethodInitialized = true;
 	}
+	bool V_0 = false;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:191>
 		double L_0 = ___0_value;
-		if ((!(((double)L_0) <= ((double)(0.0)))))
+		V_0 = (bool)((((int32_t)((!(((double)L_0) <= ((double)(0.0))))? 1 : 0)) == ((int32_t)0))? 1 : 0);
+		bool L_1 = V_0;
+		if (!L_1)
 		{
-			goto IL_0017;
+			goto IL_0023;
 		}
 	}
 	{
@@ -3250,20 +3477,24 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_set_MinTriggerHeldPressedTime_m59FE9
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:195>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteral79A624C95C08B55A8ED6447A3F256F20DCC5D71D, NULL);
-		return;
+		goto IL_002b;
 	}
 
-IL_0017:
+IL_0023:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:199>
-		double L_1 = ___0_value;
+		double L_2 = ___0_value;
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____minTriggerHeldPressedTime = L_1;
+		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____minTriggerHeldPressedTime = L_2;
+	}
+
+IL_002b:
+	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:201>
 		return;
 	}
 }
-// Method Definition Index: 36614
+// Method Definition Index: 47881
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Api_HasDeviceParams_m7158915814477F6D8C085ED748F12215F2F3F578 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3279,31 +3510,39 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Api_HasDeviceParams_m7158915814477F6D8C0
 	intptr_t V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	int32_t V_1 = 0;
+	bool V_2 = false;
+	bool V_3 = false;
+	bool V_4 = false;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:211>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		bool L_0;
 		L_0 = XRLoader_get__isInitialized_m5929315F8CA1EB92D53B07389D9D68041D00620C_inline(NULL);
-		if (L_0)
+		V_2 = (bool)((((int32_t)L_0) == ((int32_t)0))? 1 : 0);
+		bool L_1 = V_2;
+		if (!L_1)
 		{
-			goto IL_0009;
+			goto IL_0012;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:213>
-		return (bool)0;
+		V_3 = (bool)0;
+		goto IL_0056;
 	}
 
-IL_0009:
+IL_0012:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:218>
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
 		Api_CardboardQrCode_getSavedDeviceParams_m2310B2346175B0E1365E8E5A0E7E0BB0F107943D((&V_0), (&V_1), NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:219>
-		int32_t L_1 = V_1;
-		if (L_1)
+		int32_t L_2 = V_1;
+		V_4 = (bool)((((int32_t)L_2) == ((int32_t)0))? 1 : 0);
+		bool L_3 = V_4;
+		if (!L_3)
 		{
-			goto IL_0021;
+			goto IL_0036;
 		}
 	}
 	{
@@ -3311,27 +3550,36 @@ IL_0009:
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteralD8ABBC3EC010751BF25E0734C848B335AEBE46CA, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:222>
-		return (bool)0;
+		V_3 = (bool)0;
+		goto IL_0056;
 	}
 
-IL_0021:
+IL_0036:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:225>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteralC2A44E44A15EB373FDAC4FBB3937F549CFB725D1, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:226>
-		intptr_t L_2 = V_0;
+		intptr_t L_4 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		Api_CardboardQrCode_destroy_mF07EF2D3A52E2129EC6D8524230F9D764186EA98(L_2, NULL);
+		Api_CardboardQrCode_destroy_mF07EF2D3A52E2129EC6D8524230F9D764186EA98(L_4, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:227>
-		int32_t L_3;
-		L_3 = Api_CardboardQrCode_getDeviceParamsChangedCount_mDA4E49CFD083E6315BE0865540F7AB96E31AD32D(NULL);
-		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____deviceParamsCount = L_3;
+		int32_t L_5;
+		L_5 = Api_CardboardQrCode_getDeviceParamsChangedCount_mDA4E49CFD083E6315BE0865540F7AB96E31AD32D(NULL);
+		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____deviceParamsCount = L_5;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:228>
-		return (bool)1;
+		V_3 = (bool)1;
+		goto IL_0056;
+	}
+
+IL_0056:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:229>
+		bool L_6 = V_3;
+		return L_6;
 	}
 }
-// Method Definition Index: 36615
+// Method Definition Index: 47882
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_ScanDeviceParams_m99D8CA832AFDD2229F96F2819B7F18BCEA5E8A17 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3343,38 +3591,45 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_ScanDeviceParams_m99D8CA832AFDD2229F
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralDA3FE62323DFF620BE6CC5A722848F7FDC902C92);
 		s_Il2CppMethodInitialized = true;
 	}
+	bool V_0 = false;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:236>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		bool L_0;
 		L_0 = XRLoader_get__isInitialized_m5929315F8CA1EB92D53B07389D9D68041D00620C_inline(NULL);
-		if (L_0)
+		V_0 = (bool)((((int32_t)L_0) == ((int32_t)0))? 1 : 0);
+		bool L_1 = V_0;
+		if (!L_1)
 		{
-			goto IL_0008;
+			goto IL_0010;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:238>
-		return;
+		goto IL_002b;
 	}
 
-IL_0008:
+IL_0010:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:241>
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		int32_t L_1;
-		L_1 = Api_CardboardQrCode_getDeviceParamsChangedCount_mDA4E49CFD083E6315BE0865540F7AB96E31AD32D(NULL);
-		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____deviceParamsCount = L_1;
+		int32_t L_2;
+		L_2 = Api_CardboardQrCode_getDeviceParamsChangedCount_mDA4E49CFD083E6315BE0865540F7AB96E31AD32D(NULL);
+		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____deviceParamsCount = L_2;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:242>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteralDA3FE62323DFF620BE6CC5A722848F7FDC902C92, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:243>
 		Api_CardboardQrCode_scanQrCodeAndSaveDeviceParams_mF78AE82AFA4D475D2493F74CF865D9D713F60F97(NULL);
+	}
+
+IL_002b:
+	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:244>
 		return;
 	}
 }
-// Method Definition Index: 36616
+// Method Definition Index: 47883
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_SaveDeviceParams_m8307536ED99B92BBF3A47EFE3C346C70D2FE423D (String_t* ___0_uri, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3387,14 +3642,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_SaveDeviceParams_m8307536ED99B92BBF3
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralCA1C740BB705358D648D9FA67C01F3A466E6093E);
 		s_Il2CppMethodInitialized = true;
 	}
+	intptr_t V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	bool V_1 = false;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:265>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		bool L_0;
 		L_0 = XRLoader_get__isInitialized_m5929315F8CA1EB92D53B07389D9D68041D00620C_inline(NULL);
-		if (L_0)
+		V_1 = (bool)((((int32_t)L_0) == ((int32_t)0))? 1 : 0);
+		bool L_1 = V_1;
+		if (!L_1)
 		{
-			goto IL_0012;
+			goto IL_001b;
 		}
 	}
 	{
@@ -3403,31 +3663,37 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_SaveDeviceParams_m8307536ED99B92BBF3
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteralCA1C740BB705358D648D9FA67C01F3A466E6093E, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:269>
-		return;
+		goto IL_0036;
 	}
 
-IL_0012:
+IL_001b:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:272>
-		String_t* L_1 = ___0_uri;
+		String_t* L_2 = ___0_uri;
 		il2cpp_codegen_runtime_class_init_inline(Marshal_tD976A56A90263C3CE2B780D4B1CADADE2E70B4A7_il2cpp_TypeInfo_var);
-		intptr_t L_2;
-		L_2 = Marshal_StringToHGlobalAuto_m065FCECD1CE4E49E51C682B327ADFC8320AFB9B3(L_1, NULL);
+		intptr_t L_3;
+		L_3 = Marshal_StringToHGlobalAuto_m065FCECD1CE4E49E51C682B327ADFC8320AFB9B3(L_2, NULL);
+		V_0 = L_3;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:273>
-		intptr_t L_3 = L_2;
-		String_t* L_4 = ___0_uri;
-		NullCheck(L_4);
-		int32_t L_5;
-		L_5 = String_get_Length_m42625D67623FA5CC7A44D47425CE86FB946542D2_inline(L_4, NULL);
+		intptr_t L_4 = V_0;
+		String_t* L_5 = ___0_uri;
+		NullCheck(L_5);
+		int32_t L_6;
+		L_6 = String_get_Length_m42625D67623FA5CC7A44D47425CE86FB946542D2_inline(L_5, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		Api_CardboardQrCode_saveDeviceParams_m397FC45EF967DB1004617EEF9CC90B981B6D7BD9(L_3, L_5, NULL);
+		Api_CardboardQrCode_saveDeviceParams_m397FC45EF967DB1004617EEF9CC90B981B6D7BD9(L_4, L_6, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:274>
-		Marshal_FreeHGlobal_m298EF0650E82E326EDA8048488DC384BB9171EB9(L_3, NULL);
+		intptr_t L_7 = V_0;
+		Marshal_FreeHGlobal_m298EF0650E82E326EDA8048488DC384BB9171EB9(L_7, NULL);
+	}
+
+IL_0036:
+	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:275>
 		return;
 	}
 }
-// Method Definition Index: 36617
+// Method Definition Index: 47884
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Api_HasNewDeviceParams_m8CF6742A64A20B00D8FFE2F229628D1DB54831C5 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3437,6 +3703,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Api_HasNewDeviceParams_m8CF6742A64A20B00
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		s_Il2CppMethodInitialized = true;
 	}
+	bool V_0 = false;
+	bool V_1 = false;
+	int32_t G_B3_0 = 0;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:285>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
@@ -3444,35 +3713,55 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Api_HasNewDeviceParams_m8CF6742A64A20B00
 		L_0 = XRLoader_get__isInitialized_m5929315F8CA1EB92D53B07389D9D68041D00620C_inline(NULL);
 		if (!L_0)
 		{
-			goto IL_000f;
+			goto IL_0012;
 		}
 	}
 	{
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
 		int32_t L_1 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____deviceParamsCount;
-		if ((!(((uint32_t)L_1) == ((uint32_t)(-1)))))
+		G_B3_0 = ((((int32_t)L_1) == ((int32_t)(-1)))? 1 : 0);
+		goto IL_0013;
+	}
+
+IL_0012:
+	{
+		G_B3_0 = 1;
+	}
+
+IL_0013:
+	{
+		V_0 = (bool)G_B3_0;
+		bool L_2 = V_0;
+		if (!L_2)
 		{
-			goto IL_0011;
+			goto IL_001c;
 		}
 	}
-
-IL_000f:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:287>
-		return (bool)0;
+		V_1 = (bool)0;
+		goto IL_002e;
 	}
 
-IL_0011:
+IL_001c:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:290>
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		int32_t L_2 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____deviceParamsCount;
-		int32_t L_3;
-		L_3 = Api_CardboardQrCode_getDeviceParamsChangedCount_mDA4E49CFD083E6315BE0865540F7AB96E31AD32D(NULL);
-		return (bool)((((int32_t)((((int32_t)L_2) == ((int32_t)L_3))? 1 : 0)) == ((int32_t)0))? 1 : 0);
+		int32_t L_3 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____deviceParamsCount;
+		int32_t L_4;
+		L_4 = Api_CardboardQrCode_getDeviceParamsChangedCount_mDA4E49CFD083E6315BE0865540F7AB96E31AD32D(NULL);
+		V_1 = (bool)((((int32_t)((((int32_t)L_3) == ((int32_t)L_4))? 1 : 0)) == ((int32_t)0))? 1 : 0);
+		goto IL_002e;
+	}
+
+IL_002e:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:291>
+		bool L_5 = V_1;
+		return L_5;
 	}
 }
-// Method Definition Index: 36618
+// Method Definition Index: 47885
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_ReloadDeviceParams_mBACF68BBC935329B23B19CB08A9CF0D5A6AB8F04 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3484,38 +3773,45 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_ReloadDeviceParams_mBACF68BBC935329B
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralBA4712892D0EFAF0547ACCC66224D7BB490DB84C);
 		s_Il2CppMethodInitialized = true;
 	}
+	bool V_0 = false;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:298>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		bool L_0;
 		L_0 = XRLoader_get__isInitialized_m5929315F8CA1EB92D53B07389D9D68041D00620C_inline(NULL);
-		if (L_0)
+		V_0 = (bool)((((int32_t)L_0) == ((int32_t)0))? 1 : 0);
+		bool L_1 = V_0;
+		if (!L_1)
 		{
-			goto IL_0008;
+			goto IL_0010;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:300>
-		return;
+		goto IL_002b;
 	}
 
-IL_0008:
+IL_0010:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:304>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteralBA4712892D0EFAF0547ACCC66224D7BB490DB84C, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:305>
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		int32_t L_1;
-		L_1 = Api_CardboardQrCode_getDeviceParamsChangedCount_mDA4E49CFD083E6315BE0865540F7AB96E31AD32D(NULL);
-		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____deviceParamsCount = L_1;
+		int32_t L_2;
+		L_2 = Api_CardboardQrCode_getDeviceParamsChangedCount_mDA4E49CFD083E6315BE0865540F7AB96E31AD32D(NULL);
+		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____deviceParamsCount = L_2;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:306>
 		Api_CardboardUnity_setDeviceParametersChanged_m1B8898D401706C951CC2530B1E4924A93A5B84DB(NULL);
+	}
+
+IL_002b:
+	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:307>
 		return;
 	}
 }
-// Method Definition Index: 36619
+// Method Definition Index: 47886
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_UpdateScreenParams_mC3CED586D588F397D1B53DAAEE0697DA5FDADB03 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3527,14 +3823,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_UpdateScreenParams_mC3CED586D588F397
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralCA1C740BB705358D648D9FA67C01F3A466E6093E);
 		s_Il2CppMethodInitialized = true;
 	}
+	bool V_0 = false;
+	bool V_1 = false;
+	bool V_2 = false;
+	bool V_3 = false;
+	int32_t G_B5_0 = 0;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:315>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		bool L_0;
 		L_0 = XRLoader_get__isInitialized_m5929315F8CA1EB92D53B07389D9D68041D00620C_inline(NULL);
-		if (L_0)
+		V_0 = (bool)((((int32_t)L_0) == ((int32_t)0))? 1 : 0);
+		bool L_1 = V_0;
+		if (!L_1)
 		{
-			goto IL_0012;
+			goto IL_001b;
 		}
 	}
 	{
@@ -3543,100 +3846,115 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_UpdateScreenParams_mC3CED586D588F397
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteralCA1C740BB705358D648D9FA67C01F3A466E6093E, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:319>
-		return;
+		goto IL_0099;
 	}
 
-IL_0012:
+IL_001b:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:324>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:325>
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		int32_t L_1 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____cachedScreenOrientation;
-		int32_t L_2;
-		L_2 = Screen_get_orientation_mA6B22A441187D50831B2B18CA48A8F64BD1BD89E(NULL);
-		if ((!(((uint32_t)L_1) == ((uint32_t)L_2))))
+		int32_t L_2 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____cachedScreenOrientation;
+		int32_t L_3;
+		L_3 = Screen_get_orientation_mA6B22A441187D50831B2B18CA48A8F64BD1BD89E(NULL);
+		if ((!(((uint32_t)L_2) == ((uint32_t)L_3))))
 		{
-			goto IL_002f;
+			goto IL_0038;
 		}
 	}
 	{
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_3 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____cachedScreenSafeArea;
-		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_4;
-		L_4 = Screen_get_safeArea_m2ADAD6C36CC5DB40CC2DAD300DD1DF7CA4DF2525(NULL);
-		bool L_5;
-		L_5 = Rect_op_Inequality_mB5D7316EB50B1DDA9324F4BE6741DFF6A673137D_inline(L_3, L_4, NULL);
-		if (!L_5)
-		{
-			goto IL_0079;
-		}
+		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_4 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____cachedScreenSafeArea;
+		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_5;
+		L_5 = Screen_get_safeArea_m2ADAD6C36CC5DB40CC2DAD300DD1DF7CA4DF2525(NULL);
+		bool L_6;
+		L_6 = Rect_op_Inequality_mB5D7316EB50B1DDA9324F4BE6741DFF6A673137D_inline(L_4, L_5, NULL);
+		G_B5_0 = ((int32_t)(L_6));
+		goto IL_0039;
 	}
 
-IL_002f:
+IL_0038:
+	{
+		G_B5_0 = 1;
+	}
+
+IL_0039:
+	{
+		V_1 = (bool)G_B5_0;
+		bool L_7 = V_1;
+		if (!L_7)
+		{
+			goto IL_0099;
+		}
+	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:328>
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		int32_t L_6 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____cachedScreenOrientation;
-		int32_t L_7;
-		L_7 = Screen_get_orientation_mA6B22A441187D50831B2B18CA48A8F64BD1BD89E(NULL);
-		if ((((int32_t)L_6) == ((int32_t)L_7)))
+		int32_t L_8 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____cachedScreenOrientation;
+		int32_t L_9;
+		L_9 = Screen_get_orientation_mA6B22A441187D50831B2B18CA48A8F64BD1BD89E(NULL);
+		V_2 = (bool)((((int32_t)((((int32_t)L_8) == ((int32_t)L_9))? 1 : 0)) == ((int32_t)0))? 1 : 0);
+		bool L_10 = V_2;
+		if (!L_10)
 		{
-			goto IL_004f;
+			goto IL_0068;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:330>
-		int32_t L_8;
-		L_8 = Screen_get_orientation_mA6B22A441187D50831B2B18CA48A8F64BD1BD89E(NULL);
+		int32_t L_11;
+		L_11 = Screen_get_orientation_mA6B22A441187D50831B2B18CA48A8F64BD1BD89E(NULL);
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____cachedScreenOrientation = L_8;
+		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____cachedScreenOrientation = L_11;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:331>
-		int32_t L_9 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____cachedScreenOrientation;
+		int32_t L_12 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____cachedScreenOrientation;
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
-		XRLoader_SetViewportOrientation_m0DC8F42E6677B0BE6372EAC25C22883715FEAF88(L_9, NULL);
+		XRLoader_SetViewportOrientation_m0DC8F42E6677B0BE6372EAC25C22883715FEAF88(L_12, NULL);
 	}
 
-IL_004f:
+IL_0068:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:335>
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_10 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____cachedScreenSafeArea;
-		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_11;
-		L_11 = Screen_get_safeArea_m2ADAD6C36CC5DB40CC2DAD300DD1DF7CA4DF2525(NULL);
-		bool L_12;
-		L_12 = Rect_op_Inequality_mB5D7316EB50B1DDA9324F4BE6741DFF6A673137D_inline(L_10, L_11, NULL);
-		if (!L_12)
+		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_13 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____cachedScreenSafeArea;
+		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_14;
+		L_14 = Screen_get_safeArea_m2ADAD6C36CC5DB40CC2DAD300DD1DF7CA4DF2525(NULL);
+		bool L_15;
+		L_15 = Rect_op_Inequality_mB5D7316EB50B1DDA9324F4BE6741DFF6A673137D_inline(L_13, L_14, NULL);
+		V_3 = L_15;
+		bool L_16 = V_3;
+		if (!L_16)
 		{
-			goto IL_0074;
+			goto IL_0092;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:337>
-		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_13;
-		L_13 = Screen_get_safeArea_m2ADAD6C36CC5DB40CC2DAD300DD1DF7CA4DF2525(NULL);
+		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_17;
+		L_17 = Screen_get_safeArea_m2ADAD6C36CC5DB40CC2DAD300DD1DF7CA4DF2525(NULL);
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____cachedScreenSafeArea = L_13;
+		((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____cachedScreenSafeArea = L_17;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:338>
-		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_14;
-		L_14 = Screen_get_safeArea_m2ADAD6C36CC5DB40CC2DAD300DD1DF7CA4DF2525(NULL);
+		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_18;
+		L_18 = Screen_get_safeArea_m2ADAD6C36CC5DB40CC2DAD300DD1DF7CA4DF2525(NULL);
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
-		XRLoader_RecalculateRectangles_m7E4BBE33B69EA2D24C8FF6E90115D08C57DD6221(L_14, NULL);
+		XRLoader_RecalculateRectangles_m7E4BBE33B69EA2D24C8FF6E90115D08C57DD6221(L_18, NULL);
 	}
 
-IL_0074:
+IL_0092:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:341>
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
 		Api_ReloadDeviceParams_mBACF68BBC935329B23B19CB08A9CF0D5A6AB8F04(NULL);
 	}
 
-IL_0079:
+IL_0099:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:343>
 		return;
 	}
 }
-// Method Definition Index: 36620
+// Method Definition Index: 47887
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_Recenter_m0668D49BC62C4DEDCE1A50C78F9E5016D01280C0 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3648,14 +3966,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_Recenter_m0668D49BC62C4DEDCE1A50C78F
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralCA1C740BB705358D648D9FA67C01F3A466E6093E);
 		s_Il2CppMethodInitialized = true;
 	}
+	bool V_0 = false;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:350>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		bool L_0;
 		L_0 = XRLoader_get__isInitialized_m5929315F8CA1EB92D53B07389D9D68041D00620C_inline(NULL);
-		if (L_0)
+		V_0 = (bool)((((int32_t)L_0) == ((int32_t)0))? 1 : 0);
+		bool L_1 = V_0;
+		if (!L_1)
 		{
-			goto IL_0012;
+			goto IL_001b;
 		}
 	}
 	{
@@ -3664,19 +3985,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_Recenter_m0668D49BC62C4DEDCE1A50C78F
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteralCA1C740BB705358D648D9FA67C01F3A466E6093E, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:354>
-		return;
+		goto IL_0021;
 	}
 
-IL_0012:
+IL_001b:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:357>
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
 		Api_CardboardUnity_recenterHeadTracker_m1419D1905239D2BC2E51DC505948BF0081B77529(NULL);
+	}
+
+IL_0021:
+	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:358>
 		return;
 	}
 }
-// Method Definition Index: 36621
+// Method Definition Index: 47888
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_SetLowPassFilter_m2BD2C9F5261D2C2912FE853B042876D811B2E2CE (int32_t ___0_velocity_filter_cutoff_frequency, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3688,14 +4013,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_SetLowPassFilter_m2BD2C9F5261D2C2912
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralCA1C740BB705358D648D9FA67C01F3A466E6093E);
 		s_Il2CppMethodInitialized = true;
 	}
+	bool V_0 = false;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:369>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		bool L_0;
 		L_0 = XRLoader_get__isInitialized_m5929315F8CA1EB92D53B07389D9D68041D00620C_inline(NULL);
-		if (L_0)
+		V_0 = (bool)((((int32_t)L_0) == ((int32_t)0))? 1 : 0);
+		bool L_1 = V_0;
+		if (!L_1)
 		{
-			goto IL_0012;
+			goto IL_001b;
 		}
 	}
 	{
@@ -3704,20 +4032,24 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_SetLowPassFilter_m2BD2C9F5261D2C2912
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteralCA1C740BB705358D648D9FA67C01F3A466E6093E, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:373>
-		return;
+		goto IL_0022;
 	}
 
-IL_0012:
+IL_001b:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:376>
-		int32_t L_1 = ___0_velocity_filter_cutoff_frequency;
+		int32_t L_2 = ___0_velocity_filter_cutoff_frequency;
 		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		Api_CardboardUnity_setHeadTrackerLowPassFilter_m33CE538599B875B0DBC21937A38C0FD72C6B1A9E(L_1, NULL);
+		Api_CardboardUnity_setHeadTrackerLowPassFilter_m33CE538599B875B0DBC21937A38C0FD72C6B1A9E(L_2, NULL);
+	}
+
+IL_0022:
+	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:377>
 		return;
 	}
 }
-// Method Definition Index: 36622
+// Method Definition Index: 47889
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* Api_GetFirstTouchIfExists_m539D70B561966EE2B1C4D8A4015ECA8A1558C47C (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3732,6 +4064,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TouchControl_t3A64A795FF61A8B27E5EBD61632F23A
 	Touchscreen_t5A3B494C10A53A822AEDB3508093860D142D84CE* V_0 = NULL;
 	ReadOnlyArray_1_t1AB67C13630F5ECC78559C8BCEFFC00C4457333E V_1;
 	memset((&V_1), 0, sizeof(V_1));
+	bool V_2 = false;
+	TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* V_3 = NULL;
+	bool V_4 = false;
+	bool V_5 = false;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:389>
 		il2cpp_codegen_runtime_class_init_inline(Touchscreen_t5A3B494C10A53A822AEDB3508093860D142D84CE_il2cpp_TypeInfo_var);
@@ -3740,65 +4076,81 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TouchControl_t3A64A795FF61A8B27E5EBD61632F23A
 		V_0 = L_0;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:390>
 		Touchscreen_t5A3B494C10A53A822AEDB3508093860D142D84CE* L_1 = V_0;
-		if (L_1)
+		V_2 = (bool)((((RuntimeObject*)(Touchscreen_t5A3B494C10A53A822AEDB3508093860D142D84CE*)L_1) == ((RuntimeObject*)(RuntimeObject*)NULL))? 1 : 0);
+		bool L_2 = V_2;
+		if (!L_2)
 		{
-			goto IL_000b;
+			goto IL_0014;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:392>
-		return (TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079*)NULL;
+		V_3 = (TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079*)NULL;
+		goto IL_0053;
 	}
 
-IL_000b:
+IL_0014:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:395>
-		Touchscreen_t5A3B494C10A53A822AEDB3508093860D142D84CE* L_2 = V_0;
-		NullCheck(L_2);
-		bool L_3;
-		L_3 = InputDevice_get_enabled_m5BCE2D359DA6D6F7CB348996D75205C60E840AB4(L_2, NULL);
-		if (L_3)
+		Touchscreen_t5A3B494C10A53A822AEDB3508093860D142D84CE* L_3 = V_0;
+		NullCheck(L_3);
+		bool L_4;
+		L_4 = InputDevice_get_enabled_m5BCE2D359DA6D6F7CB348996D75205C60E840AB4(L_3, NULL);
+		V_4 = (bool)((((int32_t)L_4) == ((int32_t)0))? 1 : 0);
+		bool L_5 = V_4;
+		if (!L_5)
 		{
-			goto IL_0019;
+			goto IL_002c;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:397>
-		Touchscreen_t5A3B494C10A53A822AEDB3508093860D142D84CE* L_4 = V_0;
+		Touchscreen_t5A3B494C10A53A822AEDB3508093860D142D84CE* L_6 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(InputSystem_t4120CA4FE7DCFD56AF9391933FC3F1F485350164_il2cpp_TypeInfo_var);
-		InputSystem_EnableDevice_mED1442951B67B1B8742C29CE7F3ED2828B3B44F7(L_4, NULL);
+		InputSystem_EnableDevice_mED1442951B67B1B8742C29CE7F3ED2828B3B44F7(L_6, NULL);
 	}
 
-IL_0019:
+IL_002c:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:400>
-		Touchscreen_t5A3B494C10A53A822AEDB3508093860D142D84CE* L_5 = V_0;
-		NullCheck(L_5);
-		ReadOnlyArray_1_t1AB67C13630F5ECC78559C8BCEFFC00C4457333E L_6;
-		L_6 = Touchscreen_get_touches_mEFA7C5B2A80963C7947BCBDBE6258F5083B1CE66_inline(L_5, NULL);
-		V_1 = L_6;
+		Touchscreen_t5A3B494C10A53A822AEDB3508093860D142D84CE* L_7 = V_0;
+		NullCheck(L_7);
+		ReadOnlyArray_1_t1AB67C13630F5ECC78559C8BCEFFC00C4457333E L_8;
+		L_8 = Touchscreen_get_touches_mEFA7C5B2A80963C7947BCBDBE6258F5083B1CE66_inline(L_7, NULL);
+		V_1 = L_8;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:401>
-		int32_t L_7;
-		L_7 = ReadOnlyArray_1_get_Count_m322B2C406CB93A8BB27DDBA287593AE863B8AA03_inline((&V_1), ReadOnlyArray_1_get_Count_m322B2C406CB93A8BB27DDBA287593AE863B8AA03_RuntimeMethod_var);
-		if (L_7)
+		int32_t L_9;
+		L_9 = ReadOnlyArray_1_get_Count_m322B2C406CB93A8BB27DDBA287593AE863B8AA03_inline((&V_1), ReadOnlyArray_1_get_Count_m322B2C406CB93A8BB27DDBA287593AE863B8AA03_RuntimeMethod_var);
+		V_5 = (bool)((((int32_t)L_9) == ((int32_t)0))? 1 : 0);
+		bool L_10 = V_5;
+		if (!L_10)
 		{
-			goto IL_002b;
+			goto IL_0048;
 		}
 	}
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:403>
-		return (TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079*)NULL;
+		V_3 = (TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079*)NULL;
+		goto IL_0053;
 	}
 
-IL_002b:
+IL_0048:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:406>
-		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_8;
-		L_8 = ReadOnlyArray_1_get_Item_m8214EE7BC64119BFC600CFABF40483B334B4CC7C((&V_1), 0, ReadOnlyArray_1_get_Item_m8214EE7BC64119BFC600CFABF40483B334B4CC7C_RuntimeMethod_var);
-		return L_8;
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_11;
+		L_11 = ReadOnlyArray_1_get_Item_m8214EE7BC64119BFC600CFABF40483B334B4CC7C((&V_1), 0, ReadOnlyArray_1_get_Item_m8214EE7BC64119BFC600CFABF40483B334B4CC7C_RuntimeMethod_var);
+		V_3 = L_11;
+		goto IL_0053;
+	}
+
+IL_0053:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:407>
+		TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* L_12 = V_3;
+		return L_12;
 	}
 }
-// Method Definition Index: 36623
+// Method Definition Index: 47890
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_CardboardQrCode_scanQrCodeAndSaveDeviceParams_mF78AE82AFA4D475D2493F74CF865D9D713F60F97 (const RuntimeMethod* method) 
 {
 	typedef void (DEFAULT_CALL *PInvokeFunc) ();
@@ -3819,7 +4171,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_CardboardQrCode_scanQrCodeAndSaveDev
 	#endif
 
 }
-// Method Definition Index: 36624
+// Method Definition Index: 47891
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_CardboardQrCode_saveDeviceParams_m397FC45EF967DB1004617EEF9CC90B981B6D7BD9 (intptr_t ___0_uri, int32_t ___1_size, const RuntimeMethod* method) 
 {
 	typedef void (DEFAULT_CALL *PInvokeFunc) (intptr_t, int32_t);
@@ -3840,7 +4192,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_CardboardQrCode_saveDeviceParams_m39
 	#endif
 
 }
-// Method Definition Index: 36625
+// Method Definition Index: 47892
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_CardboardQrCode_getSavedDeviceParams_m2310B2346175B0E1365E8E5A0E7E0BB0F107943D (intptr_t* ___0_encodedDeviceParams, int32_t* ___1_size, const RuntimeMethod* method) 
 {
 	typedef void (DEFAULT_CALL *PInvokeFunc) (intptr_t*, int32_t*);
@@ -3861,7 +4213,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_CardboardQrCode_getSavedDeviceParams
 	#endif
 
 }
-// Method Definition Index: 36626
+// Method Definition Index: 47893
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_CardboardQrCode_destroy_mF07EF2D3A52E2129EC6D8524230F9D764186EA98 (intptr_t ___0_encodedDeviceParams, const RuntimeMethod* method) 
 {
 	typedef void (DEFAULT_CALL *PInvokeFunc) (intptr_t);
@@ -3882,7 +4234,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_CardboardQrCode_destroy_mF07EF2D3A52
 	#endif
 
 }
-// Method Definition Index: 36627
+// Method Definition Index: 47894
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Api_CardboardQrCode_getDeviceParamsChangedCount_mDA4E49CFD083E6315BE0865540F7AB96E31AD32D (const RuntimeMethod* method) 
 {
 	typedef int32_t (DEFAULT_CALL *PInvokeFunc) ();
@@ -3904,7 +4256,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Api_CardboardQrCode_getDeviceParamsCh
 
 	return returnValue;
 }
-// Method Definition Index: 36628
+// Method Definition Index: 47895
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_CardboardUnity_setDeviceParametersChanged_m1B8898D401706C951CC2530B1E4924A93A5B84DB (const RuntimeMethod* method) 
 {
 	typedef void (DEFAULT_CALL *PInvokeFunc) ();
@@ -3925,7 +4277,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_CardboardUnity_setDeviceParametersCh
 	#endif
 
 }
-// Method Definition Index: 36629
+// Method Definition Index: 47896
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_CardboardUnity_recenterHeadTracker_m1419D1905239D2BC2E51DC505948BF0081B77529 (const RuntimeMethod* method) 
 {
 	typedef void (DEFAULT_CALL *PInvokeFunc) ();
@@ -3946,7 +4298,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_CardboardUnity_recenterHeadTracker_m
 	#endif
 
 }
-// Method Definition Index: 36630
+// Method Definition Index: 47897
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_CardboardUnity_setHeadTrackerLowPassFilter_m33CE538599B875B0DBC21937A38C0FD72C6B1A9E (int32_t ___0_velocity_filter_cutoff_frequency, const RuntimeMethod* method) 
 {
 	typedef void (DEFAULT_CALL *PInvokeFunc) (int32_t);
@@ -3967,7 +4319,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api_CardboardUnity_setHeadTrackerLowPass
 	#endif
 
 }
-// Method Definition Index: 36631
+// Method Definition Index: 47898
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api__cctor_m1F7329DB2557944C4EBA696F190414B65C568B2B (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4004,13 +4356,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Api__cctor_m1F7329DB2557944C4EBA696F1904
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 36632
+// Method Definition Index: 47899
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 Widget_get_CloseButtonRect_mA6D29E2FF35B9D6C85EA22F321C44B22D32E5879 (const RuntimeMethod* method) 
 {
 	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D V_1;
 	memset((&V_1), 0, sizeof(V_1));
+	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_2;
+	memset((&V_2), 0, sizeof(V_2));
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:58>
 		il2cpp_codegen_initobj((&V_0), sizeof(RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8));
@@ -4040,15 +4394,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectInt_t1744D10E1063135DA9D574F95205B98DAC60
 		RectInt_set_height_m823A353A80B8B5180AEDF968A6E85B9D9B75C1C6_inline((&V_0), L_6, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:63>
 		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_7 = V_0;
-		return L_7;
+		V_2 = L_7;
+		goto IL_005f;
+	}
+
+IL_005f:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:64>
+		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_8 = V_2;
+		return L_8;
 	}
 }
-// Method Definition Index: 36633
+// Method Definition Index: 47900
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 Widget_get_CloseButtonRenderRect_m8D3B596259F5972F40CA1209958CD272907580A5 (const RuntimeMethod* method) 
 {
 	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	int32_t V_1 = 0;
+	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_2;
+	memset((&V_2), 0, sizeof(V_2));
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:77>
 		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_0;
@@ -4086,16 +4450,26 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectInt_t1744D10E1063135DA9D574F95205B98DAC60
 		RectInt_set_yMax_mCF47AE0D0C567664BCDE03C8601BE66D375BB3A9_inline(L_12, ((int32_t)il2cpp_codegen_subtract(L_13, L_14)), NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:83>
 		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_15 = V_0;
-		return L_15;
+		V_2 = L_15;
+		goto IL_0058;
+	}
+
+IL_0058:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:84>
+		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_16 = V_2;
+		return L_16;
 	}
 }
-// Method Definition Index: 36634
+// Method Definition Index: 47901
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 Widget_get_GearButtonRect_mA17BB60F3BCD3D84382AED3F12E0BB0C077440D0 (const RuntimeMethod* method) 
 {
 	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D V_1;
 	memset((&V_1), 0, sizeof(V_1));
+	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_2;
+	memset((&V_2), 0, sizeof(V_2));
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:94>
 		il2cpp_codegen_initobj((&V_0), sizeof(RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8));
@@ -4127,15 +4501,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectInt_t1744D10E1063135DA9D574F95205B98DAC60
 		RectInt_set_height_m823A353A80B8B5180AEDF968A6E85B9D9B75C1C6_inline((&V_0), L_7, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:99>
 		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_8 = V_0;
-		return L_8;
+		V_2 = L_8;
+		goto IL_0067;
+	}
+
+IL_0067:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:100>
+		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_9 = V_2;
+		return L_9;
 	}
 }
-// Method Definition Index: 36635
+// Method Definition Index: 47902
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 Widget_get_GearButtonRenderRect_m132D71F9C8EE2895316EE2C4978188832C1363F0 (const RuntimeMethod* method) 
 {
 	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	int32_t V_1 = 0;
+	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_2;
+	memset((&V_2), 0, sizeof(V_2));
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:113>
 		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_0;
@@ -4173,10 +4557,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectInt_t1744D10E1063135DA9D574F95205B98DAC60
 		RectInt_set_yMax_mCF47AE0D0C567664BCDE03C8601BE66D375BB3A9_inline(L_12, ((int32_t)il2cpp_codegen_subtract(L_13, L_14)), NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:119>
 		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_15 = V_0;
-		return L_15;
+		V_2 = L_15;
+		goto IL_0058;
+	}
+
+IL_0058:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:120>
+		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_16 = V_2;
+		return L_16;
 	}
 }
-// Method Definition Index: 36636
+// Method Definition Index: 47903
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 Widget_get_AlignmentRect_mBC2C05027E6F7BE00090EDEAFB4400B1791D67FC (const RuntimeMethod* method) 
 {
 	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_0;
@@ -4184,6 +4576,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectInt_t1744D10E1063135DA9D574F95205B98DAC60
 	int32_t V_1 = 0;
 	Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D V_2;
 	memset((&V_2), 0, sizeof(V_2));
+	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_3;
+	memset((&V_3), 0, sizeof(V_3));
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:130>
 		il2cpp_codegen_initobj((&V_0), sizeof(RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8));
@@ -4215,40 +4609,74 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectInt_t1744D10E1063135DA9D574F95205B98DAC60
 		RectInt_set_height_m823A353A80B8B5180AEDF968A6E85B9D9B75C1C6_inline((&V_0), L_7, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:136>
 		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_8 = V_0;
-		return L_8;
+		V_3 = L_8;
+		goto IL_0060;
+	}
+
+IL_0060:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:137>
+		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_9 = V_3;
+		return L_9;
 	}
 }
-// Method Definition Index: 36637
+// Method Definition Index: 47904
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Widget_DpToPixels_mDFC635CE531ABF6246F61B9C785FB3ACD4EF7A9D (int32_t ___0_dp, const RuntimeMethod* method) 
 {
+	float V_0 = 0.0f;
+	int32_t V_1 = 0;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:142>
 		float L_0;
 		L_0 = Screen_get_dpi_mEEDAA2189F84A47BD69D62A611E031D5C59CFE8E(NULL);
+		V_0 = ((float)(L_0/(160.0f)));
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:143>
-		int32_t L_1 = ___0_dp;
-		return il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply(((float)(L_0/(160.0f))), ((float)L_1))));
+		float L_1 = V_0;
+		int32_t L_2 = ___0_dp;
+		V_1 = il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply(L_1, ((float)L_2))));
+		goto IL_0015;
+	}
+
+IL_0015:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:144>
+		int32_t L_3 = V_1;
+		return L_3;
 	}
 }
-// Method Definition Index: 36638
+// Method Definition Index: 47905
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Widget_MmToPixels_mE7A33D6E21AB3B54D07ABF1EA67492325A039911 (int32_t ___0_mm, const RuntimeMethod* method) 
 {
+	float V_0 = 0.0f;
+	int32_t V_1 = 0;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:148>
 		float L_0;
 		L_0 = Screen_get_dpi_mEEDAA2189F84A47BD69D62A611E031D5C59CFE8E(NULL);
+		V_0 = ((float)(L_0/(25.3999996f)));
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:149>
-		int32_t L_1 = ___0_mm;
-		return il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply(((float)(L_0/(25.3999996f))), ((float)L_1))));
+		float L_1 = V_0;
+		int32_t L_2 = ___0_mm;
+		V_1 = il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply(L_1, ((float)L_2))));
+		goto IL_0015;
+	}
+
+IL_0015:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:150>
+		int32_t L_3 = V_1;
+		return L_3;
 	}
 }
-// Method Definition Index: 36639
+// Method Definition Index: 47906
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 Widget_TranslateToSafeAreaFrame_m1283853E94A9FA2B5C7883786584E99B59A58716 (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 ___0_rect, const RuntimeMethod* method) 
 {
 	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D V_1;
 	memset((&V_1), 0, sizeof(V_1));
+	RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 V_2;
+	memset((&V_2), 0, sizeof(V_2));
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:166>
 		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_0 = ___0_rect;
@@ -4275,7 +4703,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectInt_t1744D10E1063135DA9D574F95205B98DAC60
 		RectInt_set_y_m45D5C1D817698266BED66D41A705956A1571858D_inline(L_5, ((int32_t)il2cpp_codegen_subtract(L_6, il2cpp_codegen_cast_double_to_int<int32_t>(L_8))), NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:169>
 		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_9 = V_0;
-		return L_9;
+		V_2 = L_9;
+		goto IL_0041;
+	}
+
+IL_0041:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Widget.cs:170>
+		RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8 L_10 = V_2;
+		return L_10;
 	}
 }
 #ifdef __clang__
@@ -4286,7 +4722,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RectInt_t1744D10E1063135DA9D574F95205B98DAC60
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 36640
+// Method Definition Index: 47907
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRLoader_get__isInitialized_m5929315F8CA1EB92D53B07389D9D68041D00620C (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4302,7 +4738,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRLoader_get__isInitialized_m5929315F8CA
 		return L_0;
 	}
 }
-// Method Definition Index: 36641
+// Method Definition Index: 47908
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_set__isInitialized_mF14DF44CFF2BA1409E7C7505569D6C3CA8102949 (bool ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4319,7 +4755,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_set__isInitialized_mF14DF44CFF2
 		return;
 	}
 }
-// Method Definition Index: 36642
+// Method Definition Index: 47909
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRLoader_get__isStarted_m1BC9BAA5F9408ED509CA303E3FBC4F2DF398EDFA (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4335,7 +4771,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRLoader_get__isStarted_m1BC9BAA5F9408ED
 		return L_0;
 	}
 }
-// Method Definition Index: 36643
+// Method Definition Index: 47910
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_set__isStarted_mA1996BE6A4884B340D43026B7D3C3B8400F20468 (bool ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4352,7 +4788,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_set__isStarted_mA1996BE6A4884B3
 		return;
 	}
 }
-// Method Definition Index: 36644
+// Method Definition Index: 47911
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRLoader_Initialize_m9A69850E7B68DFF6F2FC368BE26F3C33DAD1231D (XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4365,6 +4801,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRLoader_Initialize_m9A69850E7B68DFF6F2F
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF72A40D404F69C84D876D849B6024C842DFE7D1C);
 		s_Il2CppMethodInitialized = true;
 	}
+	bool V_0 = false;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:97>
 		XRLoader_CardboardSDKInitialize_m9CEA4B45696BE9A3583A4C14BBFA2EC91B394AAA(__this, NULL);
@@ -4380,10 +4817,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRLoader_Initialize_m9A69850E7B68DFF6F2F
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:102>
 		XRLoader_set__isInitialized_mF14DF44CFF2BA1409E7C7505569D6C3CA8102949_inline((bool)1, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:103>
-		return (bool)1;
+		V_0 = (bool)1;
+		goto IL_0035;
+	}
+
+IL_0035:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:104>
+		bool L_2 = V_0;
+		return L_2;
 	}
 }
-// Method Definition Index: 36645
+// Method Definition Index: 47912
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRLoader_Start_mF8EE14722B63821EF30CB33866ED5C28D2C356C4 (XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4394,6 +4839,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRLoader_Start_mF8EE14722B63821EF30CB338
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		s_Il2CppMethodInitialized = true;
 	}
+	bool V_0 = false;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:113>
 		XRLoaderHelper_StartSubsystem_TisXRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1_mC1643794A5D3CC32BF1EE9C976CE5F23A6BB8962(__this, XRLoaderHelper_StartSubsystem_TisXRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1_mC1643794A5D3CC32BF1EE9C976CE5F23A6BB8962_RuntimeMethod_var);
@@ -4403,10 +4849,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRLoader_Start_mF8EE14722B63821EF30CB338
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		XRLoader_set__isStarted_mA1996BE6A4884B340D43026B7D3C3B8400F20468_inline((bool)1, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:116>
-		return (bool)1;
+		V_0 = (bool)1;
+		goto IL_001a;
+	}
+
+IL_001a:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:117>
+		bool L_0 = V_0;
+		return L_0;
 	}
 }
-// Method Definition Index: 36646
+// Method Definition Index: 47913
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRLoader_Stop_m9772FCC150F50E30FF0DDFD6E10EF706709ACB70 (XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4417,6 +4871,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRLoader_Stop_m9772FCC150F50E30FF0DDFD6E
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		s_Il2CppMethodInitialized = true;
 	}
+	bool V_0 = false;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:126>
 		XRLoaderHelper_StopSubsystem_TisXRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1_m00A3A82597D484DE2EBB03EA9A2430AFDE44DE24(__this, XRLoaderHelper_StopSubsystem_TisXRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1_m00A3A82597D484DE2EBB03EA9A2430AFDE44DE24_RuntimeMethod_var);
@@ -4426,10 +4881,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRLoader_Stop_m9772FCC150F50E30FF0DDFD6E
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		XRLoader_set__isStarted_mA1996BE6A4884B340D43026B7D3C3B8400F20468_inline((bool)0, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:129>
-		return (bool)1;
+		V_0 = (bool)1;
+		goto IL_001a;
+	}
+
+IL_001a:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:130>
+		bool L_0 = V_0;
+		return L_0;
 	}
 }
-// Method Definition Index: 36647
+// Method Definition Index: 47914
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRLoader_Deinitialize_mE5A7CEE73976C793B4946D314D5C494AAA440FE9 (XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4440,6 +4903,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRLoader_Deinitialize_mE5A7CEE73976C793B
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		s_Il2CppMethodInitialized = true;
 	}
+	bool V_0 = false;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:139>
 		XRLoaderHelper_DestroySubsystem_TisXRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1_m8E2572BB5610CCE3B1DBA87453CFE09BB4B2B606(__this, XRLoaderHelper_DestroySubsystem_TisXRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1_m8E2572BB5610CCE3B1DBA87453CFE09BB4B2B606_RuntimeMethod_var);
@@ -4451,10 +4915,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRLoader_Deinitialize_mE5A7CEE73976C793B
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		XRLoader_set__isInitialized_mF14DF44CFF2BA1409E7C7505569D6C3CA8102949_inline((bool)0, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:143>
-		return (bool)1;
+		V_0 = (bool)1;
+		goto IL_0021;
+	}
+
+IL_0021:
+	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:144>
+		bool L_0 = V_0;
+		return L_0;
 	}
 }
-// Method Definition Index: 36648
+// Method Definition Index: 47915
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_RecalculateRectangles_m7E4BBE33B69EA2D24C8FF6E90115D08C57DD6221 (Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D ___0_renderingArea, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4553,7 +5025,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_RecalculateRectangles_m7E4BBE33
 		return;
 	}
 }
-// Method Definition Index: 36649
+// Method Definition Index: 47916
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_SetViewportOrientation_m0DC8F42E6677B0BE6372EAC25C22883715FEAF88 (int32_t ___0_screenOrientation, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4564,72 +5036,79 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_SetViewportOrientation_m0DC8F42
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralD9CB5BD87EFEBBEDC7F06B8B8CA80A700AC1CBE8);
 		s_Il2CppMethodInitialized = true;
 	}
+	int32_t V_0 = 0;
+	int32_t V_1 = 0;
 	{
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:183>
 		int32_t L_0 = ___0_screenOrientation;
-		switch (((int32_t)il2cpp_codegen_subtract((int32_t)L_0, 1)))
+		V_1 = L_0;
+		int32_t L_1 = V_1;
+		V_0 = L_1;
+		int32_t L_2 = V_0;
+		switch (((int32_t)il2cpp_codegen_subtract((int32_t)L_2, 1)))
 		{
 			case 0:
 			{
-				goto IL_0028;
+				goto IL_0031;
 			}
 			case 1:
 			{
-				goto IL_002f;
+				goto IL_003a;
 			}
 			case 2:
 			{
-				goto IL_001a;
+				goto IL_001f;
 			}
 			case 3:
 			{
-				goto IL_0021;
+				goto IL_0028;
 			}
 		}
 	}
 	{
-		goto IL_0036;
+		goto IL_0043;
 	}
 
-IL_001a:
+IL_001f:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:186>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:187>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		XRLoader_CardboardUnity_setViewportOrientation_m2A2258DAE35F3005E2D336ADB8E1202CF595DB21(0, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:188>
-		return;
+		goto IL_0057;
 	}
 
-IL_0021:
+IL_0028:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:190>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:191>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		XRLoader_CardboardUnity_setViewportOrientation_m2A2258DAE35F3005E2D336ADB8E1202CF595DB21(1, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:192>
-		return;
+		goto IL_0057;
 	}
 
-IL_0028:
+IL_0031:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:194>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		XRLoader_CardboardUnity_setViewportOrientation_m2A2258DAE35F3005E2D336ADB8E1202CF595DB21(2, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:195>
-		return;
+		goto IL_0057;
 	}
 
-IL_002f:
+IL_003a:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:197>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:198>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		XRLoader_CardboardUnity_setViewportOrientation_m2A2258DAE35F3005E2D336ADB8E1202CF595DB21(3, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:199>
-		return;
+		goto IL_0057;
 	}
 
-IL_0036:
+IL_0043:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:201>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:202>
@@ -4640,11 +5119,17 @@ IL_0036:
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:205>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		XRLoader_CardboardUnity_setViewportOrientation_m2A2258DAE35F3005E2D336ADB8E1202CF595DB21(0, NULL);
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:206>
+		goto IL_0057;
+	}
+
+IL_0057:
+	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:208>
 		return;
 	}
 }
-// Method Definition Index: 36650
+// Method Definition Index: 47917
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_SetGraphicsApi_m086DE8F6372C97A62AFCE4C6D17D10AFD3AD6C24 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4658,68 +5143,82 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_SetGraphicsApi_m086DE8F6372C97A
 		s_Il2CppMethodInitialized = true;
 	}
 	int32_t V_0 = 0;
+	int32_t V_1 = 0;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:215>
 		int32_t L_0;
 		L_0 = SystemInfo_get_graphicsDeviceType_m2D54A0B94D138727041B29B127D8837165686545(NULL);
-		V_0 = L_0;
-		int32_t L_1 = V_0;
-		if ((((int32_t)L_1) == ((int32_t)((int32_t)11))))
-		{
-			goto IL_0012;
-		}
-	}
-	{
+		V_1 = L_0;
+		int32_t L_1 = V_1;
+		V_0 = L_1;
 		int32_t L_2 = V_0;
-		if ((((int32_t)L_2) == ((int32_t)((int32_t)21))))
+		if ((((int32_t)L_2) == ((int32_t)((int32_t)11))))
 		{
-			goto IL_0019;
+			goto IL_0017;
 		}
 	}
 	{
-		goto IL_0020;
+		goto IL_0010;
 	}
 
-IL_0012:
+IL_0010:
+	{
+		int32_t L_3 = V_0;
+		if ((((int32_t)L_3) == ((int32_t)((int32_t)21))))
+		{
+			goto IL_0020;
+		}
+	}
+	{
+		goto IL_0029;
+	}
+
+IL_0017:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:223>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		XRLoader_CardboardUnity_setGraphicsApi_m40F17D09AFA2E835E79743E883C4C72F6BE17A23(2, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:224>
-		return;
+		goto IL_0049;
 	}
 
-IL_0019:
+IL_0020:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:232>
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
 		XRLoader_CardboardUnity_setGraphicsApi_m40F17D09AFA2E835E79743E883C4C72F6BE17A23(4, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:233>
-		return;
+		goto IL_0049;
 	}
 
-IL_0020:
+IL_0029:
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:236>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:237>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:238>
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:239>
-		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_3 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
-		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_4 = L_3;
-		int32_t L_5;
-		L_5 = SystemInfo_get_graphicsDeviceType_m2D54A0B94D138727041B29B127D8837165686545(NULL);
-		int32_t L_6 = L_5;
-		RuntimeObject* L_7 = Box(GraphicsDeviceType_t65150C9055D1BC1E377E894972629BF22BA2CBF5_il2cpp_TypeInfo_var, &L_6);
-		NullCheck(L_4);
-		ArrayElementTypeCheck (L_4, L_7);
-		(L_4)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_7);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_4 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_5 = L_4;
+		int32_t L_6;
+		L_6 = SystemInfo_get_graphicsDeviceType_m2D54A0B94D138727041B29B127D8837165686545(NULL);
+		int32_t L_7 = L_6;
+		RuntimeObject* L_8 = Box(GraphicsDeviceType_t65150C9055D1BC1E377E894972629BF22BA2CBF5_il2cpp_TypeInfo_var, &L_7);
+		NullCheck(L_5);
+		ArrayElementTypeCheck (L_5, L_8);
+		(L_5)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_8);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		Debug_LogErrorFormat_m96690322C941D23A125E5769C9803606859A707C(_stringLiteral528D91C28DB91EC71BBAD79EE64EA618301721BA, L_4, NULL);
+		Debug_LogErrorFormat_m96690322C941D23A125E5769C9803606859A707C(_stringLiteral528D91C28DB91EC71BBAD79EE64EA618301721BA, L_5, NULL);
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:240>
+		goto IL_0049;
+	}
+
+IL_0049:
+	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:242>
 		return;
 	}
 }
-// Method Definition Index: 36651
+// Method Definition Index: 47918
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_CardboardUnity_setScreenParams_mAF618FAC77544A8B1B844BA9ECFFF62105883C7B (int32_t ___0_screen_width, int32_t ___1_screen_height, int32_t ___2_viewport_x, int32_t ___3_viewport_y, int32_t ___4_viewport_width, int32_t ___5_viewport_height, const RuntimeMethod* method) 
 {
 	typedef void (DEFAULT_CALL *PInvokeFunc) (int32_t, int32_t, int32_t, int32_t, int32_t, int32_t);
@@ -4740,7 +5239,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_CardboardUnity_setScreenParams_
 	#endif
 
 }
-// Method Definition Index: 36652
+// Method Definition Index: 47919
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_CardboardUnity_setWidgetCount_m1295692EC356A665A2AE818A8976CBCFA08F2536 (int32_t ___0_count, const RuntimeMethod* method) 
 {
 	typedef void (DEFAULT_CALL *PInvokeFunc) (int32_t);
@@ -4761,7 +5260,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_CardboardUnity_setWidgetCount_m
 	#endif
 
 }
-// Method Definition Index: 36653
+// Method Definition Index: 47920
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_CardboardUnity_setWidgetParams_mC7ECD75E64DFA241DC20AE101FD71C11171B0CC0 (int32_t ___0_i, intptr_t ___1_texture, int32_t ___2_x, int32_t ___3_y, int32_t ___4_width, int32_t ___5_height, const RuntimeMethod* method) 
 {
 	typedef void (DEFAULT_CALL *PInvokeFunc) (int32_t, intptr_t, int32_t, int32_t, int32_t, int32_t);
@@ -4782,7 +5281,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_CardboardUnity_setWidgetParams_
 	#endif
 
 }
-// Method Definition Index: 36654
+// Method Definition Index: 47921
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_CardboardUnity_setGraphicsApi_m40F17D09AFA2E835E79743E883C4C72F6BE17A23 (int32_t ___0_graphics_api, const RuntimeMethod* method) 
 {
 	typedef void (DEFAULT_CALL *PInvokeFunc) (int32_t);
@@ -4803,7 +5302,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_CardboardUnity_setGraphicsApi_m
 	#endif
 
 }
-// Method Definition Index: 36655
+// Method Definition Index: 47922
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_CardboardUnity_setViewportOrientation_m2A2258DAE35F3005E2D336ADB8E1202CF595DB21 (int32_t ___0_viewport_orientation, const RuntimeMethod* method) 
 {
 	typedef void (DEFAULT_CALL *PInvokeFunc) (int32_t);
@@ -4824,7 +5323,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_CardboardUnity_setViewportOrien
 	#endif
 
 }
-// Method Definition Index: 36656
+// Method Definition Index: 47923
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_CardboardUnity_initializeAndroid_m5B068EC158BAE75A4A465892162EE89B1F1BAEE6 (intptr_t ___0_context, const RuntimeMethod* method) 
 {
 	typedef void (DEFAULT_CALL *PInvokeFunc) (intptr_t);
@@ -4845,7 +5344,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_CardboardUnity_initializeAndroi
 	#endif
 
 }
-// Method Definition Index: 36657
+// Method Definition Index: 47924
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_CardboardSDKInitialize_m9CEA4B45696BE9A3583A4C14BBFA2EC91B394AAA (XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4866,67 +5365,75 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_CardboardSDKInitialize_m9CEA4B4
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralFB4AE4F77150C3A8E8E4F8B23E734E0C7277B7D9);
 		s_Il2CppMethodInitialized = true;
 	}
+	AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* V_0 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_1 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_2 = NULL;
 	{
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:277>
 		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0 = (AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03*)il2cpp_codegen_object_new(AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
 		AndroidJavaClass__ctor_mB5466169E1151B8CC44C8FED234D79984B431389(L_0, _stringLiteral4D613657609485AE586A3379BA0E3FC13C1E1078, NULL);
+		V_0 = L_0;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:278>
-		NullCheck(L_0);
-		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_1;
-		L_1 = AndroidJavaObject_GetStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mD7D192A35EB2B2DA3775FAB081958B72088251DD(L_0, _stringLiteralFB4AE4F77150C3A8E8E4F8B23E734E0C7277B7D9, AndroidJavaObject_GetStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mD7D192A35EB2B2DA3775FAB081958B72088251DD_RuntimeMethod_var);
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_1 = V_0;
+		NullCheck(L_1);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_2;
+		L_2 = AndroidJavaObject_GetStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mD7D192A35EB2B2DA3775FAB081958B72088251DD(L_1, _stringLiteralFB4AE4F77150C3A8E8E4F8B23E734E0C7277B7D9, AndroidJavaObject_GetStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mD7D192A35EB2B2DA3775FAB081958B72088251DD_RuntimeMethod_var);
+		V_1 = L_2;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:279>
-		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_2 = L_1;
-		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_3;
-		L_3 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
-		NullCheck(L_2);
-		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_4;
-		L_4 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_2, _stringLiteral3753DF735E896BD3C9F2E5D3740D83C85D747CF9, L_3, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_3 = V_1;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_4;
+		L_4 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_3);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_5;
+		L_5 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_3, _stringLiteral3753DF735E896BD3C9F2E5D3740D83C85D747CF9, L_4, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		V_2 = L_5;
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:282>
-		NullCheck(L_2);
-		intptr_t L_5;
-		L_5 = AndroidJavaObject_GetRawObject_m536F043B5CE2C21369FF6173C9D2A9A62136BC48(L_2, NULL);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_6 = V_1;
+		NullCheck(L_6);
+		intptr_t L_7;
+		L_7 = AndroidJavaObject_GetRawObject_m536F043B5CE2C21369FF6173C9D2A9A62136BC48(L_6, NULL);
 		il2cpp_codegen_runtime_class_init_inline(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var);
-		XRLoader_CardboardUnity_initializeAndroid_m5B068EC158BAE75A4A465892162EE89B1F1BAEE6(L_5, NULL);
+		XRLoader_CardboardUnity_initializeAndroid_m5B068EC158BAE75A4A465892162EE89B1F1BAEE6(L_7, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:285>
-		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_6;
-		L_6 = Resources_Load_TisTexture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_mBEC87DD291ED9662B46356519E0723C0ABB12877(_stringLiteral6496F7984296622FCB5800829882431BEEBBF938, Resources_Load_TisTexture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_mBEC87DD291ED9662B46356519E0723C0ABB12877_RuntimeMethod_var);
-		((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____closeTexture = L_6;
-		Il2CppCodeGenWriteBarrier((void**)(&((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____closeTexture), (void*)L_6);
-		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:286>
-		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_7 = ((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____closeTexture;
-		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		Object_DontDestroyOnLoad_m4B70C3AEF886C176543D1295507B6455C9DCAEA7(L_7, NULL);
-		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:287>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_8;
-		L_8 = Resources_Load_TisTexture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_mBEC87DD291ED9662B46356519E0723C0ABB12877(_stringLiteralED83399CBC811F35F057E6567D8D65D7449FAF7E, Resources_Load_TisTexture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_mBEC87DD291ED9662B46356519E0723C0ABB12877_RuntimeMethod_var);
-		((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____gearTexture = L_8;
-		Il2CppCodeGenWriteBarrier((void**)(&((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____gearTexture), (void*)L_8);
-		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:288>
-		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_9 = ((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____gearTexture;
+		L_8 = Resources_Load_TisTexture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_mBEC87DD291ED9662B46356519E0723C0ABB12877(_stringLiteral6496F7984296622FCB5800829882431BEEBBF938, Resources_Load_TisTexture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_mBEC87DD291ED9662B46356519E0723C0ABB12877_RuntimeMethod_var);
+		((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____closeTexture = L_8;
+		Il2CppCodeGenWriteBarrier((void**)(&((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____closeTexture), (void*)L_8);
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:286>
+		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_9 = ((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____closeTexture;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Object_DontDestroyOnLoad_m4B70C3AEF886C176543D1295507B6455C9DCAEA7(L_9, NULL);
-		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:289>
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:287>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_10;
-		L_10 = Resources_Load_TisTexture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_mBEC87DD291ED9662B46356519E0723C0ABB12877(_stringLiteral084A6BF407E01742452C25FCD2661576465AD2FE, Resources_Load_TisTexture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_mBEC87DD291ED9662B46356519E0723C0ABB12877_RuntimeMethod_var);
-		((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____whiteLineTexture = L_10;
-		Il2CppCodeGenWriteBarrier((void**)(&((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____whiteLineTexture), (void*)L_10);
-		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:290>
-		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_11 = ((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____whiteLineTexture;
+		L_10 = Resources_Load_TisTexture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_mBEC87DD291ED9662B46356519E0723C0ABB12877(_stringLiteralED83399CBC811F35F057E6567D8D65D7449FAF7E, Resources_Load_TisTexture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_mBEC87DD291ED9662B46356519E0723C0ABB12877_RuntimeMethod_var);
+		((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____gearTexture = L_10;
+		Il2CppCodeGenWriteBarrier((void**)(&((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____gearTexture), (void*)L_10);
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:288>
+		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_11 = ((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____gearTexture;
 		Object_DontDestroyOnLoad_m4B70C3AEF886C176543D1295507B6455C9DCAEA7(L_11, NULL);
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:289>
+		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_12;
+		L_12 = Resources_Load_TisTexture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_mBEC87DD291ED9662B46356519E0723C0ABB12877(_stringLiteral084A6BF407E01742452C25FCD2661576465AD2FE, Resources_Load_TisTexture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_mBEC87DD291ED9662B46356519E0723C0ABB12877_RuntimeMethod_var);
+		((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____whiteLineTexture = L_12;
+		Il2CppCodeGenWriteBarrier((void**)(&((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____whiteLineTexture), (void*)L_12);
+		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:290>
+		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_13 = ((XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_StaticFields*)il2cpp_codegen_static_fields_for(XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779_il2cpp_TypeInfo_var))->____whiteLineTexture;
+		Object_DontDestroyOnLoad_m4B70C3AEF886C176543D1295507B6455C9DCAEA7(L_13, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:292>
 		XRLoader_SetGraphicsApi_m086DE8F6372C97A62AFCE4C6D17D10AFD3AD6C24(NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:293>
-		int32_t L_12;
-		L_12 = Screen_get_orientation_mA6B22A441187D50831B2B18CA48A8F64BD1BD89E(NULL);
-		XRLoader_SetViewportOrientation_m0DC8F42E6677B0BE6372EAC25C22883715FEAF88(L_12, NULL);
+		int32_t L_14;
+		L_14 = Screen_get_orientation_mA6B22A441187D50831B2B18CA48A8F64BD1BD89E(NULL);
+		XRLoader_SetViewportOrientation_m0DC8F42E6677B0BE6372EAC25C22883715FEAF88(L_14, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:297>
-		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_13;
-		L_13 = Screen_get_safeArea_m2ADAD6C36CC5DB40CC2DAD300DD1DF7CA4DF2525(NULL);
-		XRLoader_RecalculateRectangles_m7E4BBE33B69EA2D24C8FF6E90115D08C57DD6221(L_13, NULL);
+		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_15;
+		L_15 = Screen_get_safeArea_m2ADAD6C36CC5DB40CC2DAD300DD1DF7CA4DF2525(NULL);
+		XRLoader_RecalculateRectangles_m7E4BBE33B69EA2D24C8FF6E90115D08C57DD6221(L_15, NULL);
 		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/XRLoader.cs:298>
 		return;
 	}
 }
-// Method Definition Index: 36658
+// Method Definition Index: 47925
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_CardboardSDKDeinitialize_mCCE46000087F969B6FA74E88E06E318B3A4E068E (XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4950,7 +5457,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader_CardboardSDKDeinitialize_mCCE46
 		return;
 	}
 }
-// Method Definition Index: 36659
+// Method Definition Index: 47926
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader__ctor_m25C8EDA7D0E91F6138B39A99971E87CA6A44D376 (XRLoader_t9E03B2E5E25A68BDAD7018462DE0746D5B750779* __this, const RuntimeMethod* method) 
 {
 	{
@@ -4958,7 +5465,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader__ctor_m25C8EDA7D0E91F6138B39A99
 		return;
 	}
 }
-// Method Definition Index: 36660
+// Method Definition Index: 47927
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader__cctor_mE64E8E40B0450939C2A8A8DDB3FED21F5CD9CDAD (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5011,7 +5518,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRLoader__cctor_mE64E8E40B0450939C2A8A8D
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 36661
+// Method Definition Index: 47928
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRSettings__ctor_m22517210A97D1E6D49CD3FDE491EAF4FFFDAB2D6 (XRSettings_t5347B0786E7E3BFCF8CEB9E9E76C547A3BC337F0* __this, const RuntimeMethod* method) 
 {
 	{
@@ -5046,7 +5553,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRSettings__ctor_m22517210A97D1E6D49CD3F
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif
-// Method Definition Index: 28055
+// Method Definition Index: 35636
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Mathf_Clamp_mEB9AEA827D27D20FCC787F7375156AF46BB12BBF_inline (float ___0_value, float ___1_min, float ___2_max, const RuntimeMethod* method) 
 {
 	bool V_0 = false;
@@ -5097,7 +5604,7 @@ IL_001d:
 		return L_9;
 	}
 }
-// Method Definition Index: 28058
+// Method Definition Index: 35639
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Mathf_Lerp_m47EF2FFB7647BD0A1FDC26DC03E28B19812139B5_inline (float ___0_a, float ___1_b, float ___2_t, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -5118,7 +5625,7 @@ IL_0010:
 		return L_5;
 	}
 }
-// Method Definition Index: 27963
+// Method Definition Index: 35534
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* __this, float ___0_x, float ___1_y, float ___2_z, const RuntimeMethod* method) 
 {
 	{
@@ -5131,7 +5638,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector3__ctor_m376936E6B999E
 		return;
 	}
 }
-// Method Definition Index: 36642
+// Method Definition Index: 47909
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRLoader_get__isStarted_m1BC9BAA5F9408ED509CA303E3FBC4F2DF398EDFA_inline (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5147,7 +5654,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRLoader_get__isStarted_m1BC
 		return L_0;
 	}
 }
-// Method Definition Index: 26057
+// Method Definition Index: 28802
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector2Control_t8D1B4021A1D82671AF916D3C0A476AA94E46A432* TouchControl_get_position_m362565B94CA1CF45F79F7EAB5FE75B9BCB1ACAAF_inline (TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* __this, const RuntimeMethod* method) 
 {
 	{
@@ -5156,7 +5663,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector2Control_t8D1B4021A1D82671A
 		return L_0;
 	}
 }
-// Method Definition Index: 28120
+// Method Definition Index: 35704
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A Vector2Int_RoundToInt_m3105CCF1283211D549DEB4C84AEEB1D8034E7A4E_inline (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___0_v, const RuntimeMethod* method) 
 {
 	Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A V_0;
@@ -5183,7 +5690,7 @@ IL_001f:
 		return L_7;
 	}
 }
-// Method Definition Index: 26065
+// Method Definition Index: 28810
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR TouchPhaseControl_t4652C6E0EBFAFA85A31607769876B02C1C9FCAEC* TouchControl_get_phase_mB82674B59168CD8074E9C371A51B088F76D4AC55_inline (TouchControl_t3A64A795FF61A8B27E5EBD61632F23AFCC725079* __this, const RuntimeMethod* method) 
 {
 	{
@@ -5192,7 +5699,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR TouchPhaseControl_t4652C6E0EBFAFA
 		return L_0;
 	}
 }
-// Method Definition Index: 27267
+// Method Definition Index: 34825
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool RectInt_Contains_mCBF3E53C9D20BB9268453754AA93BCA581461493_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A ___0_position, const RuntimeMethod* method) 
 {
 	bool V_0 = false;
@@ -5253,23 +5760,7 @@ IL_0043:
 		return L_8;
 	}
 }
-// Method Definition Index: 36612
-IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR double Api_get_MinTriggerHeldPressedTime_m3D490337AA692D8628C5BEA15F57461FF9D80D98_inline (const RuntimeMethod* method) 
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		s_Il2CppMethodInitialized = true;
-	}
-	{
-		//<source_info:./Library/PackageCache/com.google.xr.cardboard@e91752ce4c99/Runtime/Api.cs:186>
-		il2cpp_codegen_runtime_class_init_inline(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var);
-		double L_0 = ((Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_StaticFields*)il2cpp_codegen_static_fields_for(Api_t145FCB8AD359667011C398E3BE4F2962C25C363D_il2cpp_TypeInfo_var))->____minTriggerHeldPressedTime;
-		return L_0;
-	}
-}
-// Method Definition Index: 36640
+// Method Definition Index: 47907
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRLoader_get__isInitialized_m5929315F8CA1EB92D53B07389D9D68041D00620C_inline (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5285,7 +5776,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRLoader_get__isInitialized_
 		return L_0;
 	}
 }
-// Method Definition Index: 420
+// Method Definition Index: 736
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t String_get_Length_m42625D67623FA5CC7A44D47425CE86FB946542D2_inline (String_t* __this, const RuntimeMethod* method) 
 {
 	{
@@ -5293,7 +5784,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t String_get_Length_m42625D
 		return L_0;
 	}
 }
-// Method Definition Index: 27242
+// Method Definition Index: 34800
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Rect_op_Inequality_mB5D7316EB50B1DDA9324F4BE6741DFF6A673137D_inline (Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D ___0_lhs, Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D ___1_rhs, const RuntimeMethod* method) 
 {
 	bool V_0 = false;
@@ -5312,7 +5803,7 @@ IL_000e:
 		return L_3;
 	}
 }
-// Method Definition Index: 23535
+// Method Definition Index: 26273
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Touchscreen_t5A3B494C10A53A822AEDB3508093860D142D84CE* Touchscreen_get_current_m6D9CD2446B30224D18E695DF0ECC3A00E4F7B708_inline (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5328,7 +5819,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Touchscreen_t5A3B494C10A53A822AED
 		return L_0;
 	}
 }
-// Method Definition Index: 23531
+// Method Definition Index: 26269
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ReadOnlyArray_1_t1AB67C13630F5ECC78559C8BCEFFC00C4457333E Touchscreen_get_touches_mEFA7C5B2A80963C7947BCBDBE6258F5083B1CE66_inline (Touchscreen_t5A3B494C10A53A822AEDB3508093860D142D84CE* __this, const RuntimeMethod* method) 
 {
 	{
@@ -5337,7 +5828,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ReadOnlyArray_1_t1AB67C13630F5ECC
 		return L_0;
 	}
 }
-// Method Definition Index: 27229
+// Method Definition Index: 34787
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Rect_get_xMin_mE89C40702926D016A633399E20DB9501E251630D_inline (Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* __this, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -5353,7 +5844,7 @@ IL_000a:
 		return L_1;
 	}
 }
-// Method Definition Index: 27250
+// Method Definition Index: 34808
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RectInt_set_x_m2D2F3A87E9899A29444DBDD0BB11CB19F13AA075_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -5362,7 +5853,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RectInt_set_x_m2D2F3A87E9899
 		return;
 	}
 }
-// Method Definition Index: 27254
+// Method Definition Index: 34812
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RectInt_set_width_mCD96AA9D096114147F8411A340CE4AD3476DCD4C_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -5371,7 +5862,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RectInt_set_width_mCD96AA9D0
 		return;
 	}
 }
-// Method Definition Index: 27235
+// Method Definition Index: 34793
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Rect_get_yMax_mBC37BEE1CD632AADD8B9EAF9FE3BA143F79CAF8E_inline (Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* __this, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -5388,7 +5879,7 @@ IL_0011:
 		return L_2;
 	}
 }
-// Method Definition Index: 27252
+// Method Definition Index: 34810
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RectInt_set_y_m45D5C1D817698266BED66D41A705956A1571858D_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -5397,7 +5888,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RectInt_set_y_m45D5C1D817698
 		return;
 	}
 }
-// Method Definition Index: 27256
+// Method Definition Index: 34814
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RectInt_set_height_m823A353A80B8B5180AEDF968A6E85B9D9B75C1C6_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -5406,7 +5897,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RectInt_set_height_m823A353A
 		return;
 	}
 }
-// Method Definition Index: 27257
+// Method Definition Index: 34815
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t RectInt_get_xMin_mA5FB5AF1133380E080CF750D21327DE27EADEE1B_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5433,7 +5924,7 @@ IL_001c:
 		return L_4;
 	}
 }
-// Method Definition Index: 27258
+// Method Definition Index: 34816
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RectInt_set_xMin_mB0EA8E91159E7C130739973FFD8AFF09377B883A_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	int32_t V_0 = 0;
@@ -5449,7 +5940,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RectInt_set_xMin_mB0EA8E9115
 		return;
 	}
 }
-// Method Definition Index: 27261
+// Method Definition Index: 34819
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t RectInt_get_xMax_mBA05CE52847E3D3CB8295055706B3E0D4350E9F0_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5476,7 +5967,7 @@ IL_001c:
 		return L_4;
 	}
 }
-// Method Definition Index: 27262
+// Method Definition Index: 34820
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RectInt_set_xMax_mAA7AB05C087176CB8959369FEAAA78B80842D7A4_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -5486,7 +5977,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RectInt_set_xMax_mAA7AB05C08
 		return;
 	}
 }
-// Method Definition Index: 27259
+// Method Definition Index: 34817
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t RectInt_get_yMin_m6914C2254158DF797E20E381626DC08A2700147B_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5513,7 +6004,7 @@ IL_001c:
 		return L_4;
 	}
 }
-// Method Definition Index: 27260
+// Method Definition Index: 34818
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RectInt_set_yMin_m63076D2AFEF1DFFE9F0362DBAAFBDED3611746F4_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	int32_t V_0 = 0;
@@ -5529,7 +6020,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RectInt_set_yMin_m63076D2AFE
 		return;
 	}
 }
-// Method Definition Index: 27263
+// Method Definition Index: 34821
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t RectInt_get_yMax_mAE5D758A1241F7722F8FB9B46861583F76C8FE44_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5556,7 +6047,7 @@ IL_001c:
 		return L_4;
 	}
 }
-// Method Definition Index: 27264
+// Method Definition Index: 34822
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RectInt_set_yMax_mCF47AE0D0C567664BCDE03C8601BE66D375BB3A9_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -5566,7 +6057,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RectInt_set_yMax_mCF47AE0D0C
 		return;
 	}
 }
-// Method Definition Index: 27233
+// Method Definition Index: 34791
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Rect_get_xMax_m2339C7D2FCDA98A9B007F815F6E2059BA6BE425F_inline (Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* __this, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -5583,7 +6074,7 @@ IL_0011:
 		return L_2;
 	}
 }
-// Method Definition Index: 27223
+// Method Definition Index: 34781
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Rect_get_width_m620D67551372073C9C32C4C4624C2A5713F7F9A9_inline (Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* __this, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -5599,7 +6090,7 @@ IL_000a:
 		return L_1;
 	}
 }
-// Method Definition Index: 27249
+// Method Definition Index: 34807
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t RectInt_get_x_mA1E7EF6DEAD2E900D7D56B7A3957C05081EBA9CA_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, const RuntimeMethod* method) 
 {
 	int32_t V_0 = 0;
@@ -5615,7 +6106,7 @@ IL_000a:
 		return L_1;
 	}
 }
-// Method Definition Index: 27251
+// Method Definition Index: 34809
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t RectInt_get_y_m440422264E6FCAA91E01F81486A78037AC29D878_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, const RuntimeMethod* method) 
 {
 	int32_t V_0 = 0;
@@ -5631,7 +6122,7 @@ IL_000a:
 		return L_1;
 	}
 }
-// Method Definition Index: 27231
+// Method Definition Index: 34789
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Rect_get_yMin_mB19848FB25DE61EDF958F7A22CFDD86DE103062F_inline (Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* __this, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -5647,7 +6138,7 @@ IL_000a:
 		return L_1;
 	}
 }
-// Method Definition Index: 36641
+// Method Definition Index: 47908
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRLoader_set__isInitialized_mF14DF44CFF2BA1409E7C7505569D6C3CA8102949_inline (bool ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5664,7 +6155,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRLoader_set__isInitialized_
 		return;
 	}
 }
-// Method Definition Index: 36643
+// Method Definition Index: 47910
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRLoader_set__isStarted_mA1996BE6A4884B340D43026B7D3C3B8400F20468_inline (bool ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5681,7 +6172,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRLoader_set__isStarted_mA19
 		return;
 	}
 }
-// Method Definition Index: 27212
+// Method Definition Index: 34769
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Rect_get_x_mB267B718E0D067F2BAE31BA477647FBF964916EB_inline (Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* __this, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -5697,7 +6188,7 @@ IL_000a:
 		return L_1;
 	}
 }
-// Method Definition Index: 27214
+// Method Definition Index: 34771
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Rect_get_y_mC733E8D49F3CE21B2A3D40A1B72D687F22C97F49_inline (Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* __this, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -5713,7 +6204,7 @@ IL_000a:
 		return L_1;
 	}
 }
-// Method Definition Index: 27225
+// Method Definition Index: 34783
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Rect_get_height_mE1AA6C6C725CCD2D317BD2157396D3CF7D47C9D8_inline (Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* __this, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -5729,7 +6220,7 @@ IL_000a:
 		return L_1;
 	}
 }
-// Method Definition Index: 27253
+// Method Definition Index: 34811
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t RectInt_get_width_m6B7B2FB764EAE83B7F63E7F77FA33973606761A7_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, const RuntimeMethod* method) 
 {
 	int32_t V_0 = 0;
@@ -5745,7 +6236,7 @@ IL_000a:
 		return L_1;
 	}
 }
-// Method Definition Index: 27255
+// Method Definition Index: 34813
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t RectInt_get_height_mE25FB938714942D7A3BA0B3C21BC5CB913D5709C_inline (RectInt_t1744D10E1063135DA9D574F95205B98DAC600CB8* __this, const RuntimeMethod* method) 
 {
 	int32_t V_0 = 0;
@@ -5761,7 +6252,7 @@ IL_000a:
 		return L_1;
 	}
 }
-// Method Definition Index: 1666
+// Method Definition Index: 2153
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_gshared_inline (Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28* __this, const RuntimeMethod* method) 
 {
 	{
@@ -5769,7 +6260,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Nullable_1_get_HasValue_mCF2
 		return L_0;
 	}
 }
-// Method Definition Index: 1668
+// Method Definition Index: 2155
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t Nullable_1_GetValueOrDefault_m8D130DB7F2A1E694736B449176F9C26DB456597B_gshared_inline (Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28* __this, const RuntimeMethod* method) 
 {
 	{
@@ -5777,7 +6268,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t Nullable_1_GetValueOrDefa
 		return L_0;
 	}
 }
-// Method Definition Index: 26577
+// Method Definition Index: 29322
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t ReadOnlyArray_1_get_Count_m37AE229E2BFB74375A7BD545982B745F982762F8_gshared_inline (ReadOnlyArray_1_t40B8DDDCD6ACBA3B2C0AF1387BE23D68DAEF77B5* __this, const RuntimeMethod* method) 
 {
 	{
@@ -5786,7 +6277,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t ReadOnlyArray_1_get_Count
 		return L_0;
 	}
 }
-// Method Definition Index: 2614
+// Method Definition Index: 3235
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_gshared_inline (const RuntimeMethod* method) 
 {
 	il2cpp_rgctx_method_init(method);
@@ -5796,7 +6287,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ObjectU5BU5D_t8061030B0A12A55D5AD
 		return L_0;
 	}
 }
-// Method Definition Index: 28057
+// Method Definition Index: 35638
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Mathf_Clamp01_mA7E048DBDA832D399A581BE4D6DED9FA44CE0F14_inline (float ___0_value, const RuntimeMethod* method) 
 {
 	bool V_0 = false;
@@ -5844,7 +6335,7 @@ IL_002d:
 		return L_5;
 	}
 }
-// Method Definition Index: 28053
+// Method Definition Index: 35634
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t Mathf_RoundToInt_m60F8B66CF27F1FA75AA219342BD184B75771EB4B_inline (float ___0_f, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5869,7 +6360,7 @@ IL_000c:
 		return L_2;
 	}
 }
-// Method Definition Index: 28117
+// Method Definition Index: 35701
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector2Int__ctor_mC20D1312133EB8CB63EC11067088B043660F11CE_inline (Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A* __this, int32_t ___0_x, int32_t ___1_y, const RuntimeMethod* method) 
 {
 	{
@@ -5880,7 +6371,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector2Int__ctor_mC20D131213
 		return;
 	}
 }
-// Method Definition Index: 28113
+// Method Definition Index: 35697
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t Vector2Int_get_x_mA2CACB1B6E6B5AD0CCC32B2CD2EDCE3ECEB50576_inline (Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A* __this, const RuntimeMethod* method) 
 {
 	int32_t V_0 = 0;
@@ -5896,7 +6387,7 @@ IL_000a:
 		return L_1;
 	}
 }
-// Method Definition Index: 28115
+// Method Definition Index: 35699
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t Vector2Int_get_y_m48454163ECF0B463FB5A16A0C4FC4B14DB0768B3_inline (Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A* __this, const RuntimeMethod* method) 
 {
 	int32_t V_0 = 0;
@@ -5912,7 +6403,7 @@ IL_000a:
 		return L_1;
 	}
 }
-// Method Definition Index: 27243
+// Method Definition Index: 34801
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Rect_op_Equality_mF2A038255CAF5F1E86079B9EE0FC96DE54307C1F_inline (Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D ___0_lhs, Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D ___1_rhs, const RuntimeMethod* method) 
 {
 	bool V_0 = false;
