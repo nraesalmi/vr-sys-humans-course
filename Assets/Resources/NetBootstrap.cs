@@ -37,10 +37,10 @@ public class NetBootstrap : MonoBehaviourPunCallbacks
 
         int i = PhotonNetwork.CurrentRoom.PlayerCount - 1;
         Vector3[] spawns = {
-            new Vector3(-0.5f, 1.6f, 0f),
-            new Vector3( 0.5f, 1.6f, 0f),
-            new Vector3(-0.5f, 1.6f, 0.6f),
-            new Vector3( 0.5f, 1.6f, 0.6f),
+            new Vector3(-5.201f, 5.348f, -30.15f),
+            new Vector3(-5.201f, 5.348f, -30.15f),
+            new Vector3(-8.473f, 5.348f, -30.15f),
+            new Vector3(-10.232f, 5.348f, -30.15f),
         };
         Vector3 pos = spawns[Mathf.Clamp(i, 0, spawns.Length - 1)];
 
