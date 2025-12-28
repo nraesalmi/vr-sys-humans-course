@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 8095079677323980330}
   - component: {fileID: 8882102273013818386}
   - component: {fileID: 6318429147060040789}
+  - component: {fileID: 5239222031868101604}
   m_Layer: 0
   m_Name: DefaultEnemy
   m_TagString: Enemy
@@ -217,6 +218,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!136 &5239222031868101604
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410042221074740726}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.025
+  m_Height: 0.13
+  m_Direction: 1
+  m_Center: {x: 0.000000002085235, y: -0.03, z: 0}
 --- !u!1 &3694169585255014249
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,7 +519,6 @@ GameObject:
   - component: {fileID: 4536112175829356561}
   - component: {fileID: 5044342933625734896}
   - component: {fileID: 3376876068936527286}
-  - component: {fileID: 7344275393157281221}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -598,26 +621,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &7344275393157281221
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8482226625396378830}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.025
-  m_Height: 0.1
-  m_Direction: 2
-  m_Center: {x: 0.000000002085235, y: -0.0032825184, z: -0.0272226}

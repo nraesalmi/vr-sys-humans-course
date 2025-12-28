@@ -84,12 +84,6 @@ public class Bullet : MonoBehaviour
                 }
             }
         }
-        // Optional: Destroy on hitting environment
-        else if (other.CompareTag("Environment") || other.CompareTag("Obstacle"))
-        {
-            SpawnHitEffect();
-            Destroy(gameObject);
-        }
     }
     
     private void OnCollisionEnter(Collision collision)
