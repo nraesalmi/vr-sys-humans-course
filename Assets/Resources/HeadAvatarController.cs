@@ -6,37 +6,52 @@ public class HeadAvatarController : MonoBehaviourPun
     public Material localMaterial;
     public Material remoteMaterial;
 
+    public Transform playerRoot;
+
     Transform cam;
+    Quaternion spineBindRotation;
 
     void Awake()
     {
-        // Use child renderer in case MeshRenderer is not on the root
         var r = GetComponentInChildren<Renderer>(true);
         if (r && localMaterial && remoteMaterial)
             r.material = photonView.IsMine ? localMaterial : remoteMaterial;
 
-        // Optional: hide your own head so you don't see inside geometry
-        // if (photonView.IsMine && r) r.enabled = false;
-
-        // Only the owner drives this
-        if (!photonView.IsMine) enabled = false;
+        if (!photonView.IsMine)
+            enabled = false;
     }
 
     void Start()
     {
         cam = Camera.main ? Camera.main.transform : null;
+        spineBindRotation = transform.localRotation;
     }
 
     void LateUpdate()
     {
-        if (!photonView.IsMine) return;
-        if (!cam)
-        {
-            cam = Camera.main ? Camera.main.transform : null;
-            if (!cam) return;
-        }
+        if (!photonView.IsMine || !cam || !playerRoot)
+            return;
 
-        // Copy *rotation only*. Position stays at the spawn (set by the rig in NetBootstrap)
-        transform.rotation = cam.rotation;
+        Vector3 camEuler = cam.rotation.eulerAngles;
+
+        float yaw = camEuler.y;
+        playerRoot.rotation = Quaternion.Euler(0f, yaw, 0f);
+
+        float pitch = camEuler.x;
+        if (pitch > 180f) pitch -= 360f;
+        pitch = Mathf.Clamp(pitch, -60f, 60f);
+
+        float roll = camEuler.z;
+        if (roll > 180f) roll -= 360f;
+        roll = Mathf.Clamp(roll, -30f, 30f);
+
+        Quaternion pitchRot =
+            Quaternion.AngleAxis(pitch, Vector3.right);
+
+        Quaternion rollRot =
+            Quaternion.AngleAxis(roll, Vector3.forward);
+
+        transform.localRotation =
+            spineBindRotation * pitchRot * rollRot;
     }
 }
