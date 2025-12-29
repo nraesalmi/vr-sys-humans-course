@@ -288,8 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603d73842981ea24a8c74e6a3a4ec40a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  damage: 10
-  speed: 20
+  damage: 100
+  speed: 50
   lifetime: 5
   destroyOnImpact: 1
   hitEffectPrefab: {fileID: 0}

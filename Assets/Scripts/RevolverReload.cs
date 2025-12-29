@@ -109,6 +109,7 @@ public class RevolverCylinderReload : MonoBehaviour
         // Handle recoil animation
         UpdateRecoil();
     }
+    
 
     void Update()
     {
