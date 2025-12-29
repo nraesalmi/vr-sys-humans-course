@@ -90,7 +90,7 @@ public class EnemyController : MonoBehaviour
         else
         {
             // Default fallback position
-            return new Vector3(0, 5, 0);
+            return new Vector3(-6.86f, 3.42f, -31.1f);
         }
     }
     
