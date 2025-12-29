@@ -5239,13 +5239,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7480373, y: 0.07184633, z: 0.28415897, w: 0.595426}
+  m_LocalRotation: {x: 0.6098332, y: -0.5202714, z: 0.49086976, w: 0.34127426}
   m_LocalPosition: {x: 30.195408, y: 18.28, z: -26.271046}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1540751638}
-  m_LocalEulerAnglesHint: {x: 58.208, y: 104.223, z: 122.184}
+  m_LocalEulerAnglesHint: {x: 67.974, y: 139.495, z: 233}
 --- !u!1001 &715388492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17584,14 +17584,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   waves:
   - waveName: 0
-    spawnInterval: 0.5
+    spawnInterval: 2
+    timeBeforeNextWave: 10
+    enemiesToSpawn:
+    - enemyPrefab: {fileID: 2410042221074740726, guid: 8cf46f812c42b4649b273c29279e7135, type: 3}
+      count: 2
+      healthMultiplier: 1
+      speedMultiplier: 0.8
+  - waveName: 1
+    spawnInterval: 1
     timeBeforeNextWave: 10
     enemiesToSpawn:
     - enemyPrefab: {fileID: 2410042221074740726, guid: 8cf46f812c42b4649b273c29279e7135, type: 3}
       count: 10
       healthMultiplier: 1
-      speedMultiplier: 3
-  - waveName: 1
+      speedMultiplier: 1
+  - waveName: 2
     spawnInterval: 1
     timeBeforeNextWave: 0
     enemiesToSpawn:
@@ -17601,6 +17609,14 @@ MonoBehaviour:
       speedMultiplier: 1
     - enemyPrefab: {fileID: 7070915896992151134, guid: 753cc1c0bdf62854ea37934fd089fefe, type: 3}
       count: 1
+      healthMultiplier: 1
+      speedMultiplier: 0.4
+  - waveName: 3
+    spawnInterval: 5
+    timeBeforeNextWave: 0
+    enemiesToSpawn:
+    - enemyPrefab: {fileID: 7070915896992151134, guid: 753cc1c0bdf62854ea37934fd089fefe, type: 3}
+      count: 5
       healthMultiplier: 1
       speedMultiplier: 0.4
   spawnPoint: {fileID: 1151787806}
