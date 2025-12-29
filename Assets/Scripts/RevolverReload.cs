@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using Photon.Pun;
+
 
 public class RevolverCylinderReload : MonoBehaviour
 {
@@ -39,6 +41,8 @@ public class RevolverCylinderReload : MonoBehaviour
     [Header("Input")]
     public bool enableTouchShooting = true;
     public bool enableMouseShooting = true;
+    private PhotonView photonView;
+
 
     Vector3 cylinderInitialLocalPos;
 
@@ -53,6 +57,8 @@ public class RevolverCylinderReload : MonoBehaviour
 
     void Start()
     {
+        photonView = GetComponent<PhotonView>();
+
         if (!cylinder) return;
 
         cylinderInitialLocalPos = cylinder.localPosition;
@@ -86,9 +92,12 @@ public class RevolverCylinderReload : MonoBehaviour
 
         if (!hasDropped && state == CylinderState.Open && pitch <= dropThreshold)
         {
-            DropAndReload();
+            if (photonView != null)
+                photonView.RPC("DropAndReloadRPC", RpcTarget.All);
+
             hasDropped = true;
         }
+
 
         Vector3 targetPos = cylinderInitialLocalPos;
         targetPos.z = (state == CylinderState.Open) ? zOpen : zClosed;
@@ -130,45 +139,43 @@ public class RevolverCylinderReload : MonoBehaviour
 
     void TryShoot()
     {
-        if (state != CylinderState.Closed)
-            return;
+        if (state != CylinderState.Closed) return;
 
-        Shoot();
+        if (photonView != null && photonView.IsMine)
+        {
+            photonView.RPC("ShootRPC", RpcTarget.All);
+        }
     }
+
+
 
     // =====================
     // SHOOTING
     // =====================
-    void Shoot()
+    [PunRPC]
+    public void ShootRPC()
     {
         if (currentAmmo <= 0)
         {
-            Debug.Log("Click! Revolver empty.");
             PlaySound(emptyClickClip);
             return;
         }
 
-        if (!firedBulletPrefab || !firePoint)
-            return;
+        if (!firedBulletPrefab || !firePoint) return;
 
-        Instantiate(
-            firedBulletPrefab,
-            firePoint.position,
-            firePoint.rotation
-        );
+        Instantiate(firedBulletPrefab, firePoint.position, firePoint.rotation);
 
         PlaySound(shootClip);
-
         currentAmmo--;
-        Debug.Log($"Shot fired. Ammo left: {currentAmmo}");
-
     }
+
 
 
     // =====================
     // RELOAD
     // =====================
-    void DropAndReload()
+    [PunRPC]
+    public void DropAndReloadRPC()
     {
         if (!droppedBulletPrefab) return;
 
@@ -193,9 +200,8 @@ public class RevolverCylinderReload : MonoBehaviour
 
         currentAmmo = maxAmmo;
         PlaySound(reloadClip);
-
-        Debug.Log("Reload complete. Ammo refilled.");
     }
+
 
     void PlaySound(AudioClip clip)
     {

@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class EnemyController : MonoBehaviour
 {
+    PhotonView photonView;
+
     [Header("Enemy Stats")]
     [SerializeField] private int minBaseDamage = 1000;
     [SerializeField] private int maxBaseDamage = 10000;
@@ -34,6 +37,8 @@ public class EnemyController : MonoBehaviour
     
     void Start()
     {
+        photonView = GetComponent<PhotonView>();
+
         movement = GetComponent<PatrolFollowingPredeterminedOrder>();
         if (movement == null)
         {
@@ -51,12 +56,12 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        // Update health bar rotation every frame as enemy moves
-        if (healthBarCanvas != null)
-        {
-            UpdateHealthBarRotation();
-        }
+        if (photonView.IsMine) return;
+
+        // Smoothly interpolate health for networked enemies
+        healthSlider.value = Mathf.Lerp(healthSlider.value, GetHealthPercentage(), Time.deltaTime * 10f);
     }
+
     
     private void UpdateHealthBarRotation()
     {
@@ -183,7 +188,10 @@ public class EnemyController : MonoBehaviour
             }
             
             // Optional: Play death animation/effect
-            Destroy(gameObject);
+            if (photonView != null && photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
         }
     }
     
@@ -215,7 +223,8 @@ public class EnemyController : MonoBehaviour
         Destroy(gameObject);
     }
     
-    public void TakeDamage(int damage)
+    [PunRPC]
+    public void TakeDamageRPC(int damage)
     {
         currentHealth -= damage;
         UpdateHealthBar();
@@ -224,6 +233,15 @@ public class EnemyController : MonoBehaviour
             Die();
         }
     }
+
+    public void TakeDamage(int damage)
+    {
+        if (photonView == null) return;
+
+        // Ask all clients to apply damage
+        photonView.RPC("TakeDamageRPC", RpcTarget.AllBuffered, damage);
+    }
+
 
     private void UpdateHealthBar()
     {

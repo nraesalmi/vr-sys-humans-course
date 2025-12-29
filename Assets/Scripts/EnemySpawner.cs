@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 [System.Serializable]
 public class Wave
@@ -10,6 +11,8 @@ public class Wave
     public string waveName = "Wave 1";
     public float spawnInterval = 2f;
     public float timeBeforeNextWave = 5f;
+
+    PhotonView photonView;
 
     [Header("Enemy Types")]
     public List<EnemySpawnData> enemiesToSpawn = new List<EnemySpawnData>();
@@ -37,6 +40,8 @@ public class EnemySpawner : MonoBehaviour
     public bool isSpawning = false;
     public bool allWavesComplete = false;
 
+    private PhotonView photonView;
+
     [Header("Game Events")]
     public BaseHealth baseHealth;
 
@@ -55,6 +60,8 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
+        photonView = GetComponent<PhotonView>();
+
         if (baseHealth == null)
         {
             baseHealth = FindAnyObjectByType<BaseHealth>(FindObjectsInactive.Include);
@@ -245,7 +252,7 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+        GameObject newEnemy = PhotonNetwork.Instantiate(enemyPrefab.name, spawnPoint.position, Quaternion.identity);
 
         // Setup waypoints
         var patrolScript = newEnemy.GetComponent<PatrolFollowingPredeterminedOrder>();

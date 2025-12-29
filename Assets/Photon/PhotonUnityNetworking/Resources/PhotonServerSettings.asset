@@ -47,6 +47,9 @@ MonoBehaviour:
   - RPC_StartGame
   - RPC_TakeDamage
   - RPC_UpdateTargetCount
+  - DropAndReloadRPC
+  - ShootRPC
+  - TakeDamageRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
