@@ -1567,7 +1567,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3e833d90c0999468108f6e529a704b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
-  baseDamage: 20
+  minBaseDamage: 50000
+  maxBaseDamage: 100000
   baseHealth: 500
   rewardMoney: 10
   healthSlider: {fileID: 2398634379207511743}

@@ -4,7 +4,9 @@ using UnityEngine.UI;
 public class EnemyController : MonoBehaviour
 {
     [Header("Enemy Stats")]
-    public int baseDamage = 1;
+    [SerializeField] private int minBaseDamage = 1000;
+    [SerializeField] private int maxBaseDamage = 10000;
+
     public int baseHealth = 100;
     public int rewardMoney = 10;
 
@@ -21,6 +23,9 @@ public class EnemyController : MonoBehaviour
     private int currentHealth;
     private float healthMultiplier = 1f;
     private float speedMultiplier = 1f;
+    private int rolledBaseDamage;
+
+
     
     [Header("References")]
     private EnemySpawner spawner;
@@ -138,16 +143,21 @@ public class EnemyController : MonoBehaviour
         fixedSpotTransform = tempSpot.transform;
     }
     
-    public void Initialize(EnemySpawner enemySpawner, BaseHealth healthBase, float hpMultiplier = 1f, float spdMultiplier = 1f)
+    public void Initialize(
+        EnemySpawner enemySpawner,
+        BaseHealth healthBase,
+        float hpMultiplier = 1f,
+        float spdMultiplier = 1f)
     {
         spawner = enemySpawner;
         targetBase = healthBase;
         healthMultiplier = hpMultiplier;
         speedMultiplier = spdMultiplier;
-        
-        // Apply multipliers
+
         currentHealth = Mathf.RoundToInt(baseHealth * healthMultiplier);
-        
+
+        rolledBaseDamage = Random.Range(minBaseDamage, maxBaseDamage + 1);
+
         if (movement != null && speedMultiplier != 1f)
         {
             movement.MovementSpeed *= speedMultiplier;
@@ -155,6 +165,7 @@ public class EnemyController : MonoBehaviour
 
         UpdateHealthBar();
     }
+
     
     void OnTriggerEnter(Collider other)
     {
@@ -163,7 +174,7 @@ public class EnemyController : MonoBehaviour
         {
             if (targetBase != null)
             {
-                targetBase.TakeDamage(baseDamage);
+                targetBase.TakeDamage(rolledBaseDamage);
             }
             
             if (spawner != null)

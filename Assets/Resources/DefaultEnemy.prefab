@@ -853,7 +853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3e833d90c0999468108f6e529a704b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
-  baseDamage: 1
+  baseDamage: 7500
   baseHealth: 100
   rewardMoney: 10
   healthSlider: {fileID: 6966065955461506427}
@@ -1528,6 +1528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9721ff716a4023b438b7b7efa39e3aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  keepUpright: 1
 --- !u!1 &3753394146424404328
 GameObject:
   m_ObjectHideFlags: 0

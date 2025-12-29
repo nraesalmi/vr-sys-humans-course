@@ -7324,7 +7324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce87cdcdc1abb64fa5a179de7c3ec6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseHealth
-  maxHealth: 100
+  maxHealth: 1000000
   currentHealth: 0
   healthSlider: {fileID: 131978568}
   healthText: {fileID: 1845651851}
@@ -15787,7 +15787,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 50}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1845651851
 MonoBehaviour:
@@ -15811,7 +15811,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 23ccffaf915b101419d098a118141d9a, type: 3}
-    m_FontSize: 34
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
