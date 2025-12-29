@@ -1,7 +1,7 @@
 using UnityEngine;
-using UnityEngine.InputSystem;  // Add this for new Input System
-using UnityEngine.InputSystem.EnhancedTouch;  // For touch input
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;  // New Input System Touch
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class RevolverCylinderReload : MonoBehaviour
 {
@@ -29,19 +29,16 @@ public class RevolverCylinderReload : MonoBehaviour
     public Transform dropPoint;
     public Transform firePoint;
 
-    [Header("Shooting")]
-    public float shootCooldown = 0.5f;
-    public float recoilForce = 1f;
-    public float recoilDuration = 0.1f;
-    private float lastShootTime = 0f;
-    private bool isRecoiling = false;
-    private Vector3 originalPosition;
-    private Quaternion originalRotation;
-    private float recoilTimer = 0f;
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip shootClip;
+    public AudioClip reloadClip;
+
+    public AudioClip emptyClickClip; 
 
     [Header("Input")]
     public bool enableTouchShooting = true;
-    public bool enableMouseShooting = true;  // For testing in editor
+    public bool enableMouseShooting = true;
 
     Vector3 cylinderInitialLocalPos;
 
@@ -57,14 +54,10 @@ public class RevolverCylinderReload : MonoBehaviour
     void Start()
     {
         if (!cylinder) return;
+
         cylinderInitialLocalPos = cylinder.localPosition;
         currentAmmo = maxAmmo;
-        
-        // Store original position/rotation for recoil
-        originalPosition = transform.localPosition;
-        originalRotation = transform.localRotation;
 
-        // Enable Enhanced Touch support if using touch input
         if (enableTouchShooting && !EnhancedTouchSupport.enabled)
         {
             EnhancedTouchSupport.Enable();
@@ -105,138 +98,72 @@ public class RevolverCylinderReload : MonoBehaviour
             targetPos,
             Time.deltaTime * moveSpeed
         );
-
-        // Handle recoil animation
-        UpdateRecoil();
     }
-    
 
     void Update()
     {
-        // Check for Android touch input using new Input System
         if (enableTouchShooting)
         {
             HandleTouchInput();
         }
-        
-        // Optional: Also support mouse input for testing in Unity Editor
-        if (enableMouseShooting && Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+
+        if (enableMouseShooting && Mouse.current != null &&
+            Mouse.current.leftButton.wasPressedThisFrame)
         {
             TryShoot();
-        }
-
-        // Alternative: Using the new Input System's Touchscreen directly
-        // This is more efficient than EnhancedTouch for simple tap detection
-        if (enableTouchShooting && Touchscreen.current != null)
-        {
-            foreach (var touch in Touchscreen.current.touches)
-            {
-                if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
-                {
-                    TryShoot();
-                    break;
-                }
-            }
         }
     }
 
     void HandleTouchInput()
     {
-        // Using EnhancedTouch API from new Input System
-        if (Touch.activeTouches.Count > 0)
+        if (Touch.activeTouches.Count == 0) return;
+
+        foreach (var touch in Touch.activeTouches)
         {
-            // Loop through all active touches
-            foreach (var touch in Touch.activeTouches)
+            if (touch.phase == UnityEngine.InputSystem.TouchPhase.Began)
             {
-                // Only respond to new touches
-                if (touch.phase == UnityEngine.InputSystem.TouchPhase.Began)
-                {
-                    TryShoot();
-                    break; // Only shoot once per frame
-                }
+                TryShoot();
+                break;
             }
         }
     }
 
     void TryShoot()
     {
-        // Check cooldown
-        if (Time.time - lastShootTime < shootCooldown)
-            return;
-            
-        // Only shoot if cylinder is closed
         if (state != CylinderState.Closed)
             return;
-            
+
         Shoot();
     }
 
     // =====================
     // SHOOTING
     // =====================
-    public void Shoot()
+    void Shoot()
     {
         if (currentAmmo <= 0)
         {
             Debug.Log("Click! Revolver empty.");
-            // Optional: Play empty click sound here
+            PlaySound(emptyClickClip);
             return;
         }
 
         if (!firedBulletPrefab || !firePoint)
             return;
 
-        // Create the bullet
         Instantiate(
             firedBulletPrefab,
             firePoint.position,
             firePoint.rotation
         );
 
-        // Apply recoil
-        StartRecoil();
+        PlaySound(shootClip);
 
         currentAmmo--;
-        lastShootTime = Time.time;
         Debug.Log($"Shot fired. Ammo left: {currentAmmo}");
-        
-        // Optional: Add shooting effects
-        // - Muzzle flash
-        // - Sound effect
-        // - Screen shake
+
     }
 
-    void StartRecoil()
-    {
-        isRecoiling = true;
-        recoilTimer = 0f;
-    }
-
-    void UpdateRecoil()
-    {
-        if (isRecoiling)
-        {
-            recoilTimer += Time.deltaTime;
-            float progress = recoilTimer / recoilDuration;
-            
-            if (progress <= 1f)
-            {
-                // Backward movement
-                float recoilAmount = Mathf.Sin(progress * Mathf.PI) * recoilForce;
-                transform.localPosition = originalPosition - transform.forward * recoilAmount;
-                
-                // Slight upward kick
-                transform.localRotation = originalRotation * Quaternion.Euler(-recoilAmount * 30f, 0f, 0f);
-            }
-            else
-            {
-                // Reset position
-                isRecoiling = false;
-                transform.localPosition = originalPosition;
-                transform.localRotation = originalRotation;
-            }
-        }
-    }
 
     // =====================
     // RELOAD
@@ -265,18 +192,21 @@ public class RevolverCylinderReload : MonoBehaviour
         }
 
         currentAmmo = maxAmmo;
+        PlaySound(reloadClip);
+
         Debug.Log("Reload complete. Ammo refilled.");
     }
 
-    // Optional: Public method to allow UI button to trigger shooting
-    public void ShootButtonPressed()
+    void PlaySound(AudioClip clip)
     {
-        TryShoot();
+        if (audioSource && clip)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 
     void OnDestroy()
     {
-        // Clean up EnhancedTouch if we enabled it
         if (EnhancedTouchSupport.enabled && enableTouchShooting)
         {
             EnhancedTouchSupport.Disable();
