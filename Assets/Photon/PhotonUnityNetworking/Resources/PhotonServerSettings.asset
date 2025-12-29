@@ -40,6 +40,13 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - EnableGravity
+  - RPC_CompleteIntro
+  - RPC_DestroyTarget
+  - RPC_RequestDamage
+  - RPC_ResetTarget
+  - RPC_StartGame
+  - RPC_TakeDamage
+  - RPC_UpdateTargetCount
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

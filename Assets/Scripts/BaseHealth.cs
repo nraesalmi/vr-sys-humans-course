@@ -184,14 +184,19 @@ public class BaseHealth : MonoBehaviour
             healthSlider.value = currentHealth;
         }
     }
+
+    private string FormatMoney(int value)
+    {
+        return value.ToString("N0").Replace(",", " ") + " $";
+    }
     
     void UpdateText()
     {
         if (healthText != null)
         {
-            healthText.text = string.Format(healthFormat, currentHealth, maxHealth);
+            healthText.text = FormatMoney(currentHealth);
         }
-        
+
         if (healthPercentText != null)
         {
             int percent = Mathf.RoundToInt(HealthPercentage * 100);

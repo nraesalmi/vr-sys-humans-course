@@ -84,6 +84,28 @@ public class Bullet : MonoBehaviour
                 }
             }
         }
+        if (other.CompareTag("IntroTarget"))
+        {
+            IntroTarget introTarget = other.GetComponent<IntroTarget>();
+            if (introTarget != null)
+            {
+                // Damage the intro target
+                introTarget.OnBulletHit(damage);
+                
+                // Spawn hit effect
+                SpawnHitEffect();
+                
+                // Destroy bullet
+                if (destroyOnImpact)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    DisableBullet();
+                }
+            }
+        }
     }
     
     private void OnCollisionEnter(Collision collision)

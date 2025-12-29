@@ -44,31 +44,59 @@ public class EnemySpawner : MonoBehaviour
     public bool debugMode = false;
 
     [Header("UI")]
-    public Text statusText;
+    public Text statusText; // Changed back to legacy Text
     public Vector3 textWorldOffset = new Vector3(0f, 3f, 0f);
 
     private float nextWaveCountdown = 0f;
     private bool waitingForNextWave = false;
     private List<GameObject> activeEnemies = new List<GameObject>();
     private Coroutine spawnCoroutine;
+    private bool introCheckCompleted = false;
 
     void Start()
     {
         if (baseHealth == null)
         {
-            baseHealth = FindFirstObjectByType<BaseHealth>();
+            baseHealth = FindAnyObjectByType<BaseHealth>(FindObjectsInactive.Include);
             if (baseHealth == null)
                 Debug.LogWarning("No BaseHealth found in scene!");
         }
 
-        if (waves.Count > 0)
-            StartNextWave();
+        GameIntroManager introManager = FindAnyObjectByType<GameIntroManager>(FindObjectsInactive.Include);
+        if (introManager == null)
+        {
+            introCheckCompleted = true;
+            if (waves.Count > 0)
+                StartNextWave();
+            else
+                Debug.LogWarning("No waves configured in spawner!");
+        }
         else
-            Debug.LogWarning("No waves configured in spawner!");
+        {
+            Debug.Log("EnemySpawner: Waiting for intro to complete...");
+        }
     }
 
     void Update()
     {
+        // Check if intro is complete (only check once at start of Update)
+        if (!introCheckCompleted)
+        {
+            GameIntroManager introManager = FindAnyObjectByType<GameIntroManager>(FindObjectsInactive.Include);
+            if (introManager != null && !introManager.IsIntroComplete())
+            {
+                // Don't spawn enemies during intro
+                if (statusText != null)
+                    statusText.text = "DESTROY THE TARGETS TO BEGIN!";
+                return;
+            }
+            else
+            {
+                introCheckCompleted = true;
+                Debug.Log("EnemySpawner: Intro complete or no intro manager found.");
+            }
+        }
+
         // If wave has finished spawning and all enemies are gone, start countdown
         if (!isSpawning && activeEnemies.Count == 0 && !waitingForNextWave && !allWavesComplete)
         {
@@ -93,9 +121,6 @@ public class EnemySpawner : MonoBehaviour
         UpdateStatusTextContent();
     }
 
-
-
-
     void UpdateStatusTextPosition()
     {
         if (statusText == null) return;
@@ -103,26 +128,37 @@ public class EnemySpawner : MonoBehaviour
     }
 
     void UpdateStatusTextContent()
-{
-    if (statusText == null) return;
-
-    if (allWavesComplete)
     {
-        statusText.text = "All waves complete!";
-        return;
-    }
+        if (statusText == null) return;
 
-    if (isSpawning || activeEnemies.Count > 0)
-    {
-        statusText.text = $"Wave {currentWaveIndex + 1}/{waves.Count}\n" +
-                          $"Enemies left: {activeEnemies.Count}";
-    }
-    else if (waitingForNextWave)
-    {
-        statusText.text = $"Wave complete\nNext wave in: {nextWaveCountdown:F1}s";
-    }
-}
+        if (allWavesComplete)
+        {
+            statusText.text = "All waves complete!";
+            return;
+        }
 
+        // Check if we're still in intro
+        GameIntroManager introManager = FindAnyObjectByType<GameIntroManager>(FindObjectsInactive.Include);
+        if (introManager != null && !introManager.IsIntroComplete())
+        {
+            statusText.text = "DESTROY THE TARGETS TO BEGIN!";
+            return;
+        }
+
+        if (isSpawning || activeEnemies.Count > 0)
+        {
+            statusText.text = $"Wave {currentWaveIndex + 1}/{waves.Count}\n" +
+                              $"Enemies left: {activeEnemies.Count}";
+        }
+        else if (waitingForNextWave)
+        {
+            statusText.text = $"Wave complete\nNext wave in: {nextWaveCountdown:F1}s";
+        }
+        else if (!isSpawning && currentWaveIndex < waves.Count)
+        {
+            statusText.text = $"Ready for wave {currentWaveIndex + 1}";
+        }
+    }
 
     public void StartNextWave()
     {
@@ -168,9 +204,38 @@ public class EnemySpawner : MonoBehaviour
         if (debugMode) Debug.Log($"Finished spawning all enemies for {wave.waveName}");
 
         isSpawning = false;
-
     }
 
+    public void EnableSpawning()
+    {
+        Debug.Log("EnemySpawner.EnableSpawning() called");
+        
+        // Make sure the spawner is enabled
+        enabled = true;
+        
+        // Reset the intro check
+        introCheckCompleted = true;
+        
+        // Start the first wave if not already started
+        if (!isSpawning && !allWavesComplete && currentWaveIndex < waves.Count)
+        {
+            // If currentWaveIndex is 0, start the first wave
+            // If currentWaveIndex is > 0, we might be in the middle of waves
+            if (currentWaveIndex == 0)
+            {
+                StartNextWave();
+            }
+            else
+            {
+                // We're already past wave 0, just resume
+                Debug.Log($"Resuming at wave {currentWaveIndex + 1}");
+            }
+        }
+        else if (allWavesComplete)
+        {
+            Debug.Log("All waves already completed");
+        }
+    }
 
     void SpawnEnemy(GameObject enemyPrefab, float healthMultiplier = 1f, float speedMultiplier = 1f)
     {
@@ -270,6 +335,7 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = false;
         waitingForNextWave = false;
         allWavesComplete = false;
+        introCheckCompleted = true;
 
         StartNextWave();
     }
