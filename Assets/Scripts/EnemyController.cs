@@ -7,8 +7,8 @@ public class EnemyController : MonoBehaviour
     PhotonView photonView;
 
     [Header("Enemy Stats")]
-    [SerializeField] private int minBaseDamage = 1000;
-    [SerializeField] private int maxBaseDamage = 10000;
+    [SerializeField] public int minBaseDamage = 1000;
+    [SerializeField] public int maxBaseDamage = 10000;
 
     public int baseHealth = 100;
     public int rewardMoney = 10;
@@ -26,7 +26,7 @@ public class EnemyController : MonoBehaviour
     private int currentHealth;
     private float healthMultiplier = 1f;
     private float speedMultiplier = 1f;
-    private int rolledBaseDamage;
+    public int rolledBaseDamage;
 
 
     
@@ -148,52 +148,86 @@ public class EnemyController : MonoBehaviour
         fixedSpotTransform = tempSpot.transform;
     }
     
-    public void Initialize(
-        EnemySpawner enemySpawner,
-        BaseHealth healthBase,
-        float hpMultiplier = 1f,
-        float spdMultiplier = 1f)
+    public void Initialize(EnemySpawner enemySpawner, BaseHealth healthBase, float hpMultiplier = 1f, float spdMultiplier = 1f)
     {
-        spawner = enemySpawner;
+        spawner = enemySpawner; // assign locally for master
         targetBase = healthBase;
         healthMultiplier = hpMultiplier;
         speedMultiplier = spdMultiplier;
 
+        if (photonView.IsMine)
+        {
+            // Master sets stats
+            currentHealth = Mathf.RoundToInt(baseHealth * healthMultiplier);
+            rolledBaseDamage = Random.Range(minBaseDamage, maxBaseDamage + 1);
+
+            // Initialize on all clients
+            photonView.RPC("InitializeRPC", RpcTarget.AllBuffered,
+                            healthMultiplier, speedMultiplier, rolledBaseDamage);
+        }
+    }
+
+
+    [PunRPC]
+    public void InitializeRPC(float hpMultiplier, float spdMultiplier, int damage)
+    {
+        healthMultiplier = hpMultiplier;
+        speedMultiplier = spdMultiplier;
+        rolledBaseDamage = damage;
         currentHealth = Mathf.RoundToInt(baseHealth * healthMultiplier);
 
-        rolledBaseDamage = Random.Range(minBaseDamage, maxBaseDamage + 1);
+        // Assign spawner for remote clients
+        if (spawner == null)
+        {
+            spawner = FindObjectOfType<EnemySpawner>();
+        }
 
         if (movement != null && speedMultiplier != 1f)
-        {
             movement.MovementSpeed *= speedMultiplier;
-        }
 
         UpdateHealthBar();
     }
 
-    
-    void OnTriggerEnter(Collider other)
+
+
+    [PunRPC]
+    void SetStatsRPC(int health, int damage, float hpMult, float spdMult)
     {
-        // Check if enemy reached the base (last waypoint or base trigger)
-        if (other.CompareTag("Base"))
+        healthMultiplier = hpMult;
+        speedMultiplier = spdMult;
+        currentHealth = health;
+        rolledBaseDamage = damage;
+
+        if (movement != null)
+            movement.MovementSpeed *= speedMultiplier;
+
+        UpdateHealthBar();
+    }
+
+    public void OnPhotonInstantiate(PhotonMessageInfo info)
+    {
+        if (!photonView.IsMine && spawner != null)
         {
-            if (targetBase != null)
-            {
-                targetBase.TakeDamage(rolledBaseDamage);
-            }
-            
-            if (spawner != null)
-            {
-                spawner.OnEnemyReachedBase(gameObject);
-            }
-            
-            // Optional: Play death animation/effect
-            if (photonView != null && photonView.IsMine)
-            {
-                PhotonNetwork.Destroy(gameObject);
-            }
+            spawner.RegisterEnemy(this.gameObject);
         }
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (!photonView.IsMine) return; // Only Master Client handles triggers
+
+        if (other.CompareTag("Base"))
+        {
+            if (spawner != null)
+            {
+                spawner.OnEnemyReachedBase(gameObject); // Master applies damage & unregisters
+            }
+
+            // Destroy the enemy across the network
+            PhotonNetwork.Destroy(gameObject);
+        }
+    }
+
     
     // Clean up any temporary GameObject we created
     void OnDestroy()
@@ -208,20 +242,30 @@ public class EnemyController : MonoBehaviour
     // Call this when enemy is killed by towers
     public void Die(bool giveReward = true)
     {
-        // Add money/reward logic here
         if (giveReward)
         {
             // Example: GameManager.Instance.AddMoney(rewardMoney);
         }
-        
-        if (spawner != null)
+
+        // Only Master Client unregisters the enemy and syncs removal
+        if (photonView.IsMine && spawner != null)
         {
-            spawner.OnEnemyDestroyed(gameObject);
+            spawner.UnregisterEnemy(gameObject);
         }
-        
-        // Optional: Play death animation/effect
-        Destroy(gameObject);
+
+        // Destroy the enemy
+        if (photonView != null && photonView.IsMine)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject); // fallback for remote clients
+        }
     }
+
+
+
     
     [PunRPC]
     public void TakeDamageRPC(int damage)
@@ -236,7 +280,7 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (photonView == null) return;
+        if (photonView == null || !photonView.IsMine) return;
 
         // Ask all clients to apply damage
         photonView.RPC("TakeDamageRPC", RpcTarget.AllBuffered, damage);

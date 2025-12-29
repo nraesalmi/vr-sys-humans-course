@@ -953,6 +953,7 @@ MonoBehaviour:
   healthBarOffset: {x: 0, y: 2, z: 0}
   fixedSpotTransform: {fileID: 0}
   alwaysFaceUp: 0
+  rolledBaseDamage: 0
 --- !u!114 &8882102273013818386
 MonoBehaviour:
   m_ObjectHideFlags: 0

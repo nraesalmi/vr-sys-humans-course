@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
     public bool isSpawning = false;
     public bool allWavesComplete = false;
 
-    private PhotonView photonView;
+    public PhotonView photonView;
 
     [Header("Game Events")]
     public BaseHealth baseHealth;
@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
 
     private float nextWaveCountdown = 0f;
     private bool waitingForNextWave = false;
-    private List<GameObject> activeEnemies = new List<GameObject>();
+    public List<GameObject> activeEnemies = new List<GameObject>();
     private Coroutine spawnCoroutine;
     private bool introCheckCompleted = false;
 
@@ -246,12 +246,16 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy(GameObject enemyPrefab, float healthMultiplier = 1f, float speedMultiplier = 1f)
     {
+        if (!PhotonNetwork.IsMasterClient)
+            return; // Only the master client spawns enemies
+
         if (spawnPoint == null)
         {
             Debug.LogError("No spawn point assigned!");
             return;
         }
 
+        // Instantiate the enemy over the network
         GameObject newEnemy = PhotonNetwork.Instantiate(enemyPrefab.name, spawnPoint.position, Quaternion.identity);
 
         // Setup waypoints
@@ -264,17 +268,21 @@ public class EnemySpawner : MonoBehaviour
                 patrolScript.Waypoints = GetWaypointsList();
         }
 
-        // Setup EnemyController
-        var enemyController = newEnemy.GetComponent<EnemyController>();
-        if (enemyController == null)
-            enemyController = newEnemy.AddComponent<EnemyController>();
+        // Decide random damage on MasterClient
+        int rolledDamage = Random.Range(enemyPrefab.GetComponent<EnemyController>().minBaseDamage,
+                                        enemyPrefab.GetComponent<EnemyController>().maxBaseDamage + 1);
 
-        enemyController.Initialize(this, baseHealth, healthMultiplier, speedMultiplier);
+        // Initialize enemy on all clients via RPC
+        PhotonView enemyPhotonView = newEnemy.GetComponent<PhotonView>();
+        enemyPhotonView.RPC("InitializeRPC", RpcTarget.AllBuffered,
+                            healthMultiplier, speedMultiplier, rolledDamage);
 
+        // Master keeps track of active enemies
         activeEnemies.Add(newEnemy);
 
         if (debugMode) Debug.Log($"Spawned enemy at {spawnPoint.position}");
     }
+
 
     List<Transform> GetWaypointsList()
     {
@@ -293,20 +301,73 @@ public class EnemySpawner : MonoBehaviour
         return waypoints;
     }
 
-    public void OnEnemyDestroyed(GameObject enemy)
-    {
-        totalEnemiesDefeated++;
-        activeEnemies.Remove(enemy);
-
-        if (debugMode) Debug.Log($"Enemy destroyed. {activeEnemies.Count} remaining in wave {currentWaveIndex + 1}");
-    }
-
+    // Called when an enemy reaches the base
     public void OnEnemyReachedBase(GameObject enemy)
     {
-        activeEnemies.Remove(enemy);
+        if (!PhotonNetwork.IsMasterClient) return; // Only master applies damage
 
-        if (debugMode) Debug.Log($"Enemy reached base. {activeEnemies.Count} remaining in wave {currentWaveIndex + 1}");
+        // Apply damage to the base
+        if (baseHealth != null)
+        {
+            EnemyController enemyController = enemy.GetComponent<EnemyController>();
+            if (enemyController != null)
+            {
+                baseHealth.TakeDamage(enemyController.rolledBaseDamage);
+            }
+        }
+
+        // Remove enemy from active list and sync
+        UnregisterEnemy(enemy);
+
+        if (debugMode)
+            Debug.Log($"Enemy reached base. {activeEnemies.Count} remaining in wave {currentWaveIndex + 1}");
     }
+
+
+    // Called when an enemy is destroyed by towers or other means
+    public void OnEnemyDestroyed(GameObject enemy)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            totalEnemiesDefeated++;
+            UnregisterEnemy(enemy);
+        }
+
+        if (debugMode)
+            Debug.Log($"Enemy destroyed. {activeEnemies.Count} remaining in wave {currentWaveIndex + 1}");
+    }
+
+
+    // Called on Master Client when an enemy is spawned
+    public void RegisterEnemy(GameObject enemy)
+    {
+        activeEnemies.Add(enemy);
+        photonView.RPC("RPC_AddEnemy", RpcTarget.OthersBuffered, enemy.GetComponent<PhotonView>().ViewID);
+    }
+
+    [PunRPC]
+    void RPC_AddEnemy(int viewID)
+    {
+        GameObject enemy = PhotonView.Find(viewID)?.gameObject;
+        if (enemy != null && !activeEnemies.Contains(enemy))
+            activeEnemies.Add(enemy);
+    }
+
+    // Called on Master Client when an enemy dies or reaches base
+    public void UnregisterEnemy(GameObject enemy)
+    {
+        activeEnemies.Remove(enemy);
+        photonView.RPC("RPC_RemoveEnemy", RpcTarget.OthersBuffered, enemy.GetComponent<PhotonView>().ViewID);
+    }
+
+    [PunRPC]
+    void RPC_RemoveEnemy(int viewID)
+    {
+        GameObject enemy = PhotonView.Find(viewID)?.gameObject;
+        if (enemy != null)
+            activeEnemies.Remove(enemy);
+    }
+
 
     // Skip to next wave (for debugging)
     public void SkipToNextWave()

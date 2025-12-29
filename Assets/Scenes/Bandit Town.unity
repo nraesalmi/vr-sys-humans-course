@@ -17676,7 +17676,7 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 2410042221074740726, guid: 8cf46f812c42b4649b273c29279e7135, type: 3}
       count: 2
       healthMultiplier: 1
-      speedMultiplier: 1
+      speedMultiplier: 3
   - waveName: 1
     spawnInterval: 0.5
     timeBeforeNextWave: 10
@@ -17723,10 +17723,12 @@ MonoBehaviour:
   totalEnemiesDefeated: 0
   isSpawning: 0
   allWavesComplete: 0
+  photonView: {fileID: 0}
   baseHealth: {fileID: 931752734}
   debugMode: 0
   statusText: {fileID: 1147211400}
   textWorldOffset: {x: 0, y: 23, z: 15}
+  activeEnemies: []
 --- !u!65 &2068295717
 BoxCollider:
   m_ObjectHideFlags: 0

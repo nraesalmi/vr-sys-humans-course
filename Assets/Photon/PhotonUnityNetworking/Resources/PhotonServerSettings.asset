@@ -50,6 +50,13 @@ MonoBehaviour:
   - DropAndReloadRPC
   - ShootRPC
   - TakeDamageRPC
+  - SetWaveIndexRPC
+  - SetDamageRPC
+  - SetStatsRPC
+  - InitializeRPC
+  - RemoveEnemyRPC
+  - RPC_AddEnemy
+  - RPC_RemoveEnemy
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
