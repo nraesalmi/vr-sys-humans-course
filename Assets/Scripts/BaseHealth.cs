@@ -71,12 +71,6 @@ public class BaseHealth : MonoBehaviour
             Debug.Log($"Base health initialized: {currentHealth}/{maxHealth}", this);
     }
     
-    private string FormatMoney(int value)
-    {
-        return value.ToString("N0").Replace(",", " ") + " $";
-    }
-
-
     public void TakeDamage(int damage)
     {
         if (damage <= 0 || currentHealth <= 0) return;
@@ -195,16 +189,15 @@ public class BaseHealth : MonoBehaviour
     {
         if (healthText != null)
         {
-            healthText.text = FormatMoney(currentHealth);
+            healthText.text = string.Format(healthFormat, currentHealth, maxHealth);
         }
-
+        
         if (healthPercentText != null)
         {
             int percent = Mathf.RoundToInt(HealthPercentage * 100);
             healthPercentText.text = string.Format(percentFormat, percent);
         }
     }
-
     
     void UpdateHealthBarColor()
     {
