@@ -9036,6 +9036,103 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.94, y: 0.78, z: 0.1}
   m_Center: {x: -0.026028872, y: 3.94, z: 2.91}
+--- !u!82 &1160694938
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560036656}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: bb7b9e1f765106e488a81c33dbc5fac8, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.51
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 200
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1162218116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15612,6 +15709,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7746541329810072212, guid: 8314a0bd8dcbd85488e2407a0d3f5d99, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1160694933}
+    - targetCorrespondingSourceObject: {fileID: 7746541329810072212, guid: 8314a0bd8dcbd85488e2407a0d3f5d99, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1160694938}
   m_SourcePrefab: {fileID: 100100000, guid: 8314a0bd8dcbd85488e2407a0d3f5d99, type: 3}
 --- !u!1 &1844138109
 GameObject:
@@ -17603,14 +17703,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   waves:
   - waveName: 0
-    totalEnemies: 10
-    spawnInterval: 0.2
+    totalEnemies: 25
+    spawnInterval: 0.5
+    timeBeforeNextWave: 5
+    enemiesToSpawn:
+    - enemyPrefab: {fileID: 2410042221074740726, guid: 8cf46f812c42b4649b273c29279e7135, type: 3}
+      count: 25
+      healthMultiplier: 1
+      speedMultiplier: 1
+  - waveName: 1
+    totalEnemies: 50
+    spawnInterval: 0.3
     timeBeforeNextWave: 0
     enemiesToSpawn:
     - enemyPrefab: {fileID: 2410042221074740726, guid: 8cf46f812c42b4649b273c29279e7135, type: 3}
-      count: 10
+      count: 25
+      healthMultiplier: 2
+      speedMultiplier: 0.5
+    - enemyPrefab: {fileID: 2410042221074740726, guid: 8cf46f812c42b4649b273c29279e7135, type: 3}
+      count: 25
       healthMultiplier: 1
-      speedMultiplier: 1
+      speedMultiplier: 2
   spawnPoint: {fileID: 1151787806}
   startWaypoint: {fileID: 1057920095}
   currentWaveIndex: 0
